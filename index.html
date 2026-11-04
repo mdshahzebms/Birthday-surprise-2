@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d2b">
+<title>Bushra — Birthday Surprise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<div class="floating" aria-hidden="true">♡</div>
+<div class="floating f2" aria-hidden="true">✿</div>
+<div class="floating f3" aria-hidden="true">♡</div>
+
+<main>
+  <section id="lockScreen" class="screen lock-screen">
+    <div class="lock-card">
+      <div class="tiny-heart">♡</div>
+      <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
+      <h1>Hey, Bushra! ✨</h1>
+      <p class="muted">Tumhare liye ek special birthday surprise hai...</p>
+      <label for="password">Secret password daalo</label>
+      <input id="password" type="password" inputmode="numeric" maxlength="12" placeholder="Password">
+      <button id="unlockBtn" class="primary">Surprise kholo 💗</button>
+      <p id="error" class="error" aria-live="polite"></p>
+      <span class="hint">Hint: Tumhara secret code 😉</span>
+    </div>
+  </section>
+
+  <section id="birthdayScreen" class="screen hidden">
+    <header class="topline"><span>✦ A DAY MADE SPECIAL ✦</span><button id="musicBtn" class="music-btn">♫ Music: OFF</button></header>
+    <div class="hero">
+      <p class="eyebrow">HAPPY BIRTHDAY</p>
+      <h1 class="name">Bushra<span>!</span></h1>
+      <p class="subtitle">Aaj ka din sirf tumhari khushiyon ke naam 💖</p>
+      <div class="cake-wrap">
+        <div class="glow"></div>
+        <div class="candle"><i></i></div>
+        <div class="cake-top"></div>
+        <div class="cake-mid"><span>♡</span><span>♡</span><span>♡</span></div>
+        <div class="cake-bottom"></div>
+        <div class="plate"></div>
+      </div>
+      <button id="wishBtn" class="primary big">Make a wish ✨</button>
+      <p class="small-note">Apni ek pyaari si wish maango...</p>
+    </div>
+
+    <section class="message-card">
+      <div class="ornament">✦ ✧ ✦</div>
+      <h2>Tumhare liye ek paighaam 💌</h2>
+      <p> tumhari zindagi khushiyon, muskurahaton aur khoobsurat maukon se bhari rahe. Har naya din tumhare liye umeed aur naye sapne lekar aaye. Hamesha khush raho, chamakti raho aur apni pyari si muskurahat kabhi mat khona. </p>
+      <div class="signature">With lots of good wishes ♡</div>
+    </section>
+
+    <section class="gallery-card">
+      <h2>Yaadon ka kona 📸</h2>
+      <p class="muted">Yahan baad mein photos add kar sakte hain.</p>
+      <div class="photo-placeholder"><div>＋</div><span>Photos baad mein yahan update hongi</span></div>
+    </section>
+
+    <section class="final-card">
+      <div class="sparkle">✧ ✦ ✧</div>
+      <h2>Once again, Happy Birthday!</h2>
+      <p>May your year be as lovely and bright as your smile. 💫</p>
+      <button id="fireworkBtn" class="primary">Aakhri surprise dekho 🎆</button>
+    </section>
+    <footer>Made with care, just for your special day ♡</footer>
+  </section>
+</main>
+
+<div id="fireworks" class="fireworks hidden" aria-hidden="true"></div>
+<audio id="birthdayAudio" src="music/mann-ki-lagan.mp3" loop preload="none"></audio>
+<script src="script.js"></script>
+</body>
+</html>
