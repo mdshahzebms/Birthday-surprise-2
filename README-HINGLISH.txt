@@ -9,7 +9,7 @@ PASSWORD:
 
 MUSIC:
 - music folder ke andar apni legally obtained MP3 audio file rakho.
-- File ka naam exactly: music/Jeena Jeena (From Badlapur).mp3
+- File ka naam exactly: Jeena Jeena (From Badlapur).mp3
 - Is gaane ki audio file ZIP mein shamil nahi hai.
 
 PHOTOS:
