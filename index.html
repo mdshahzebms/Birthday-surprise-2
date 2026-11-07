@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#3b0822">
 <title>Bushra ke naam — Birthday Surprise</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,249 +10,407 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="grain"></div>
+
 <main>
-<section id="lockScreen" class="lock-screen"><div class="lock-card">
-<div class="heart">♡</div><p class="eyebrow">EK CHHOTI SI SURPRISE</p>
-<h1>Sirf aapke liye,<br><em>Bushra.</em></h1>
-<p>Ek chhoti si duniya banayi hai… jismein har cheez aapke naam hai.</p>
-<label for="password">Apna secret code daalo</label><input id="password" type="password" inputmode="numeric" maxlength="12" placeholder="••••">
-<button id="unlockBtn" class="pill">Darwaza kholo ↗</button><p id="error" class="error"></p><small>Ek secret, sirf aap jaanti ho ✦</small>
-</div></section>
-
-<section id="birthdayScreen" class="hidden">
-<nav><a class="brand">b<span>♡</span></a><span>EK KHAAS DIN · EK KHAAS INSAAN</span><button id="musicBtn" class="music">♫ Gaana chalao</button></nav>
-<section class="hero"><div><p class="eyebrow">AAJ KI SAARI KHUSHIYAN · AAPKE NAAM</p>
-<h1>Ek din, ek kahani,<br>aur dher saari <em>khushiyan.</em></h1>
-<p class="desc">Aaj ka din aapki muskurahat, aapki khushiyon aur un saari khoobsurat cheezon ke naam jo aap deserve karti ho.</p>
-<button id="wishBtn" class="pill">Haan, bilkul ♡</button> <a href="#reasons">Surprise dekho ↓</a>
-<small class="note">MADE WITH CARE, JUST FOR YOU</small></div>
-<div class="preview"><small>✦ BIRTHDAY EDITION <span>01 / 05</span></small><div class="cake"><i></i><b></b><strong></strong><label></label></div><p>Happy Birthday, Bushra! <span>♡</span></p></div></section>
-<div class="ticker">HAPPY BIRTHDAY　✦　KHUSH RAHO HAMESHA　✦　YOU ARE ONE OF A KIND</div>
-
-<section id="reasons" class="section"><header><p class="eyebrow">CHHOTI CHHOTI BAATEIN</p><h2>100 Reasons<br><em>Why You’re Special</em></h2><p>Har ek wajah apni jagah khaas hai. Yeh unmein se ek hai…</p></header>
-<div class="reasons"><div class="reason"><small>NO. <b id="reasonNumber">01</b> / 100</small><div>♡</div><p id="reasonText">Aapki muskurahat aam din ko bhi khaas bana deti hai.</p><button id="prevReason">←</button><button id="nextReason">Agli wajah →</button></div>
-<aside><b>“</b><p>Har insaan ki apni ek roshni hoti hai. Aapki roshni aapki apni hai — aur woh bahut khoobsurat hai.</p><small>— Ek khaas paighaam</small></aside></div></section>
-
-<section class="section letter"><div><p class="eyebrow">DIL SE LIKHA HUA</p><h2>A letter I never<br><em>wanted to keep unsent…</em></h2><p>Kuch baatein lafzon mein kehna aasaan nahi hota. Isliye yeh chhota sa khat.</p><button id="letterBtn" class="pill">Khat kholo ♡</button></div>
-<article id="letterPaper"><small>TO BUSHRA · WITH CARE</small><h3>Dear Bushra,</h3><p>Aapki zindagi ka yeh naya saal khoobsurat mauke, himmat bhare sapne, dil se nikli hasi aur aise be-shumaar pal lekar aaye jin par aapko khud par fakhr ho.</p><p>May your wishes find their way to you, may your heart feel light, and may the year ahead be full of lovely beginnings.</p><p>Hamesha apni tarah roshan rehna. Aapka aaj aur aane wala har kal khushiyon se bhara ho.</p><i>Bahut saari achhi duaaon ke saath, ♡</i></article></section>
-
-<section class="section envelope-section"><header><p class="eyebrow">SIRF AAPKE LIYE</p><h2>Ek chhota sa <em>raaz.</em></h2><p>Is lifafe ke andar ek paighaam chhupa hai.</p></header>
-<button id="envelopeBtn" class="envelope" aria-label="Lifafa kholo"><span class="env-letter">Aapki zindagi hamesha umeed, sukoon aur khoobsurat maukon se bhari rahe. Aap jahan bhi raho, khushiyan aapka saath dein. ♡</span><span class="env-flap"></span><span class="env-heart">♡</span></button><p class="hint" id="envelopeHint">Lifafe par tap karke kholo</p></section>
-
-<section class="section scrapbook"><header><p class="eyebrow">YAADON KA CHHOTA SA KONA</p><h2>Little moments,<br><em>big memories.</em></h2><p>Yahan baad mein aapki pasandida tasveerein aur unki kahaniyan sajayenge.</p></header>
-<div class="scrap-grid"><article class="scrap-card"><div class="photo-placeholder">♡<small>PHOTO 01</small></div><p>Ek khoobsurat yaad</p></article><article class="scrap-card"><div class="photo-placeholder">✦<small>PHOTO 02</small></div><p>Ek pyara sa pal</p></article><article class="scrap-card"><div class="photo-placeholder">✿<small>PHOTO 03</small></div><p>Hamesha yaad rehne wali muskurahat</p></article></div></section>
-
-<section class="section song"><div class="player"><div class="album">♫<small>A SONG FOR YOU</small></div><div><p class="eyebrow">AAPKE LIYE EK GAANA</p><h3>Jeena Jeena</h3><p>Ek dhun, jo is chhote se surprise ke saath rahegi.</p><div class="track"><span></span></div><small id="songStatus">Gaana sunne ke liye upar music button dabao</small></div></div>
-<div><p class="eyebrow">KUCH DHUNEIN YAAD REHTI HAIN</p><h2>A song that<br><em>sounds like a memory.</em></h2><p>Is gaane ko sunte hue bas itna yaad rakhna — aaj ka din aapka hai.</p></div></section>
-
-<section class="section jar-section"><header><p class="eyebrow">JAB BHI DIL CHAHE</p><h2>A jar full of <em>wishes.</em></h2><p>Ek wish nikalo — har baar ek naya paighaam milega.</p></header><div class="jar-wrap"><div class="jar" id="wishJar"><span>♡</span><span>✦</span><span>✿</span><span>♡</span><span>✧</span><span>✦</span></div><button id="drawWish" class="pill">Ek wish nikalo ✨</button><p id="jarWish" class="jar-wish">Aapke liye 10 chhoti-chhoti duaaein rakhi hain.</p></div></section>
-
-<section class="section candle-section"><header><p class="eyebrow">EK KHAMOSH SI WISH</p><h2>Make a <em>wish.</em></h2><p>Apne dil mein ek achhi si wish socho, phir candle ko bujhao.</p></header>
-<div class="candle-scene"><div class="flame" id="flame"></div><div class="candle"><span></span></div><div class="candle-base"></div></div><button id="blowCandle" class="pill">Meri wish poori ho ✨</button><p id="candleMessage" class="hint">Aapki har achhi wish ko pankh milein.</p></section>
-
-<!-- FEATURE 6: SKY FULL OF STARS -->
-<section class="section">
-  <header>
-    <p class="eyebrow">AAPKE LIYE EK AASMAAN</p>
-    <h2>A sky full of <em>wishes.</em></h2>
-    <p>Har sitare par tap karo aur ek paighaam pao.</p>
-  </header>
-  <div class="star-sky">
-    <button class="star-point" data-message="Aapki har subah umeed ki nayi roshni laaye.">✦</button>
-    <button class="star-point" data-message="Aapke sapne khoobsurat hain. Unhe poora karne ka hausla rakho.">✧</button>
-    <button class="star-point" data-message="Aapki muskurahat hamesha aise hi bani rahe.">✦</button>
-    <button class="star-point" data-message="Aapko zindagi mein dher saari khushiyan milen.">✧</button>
-    <button class="star-point" data-message="Aap hamesha apni roshni mein chamakti raho.">✦</button>
-    <button class="star-point" data-message="Aane wala har din ek pyari yaad lekar aaye.">✧</button>
-  </div>
-  <p id="starMessage" class="feature-message">Kisi sitare ko chuno ♡</p>
-</section>
-
-<!-- FEATURE 7: OPEN WHEN LETTERS -->
-<section class="section">
-  <header>
-    <p class="eyebrow">JAB KABHI ZAROORAT HO</p>
-    <h2>Open when… <em>♡</em></h2>
-    <p>Apne mood ke hisaab se ek lifafa kholo.</p>
-  </header>
-  <div class="when-grid">
-    <article class="when-card">
-      <h3>Jab khushi ho ☀</h3>
-      <button class="pill when-open" data-message="Aapki khushi ka jashn manane ke liye ek aur wajah mil gayi! Is pal ko poori tarah jeena. ♡">Lifafa kholo</button>
-      <p></p>
-    </article>
-    <article class="when-card">
-      <h3>Jab din mushkil ho ☁</h3>
-      <button class="pill when-open" data-message="Har din ek jaisa nahi hota. Khud ko waqt do, achhe din phir aayenge. ♡">Lifafa kholo</button>
-      <p></p>
-    </article>
-    <article class="when-card">
-      <h3>Jab hausla chahiye ✨</h3>
-      <button class="pill when-open" data-message="Apni himmat par bharosa rakho. Aap naye safar shuru kar sakti ho. ♡">Lifafa kholo</button>
-      <p></p>
-    </article>
-    <article class="when-card">
-      <h3>Jab yaad aaye ♡</h3>
-      <button class="pill when-open" data-message="Yeh chhota sa page yaad dilaye ki aapki khushi kitni keemti hai. ♡">Lifafa kholo</button>
-      <p></p>
-    </article>
+<section id="lockScreen" class="lock-screen">
+  <div class="lock-card">
+    <div class="heart">♡</div>
+    <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
+    <h1>Sirf aapke liye,<br><em>Bushra.</em></h1>
+    <p>Ek chhoti si duniya banayi hai… jismein har cheez aapke naam hai.</p>
+    <label for="password">Apna secret code daalo</label>
+    <input id="password" type="password" inputmode="numeric" maxlength="12" placeholder="••••">
+    <button id="unlockBtn" class="pill">Darwaza kholo ↗</button>
+    <p id="error" class="error"></p>
+    <small>Ek secret, sirf aap jaanti ho ✦</small>
   </div>
 </section>
 
-<!-- FEATURE 8: POLAROID MEMORY WALL -->
-<section class="section">
-  <header>
-    <p class="eyebrow">YAADON KI TASVEEREIN</p>
-    <h2>Little pieces of <em>forever.</em></h2>
-    <p>Har card par tap karo aur ek yaad dekho.</p>
-  </header>
-  <div class="polaroid-wall">
-    <button class="polaroid" data-caption="Woh pal jo dil ke kareeb rahega ♡">
-      <span>♡</span><b>Ek khaas lamha</b>
-    </button>
-    <button class="polaroid" data-caption="Chhoti si yaad, badi si muskurahat.">
-      <span>✿</span><b>Muskurahat wala din</b>
-    </button>
-    <button class="polaroid" data-caption="Kuch yaadein hamesha saath rehti hain.">
-      <span>✦</span><b>Ek pyari kahani</b>
-    </button>
-  </div>
-  <p id="polaroidMessage" class="feature-message">Kisi card par tap karo ♡</p>
-</section>
+<div id="birthdayScreen" class="hidden">
 
-<!-- FEATURE 9: TREASURE HUNT -->
-<section class="section">
-  <header>
-    <p class="eyebrow">CHHOTA SA KHEL</p>
-    <h2>Find the hidden <em>surprise.</em></h2>
-    <p>Teen clues ke baad milega ek khaas paighaam.</p>
-  </header>
-  <div class="treasure-card">
-    <div id="treasureIcon">🗝️</div>
-    <p id="treasureClue">Clue 1: Jahan gaana bajta hai, wahan agla raaz chhupa hai.</p>
-    <button id="treasureNext" class="pill">Agla clue dekho</button>
-    <p id="treasureResult"></p>
-  </div>
-</section>
+<nav>
+  <a class="brand">b<span>♡</span></a>
+  <span>EK KHAAS DIN · EK KHAAS INSAAN</span>
+  <button id="musicBtn" class="music">♫ Gaana chalao</button>
+</nav>
 
-<!-- FEATURE 10: BIRTHDAY COUNTDOWN -->
-<section class="section">
-  <header>
-    <p class="eyebrow">AGLE JASHN TAK</p>
-    <h2>Birthday <em>countdown.</em></h2>
-    <p>Birthday ki tareekh chuno.</p>
-  </header>
-  <div class="countdown-card">
-    <label for="birthdayDate">Birthday ki tareekh</label>
-    <input type="date" id="birthdayDate">
-    <div class="countdown-numbers">
-      <div><b id="cdDays">--</b><small>DIN</small></div>
-      <div><b id="cdHours">--</b><small>GHANTE</small></div>
-      <div><b id="cdMinutes">--</b><small>MINUTE</small></div>
-      <div><b id="cdSeconds">--</b><small>SECOND</small></div>
+<!-- 01: WELCOME -->
+<section class="hero">
+  <div>
+    <p class="eyebrow">AAJ KI SAARI KHUSHIYAN · AAPKE NAAM</p>
+    <h1>Ek din, ek kahani,<br>aur dher saari <em>khushiyan.</em></h1>
+    <p class="desc">Aaj ka din aapki muskurahat, aapki khushiyon aur un saari khoobsurat cheezon ke naam jo aap deserve karti ho.</p>
+    <button id="wishBtn" class="pill">Haan, bilkul ♡</button>
+    <a href="#memories">Surprise dekho ↓</a>
+    <small class="note">MADE WITH CARE, JUST FOR YOU</small>
+  </div>
+
+  <div class="preview">
+    <small>✦ BIRTHDAY EDITION <span>01 / 05</span></small>
+    <div class="cake">
+      <i></i><b></b><strong></strong><label></label>
     </div>
-    <p id="countdownMessage">Tareekh chunte hi countdown shuru hoga ♡</p>
+    <p>Happy Birthday, Bushra! <span>♡</span></p>
   </div>
 </section>
 
-<!-- FEATURE 11: VINYL MUSIC PLAYER -->
-<section class="section">
-  <header>
-    <p class="eyebrow">EK GAANA, EK YAAD</p>
-    <h2>Let the music <em>spin.</em></h2>
-    <p>Gaana chalao aur vinyl ko ghoomte dekho.</p>
-  </header>
-  <div class="vinyl-player">
-    <div class="vinyl-disc" id="vinylDisc">
-      <div class="vinyl-label">♡<small>BUSHRA</small></div>
+<div class="ticker">HAPPY BIRTHDAY ✦ KHUSH RAHO HAMESHA ✦ YOU ARE ONE OF A KIND</div>
+
+<!-- CHAPTER 02: MEMORIES -->
+<section id="memories" class="chapter">
+  <div class="chapter-heading">
+    <span>CHAPTER 01</span>
+    <p>YAADON KA KHOOBSURAT SAFAR</p>
+    <h2>Little moments,<br><em>big memories.</em></h2>
+  </div>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">YAADON KA CHHOTA SA KONA</p>
+      <h2>Moments to <em>remember.</em></h2>
+      <p>Yahan aapki pasandida tasveerein aur unki kahaniyan sajengi.</p>
+    </header>
+
+    <div class="scrap-grid">
+      <article class="scrap-card">
+        <div class="photo-placeholder">♡<small>PHOTO 01</small></div>
+        <p>Ek khoobsurat yaad</p>
+      </article>
+      <article class="scrap-card">
+        <div class="photo-placeholder">✦<small>PHOTO 02</small></div>
+        <p>Ek pyara sa pal</p>
+      </article>
+      <article class="scrap-card">
+        <div class="photo-placeholder">✿<small>PHOTO 03</small></div>
+        <p>Hamesha yaad rehne wali muskurahat</p>
+      </article>
     </div>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">DIL KE KAREEB</p>
+      <h2>Little pieces of <em>forever.</em></h2>
+      <p>Har card par tap karo aur ek paighaam dekho.</p>
+    </header>
+
+    <div class="polaroid-wall">
+      <button class="polaroid" data-caption="Woh pal jo dil ke kareeb rahega ♡">
+        <span>♡</span><b>Ek khaas lamha</b>
+      </button>
+      <button class="polaroid" data-caption="Chhoti si yaad, badi si muskurahat.">
+        <span>✿</span><b>Muskurahat wala din</b>
+      </button>
+      <button class="polaroid" data-caption="Kuch yaadein hamesha saath rehti hain.">
+        <span>✦</span><b>Ek pyari kahani</b>
+      </button>
+    </div>
+    <p id="polaroidMessage" class="feature-message">Kisi card par tap karo ♡</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">EK CHHOTA SA SAFAR</p>
+      <h2>Moments that make a <em>story.</em></h2>
+    </header>
+
+    <div class="memory-timeline">
+      <button class="timeline-item">
+        <b>01 · Ek nayi shuruaat</b><span>+</span>
+        <p>Har khoobsurat kahani ek chhote se kadam se shuru hoti hai.</p>
+      </button>
+      <button class="timeline-item">
+        <b>02 · Yaadon ke pal</b><span>+</span>
+        <p>Hasi, chhoti khushiyan aur woh lamhe jo hamesha yaad rehte hain.</p>
+      </button>
+      <button class="timeline-item">
+        <b>03 · Aaj ka jashn</b><span>+</span>
+        <p>Aaj ka din aapka hai. Ise apni muskurahat ke naam karo.</p>
+      </button>
+      <button class="timeline-item">
+        <b>04 · Aane wala kal</b><span>+</span>
+        <p>Naye sapne, naye mauke aur be-shumaar khushiyan aapka intezaar kar rahi hain. ♡</p>
+      </button>
+    </div>
+  </section>
+</section>
+
+<!-- CHAPTER 03: FROM THE HEART -->
+<section class="chapter alternate">
+  <div class="chapter-heading">
+    <span>CHAPTER 02</span>
+    <p>DIL SE NIKLE KUCH LAFZ</p>
+    <h2>Words from the <em>heart.</em></h2>
+  </div>
+
+  <section id="reasons" class="section">
+    <header>
+      <p class="eyebrow">CHHOTI CHHOTI BAATEIN</p>
+      <h2>Reasons <em>Why You’re Special</em></h2>
+      <p>Har ek wajah apni jagah khaas hai.</p>
+    </header>
+
+    <div class="reasons">
+      <div class="reason">
+        <small>NO. <b id="reasonNumber">01</b> / 100</small>
+        <div>♡</div>
+        <p id="reasonText">Aapki muskurahat aam din ko bhi khaas bana deti hai.</p>
+        <button id="prevReason">← Peechhe</button>
+        <button id="nextReason">Agli wajah →</button>
+      </div>
+      <aside>
+        <b>“</b>
+        <p>Har insaan ki apni ek roshni hoti hai. Aapki roshni aapki apni hai — aur woh bahut khoobsurat hai.</p>
+        <small>— Ek khaas paighaam</small>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section letter">
     <div>
-      <h3>Jeena Jeena</h3>
-      <p>Ek dhun, is khaas din ke naam.</p>
-      <button id="vinylPlayBtn" class="pill">♫ Gaana chalao</button>
+      <p class="eyebrow">DIL SE LIKHA HUA</p>
+      <h2>A letter I never<br><em>wanted to keep unsent…</em></h2>
+      <p>Kuch baatein lafzon mein kehna aasaan nahi hota. Isliye yeh chhota sa khat.</p>
+      <button id="letterBtn" class="pill">Khat kholo ♡</button>
     </div>
-  </div>
-</section>
 
-<!-- FEATURE 12: VIRTUAL BIRTHDAY CAKE -->
-<section class="section">
-  <header>
-    <p class="eyebrow">SIRF AAPKE LIYE</p>
-    <h2>A little birthday <em>cake.</em></h2>
-    <p>Candles lagao aur apni wish ke saath bujhao.</p>
-  </header>
-  <div class="virtual-cake">
-    <div id="cakeCandles" class="cake-candles">
-      <span class="cake-candle"><i></i></span>
-      <span class="cake-candle"><i></i></span>
-      <span class="cake-candle"><i></i></span>
+    <article id="letterPaper">
+      <small>TO BUSHRA · WITH CARE</small>
+      <h3>Dear Bushra,</h3>
+      <p>Aapki zindagi ka yeh naya saal khoobsurat mauke, himmat bhare sapne, dil se nikli hasi aur aise be-shumaar pal lekar aaye jin par aapko khud par fakhr ho.</p>
+      <p>May your wishes find their way to you, may your heart feel light, and may the year ahead be full of lovely beginnings.</p>
+      <p>Hamesha apni tarah roshan rehna. Aapka aaj aur aane wala har kal khushiyon se bhara ho.</p>
+      <i>Bahut saari achhi duaaon ke saath, ♡</i>
+    </article>
+  </section>
+
+  <section class="section envelope-section">
+    <header>
+      <p class="eyebrow">SIRF AAPKE LIYE</p>
+      <h2>Ek chhota sa <em>raaz.</em></h2>
+      <p>Is lifafe ke andar ek paighaam chhupa hai.</p>
+    </header>
+    <button id="envelopeBtn" class="envelope" aria-label="Lifafa kholo">
+      <span class="env-letter">Aapki zindagi hamesha umeed, sukoon aur khoobsurat maukon se bhari rahe. Aap jahan bhi raho, khushiyan aapka saath dein. ♡</span>
+      <span class="env-flap"></span>
+      <span class="env-heart">♡</span>
+    </button>
+    <p class="hint" id="envelopeHint">Lifafe par tap karke kholo</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">JAB KABHI ZAROORAT HO</p>
+      <h2>Open when… <em>♡</em></h2>
+      <p>Apne mood ke hisaab se ek lifafa kholo.</p>
+    </header>
+
+    <div class="when-grid">
+      <article class="when-card">
+        <h3>Jab khushi ho ☀</h3>
+        <button class="pill when-open" data-message="Aapki khushi ka jashn manane ke liye ek aur wajah mil gayi! Is pal ko poori tarah jeena. ♡">Lifafa kholo</button>
+        <p></p>
+      </article>
+      <article class="when-card">
+        <h3>Jab din mushkil ho ☁</h3>
+        <button class="pill when-open" data-message="Har din ek jaisa nahi hota. Khud ko waqt do, achhe din phir aayenge. ♡">Lifafa kholo</button>
+        <p></p>
+      </article>
+      <article class="when-card">
+        <h3>Jab hausla chahiye ✨</h3>
+        <button class="pill when-open" data-message="Apni himmat par bharosa rakho. Aap naye safar shuru kar sakti ho. ♡">Lifafa kholo</button>
+        <p></p>
+      </article>
+      <article class="when-card">
+        <h3>Jab yaad aaye ♡</h3>
+        <button class="pill when-open" data-message="Yeh chhota sa page yaad dilaye ki aapki khushi kitni keemti hai. ♡">Lifafa kholo</button>
+        <p></p>
+      </article>
     </div>
-    <div class="cake-top"></div>
-    <div class="cake-body">Happy Birthday ♡</div>
-    <div class="cake-plate"></div>
+  </section>
+</section>
+
+<!-- CHAPTER 04: BIRTHDAY MAGIC -->
+<section class="chapter">
+  <div class="chapter-heading">
+    <span>CHAPTER 03</span>
+    <p>THODI SI JAADUI RAUNAQ</p>
+    <h2>A little birthday <em>magic.</em></h2>
   </div>
-  <button id="addCakeCandle" class="pill">Candle lagao</button>
-  <button id="blowCakeCandles" class="pill">Candles bujhao ✨</button>
-  <p id="cakeMessage" class="feature-message">Aapke liye dher saari khushiyan!</p>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">AAPKE LIYE EK AASMAAN</p>
+      <h2>A sky full of <em>wishes.</em></h2>
+      <p>Har sitare par tap karo aur ek paighaam pao.</p>
+    </header>
+    <div class="star-sky">
+      <button class="star-point" data-message="Aapki har subah umeed ki nayi roshni laaye.">✦</button>
+      <button class="star-point" data-message="Aapke sapne khoobsurat hain. Unhe poora karne ka hausla rakho.">✧</button>
+      <button class="star-point" data-message="Aapki muskurahat hamesha aise hi bani rahe.">✦</button>
+      <button class="star-point" data-message="Aapko zindagi mein dher saari khushiyan milen.">✧</button>
+      <button class="star-point" data-message="Aap hamesha apni roshni mein chamakti raho.">✦</button>
+      <button class="star-point" data-message="Aane wala har din ek pyari yaad lekar aaye.">✧</button>
+    </div>
+    <p id="starMessage" class="feature-message">Kisi sitare ko chuno ♡</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">SIRF EK CHHOTI SI WISH</p>
+      <h2>Make a <em>wish.</em></h2>
+      <p>Apne dil mein ek achhi si wish socho, phir candle ko bujhao.</p>
+    </header>
+    <div class="candle-scene">
+      <div class="flame" id="flame"></div>
+      <div class="candle"><span></span></div>
+      <div class="candle-base"></div>
+    </div>
+    <button id="blowCandle" class="pill">Meri wish poori ho ✨</button>
+    <p id="candleMessage" class="hint">Aapki har achhi wish ko pankh milein.</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">SIRF AAPKE LIYE</p>
+      <h2>A little birthday <em>cake.</em></h2>
+      <p>Candles lagao aur apni wish ke saath bujhao.</p>
+    </header>
+    <div class="virtual-cake">
+      <div id="cakeCandles" class="cake-candles">
+        <span class="cake-candle"><i></i></span>
+        <span class="cake-candle"><i></i></span>
+        <span class="cake-candle"><i></i></span>
+      </div>
+      <div class="cake-top"></div>
+      <div class="cake-body">Happy Birthday ♡</div>
+      <div class="cake-plate"></div>
+    </div>
+    <button id="addCakeCandle" class="pill">Candle lagao</button>
+    <button id="blowCakeCandles" class="pill">Candles bujhao ✨</button>
+    <p id="cakeMessage" class="feature-message">Aapke liye dher saari khushiyan!</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">KISMAT KA PAIGHAAM</p>
+      <h2>Fortune <em>cookie.</em></h2>
+      <p>Cookie kholo aur apna lucky message pao.</p>
+    </header>
+    <button id="fortuneCookie" class="fortune-cookie">♡</button>
+    <p id="fortuneMessage" class="feature-message">Cookie par tap karo ♡</p>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">CHHOTA SA KHEL</p>
+      <h2>Find the hidden <em>surprise.</em></h2>
+      <p>Teen clues ke baad milega ek khaas paighaam.</p>
+    </header>
+    <div class="treasure-card">
+      <div id="treasureIcon">🗝️</div>
+      <p id="treasureClue">Clue 1: Jahan gaana bajta hai, wahan agla raaz chhupa hai.</p>
+      <button id="treasureNext" class="pill">Agla clue dekho</button>
+      <p id="treasureResult"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">EK GAANA, EK YAAD</p>
+      <h2>Let the music <em>spin.</em></h2>
+      <p>Gaana chalao aur vinyl ko ghoomte dekho.</p>
+    </header>
+    <div class="vinyl-player">
+      <div class="vinyl-disc" id="vinylDisc">
+        <div class="vinyl-label">♡<small>BUSHRA</small></div>
+      </div>
+      <div>
+        <h3>Jeena Jeena</h3>
+        <p>Ek dhun, is khaas din ke naam.</p>
+        <button id="vinylPlayBtn" class="pill">♫ Gaana chalao</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">JAADUI RAUNAQ</p>
+      <h2>Make it <em>magical.</em></h2>
+      <p>Chamak aur phoolon ki baarish bulao.</p>
+    </header>
+    <button id="magicButton" class="pill">Jaadu shuru karo ✨</button>
+    <p id="magicMessage" class="feature-message">Ek chhoti si magical baarish aapke liye.</p>
+    <div id="magicLayer"></div>
+  </section>
+
+  <section class="section">
+    <header>
+      <p class="eyebrow">AGLE JASHN TAK</p>
+      <h2>Birthday <em>countdown.</em></h2>
+      <p>Birthday ki tareekh chuno.</p>
+    </header>
+    <div class="countdown-card">
+      <label for="birthdayDate">Birthday ki tareekh</label>
+      <input type="date" id="birthdayDate">
+      <div class="countdown-numbers">
+        <div><b id="cdDays">--</b><small>DIN</small></div>
+        <div><b id="cdHours">--</b><small>GHANTE</small></div>
+        <div><b id="cdMinutes">--</b><small>MINUTE</small></div>
+        <div><b id="cdSeconds">--</b><small>SECOND</small></div>
+      </div>
+      <p id="countdownMessage">Tareekh chunte hi countdown shuru hoga ♡</p>
+    </div>
+  </section>
+
+  <section class="section jar-section">
+    <header>
+      <p class="eyebrow">JAB BHI DIL CHAHE</p>
+      <h2>A jar full of <em>wishes.</em></h2>
+      <p>Ek wish nikalo — har baar ek naya paighaam milega.</p>
+    </header>
+    <div class="jar-wrap">
+      <div class="jar" id="wishJar">
+        <span>♡</span><span>✦</span><span>✿</span><span>♡</span><span>✧</span><span>✦</span>
+      </div>
+      <button id="drawWish" class="pill">Ek wish nikalo ✨</button>
+      <p id="jarWish" class="jar-wish">Aapke liye 10 chhoti-chhoti duaaein rakhi hain.</p>
+    </div>
+  </section>
 </section>
 
-<!-- FEATURE 13: FORTUNE COOKIE -->
-<section class="section">
-  <header>
-    <p class="eyebrow">KISMAT KA PAIGHAAM</p>
-    <h2>Fortune <em>cookie.</em></h2>
-    <p>Cookie kholo aur apna lucky message pao.</p>
-  </header>
-  <button id="fortuneCookie" class="fortune-cookie">♡</button>
-  <p id="fortuneMessage" class="feature-message">Cookie par tap karo ♡</p>
+<!-- CHAPTER 05: FINAL SURPRISE -->
+<section class="final">
+  <p class="eyebrow">CHAPTER 04 · AAKHRI PAIGHAM</p>
+  <h2>May your world always<br>feel a little more <em>magical.</em></h2>
+  <p>Happy Birthday, Bushra. Aap bahut saari khushiyan deserve karti ho. ♡</p>
+  <button id="fireworkBtn" class="pill pale">Aakhri surprise dekho ✨</button>
 </section>
 
-<!-- FEATURE 14: MAGICAL EFFECTS -->
-<section class="section">
-  <header>
-    <p class="eyebrow">THODI SI JAADUI RAUNAQ</p>
-    <h2>Make it <em>magical.</em></h2>
-    <p>Chamak aur phoolon ki baarish bulao.</p>
-  </header>
-  <button id="magicButton" class="pill">Jaadu shuru karo ✨</button>
-  <p id="magicMessage" class="feature-message">Ek chhoti si magical baarish aapke liye.</p>
-  <div id="magicLayer"></div>
-</section>
+<footer>
+  <b>b♡</b>
+  <p>Aapke khaas din ke liye, dil se banaya.</p>
+  <small>HAPPY BIRTHDAY · BUSHRA</small>
+</footer>
 
-<!-- FEATURE 15: INTERACTIVE TIMELINE -->
-<section class="section">
-  <header>
-    <p class="eyebrow">EK CHHOTA SA SAFAR</p>
-    <h2>Moments that make a <em>story.</em></h2>
-    <p>Har padaav par tap karke uski kahani padho.</p>
-  </header>
-  <div class="memory-timeline">
-    <button class="timeline-item">
-      <b>01 · Ek nayi shuruaat</b><span>+</span>
-      <p>Har khoobsurat kahani ek chhote se kadam se shuru hoti hai.</p>
-    </button>
-    <button class="timeline-item">
-      <b>02 · Yaadon ke pal</b><span>+</span>
-      <p>Hasi, chhoti khushiyan aur woh lamhe jo hamesha yaad rehte hain.</p>
-    </button>
-    <button class="timeline-item">
-      <b>03 · Aaj ka jashn</b><span>+</span>
-      <p>Aaj ka din aapka hai. Ise apni muskurahat ke naam karo.</p>
-    </button>
-    <button class="timeline-item">
-      <b>04 · Aane wala kal</b><span>+</span>
-      <p>Naye sapne, naye mauke aur be-shumaar khushiyan aapka intezaar kar rahi hain. ♡</p>
-    </button>
-  </div>
-</section>
-  
-<section class="final"><p class="eyebrow">AUR EK AAKHRI BAAT…</p><h2>May your world always<br>feel a little more <em>magical.</em></h2><p>Happy Birthday, Bushra. Aap bahut saari khushiyan deserve karti ho. ♡</p><button id="fireworkBtn" class="pill pale">Aakhri surprise dekho ✨</button></section>
-<footer><b>b♡</b><p>Aapke khaas din ke liye, dil se banaya.</p><small>HAPPY BIRTHDAY · BUSHRA</small></footer>
-</section></main>
+</div>
+</main>
 
-<div id="surpriseModal" class="modal hidden"><article><button id="closeModal">×</button><div>♡</div><p class="eyebrow">EK AAKHRI PAIGHAM</p><h2>Keep shining,<br><em>just as you are.</em></h2><p>Har naya din aapke liye ek nayi khushi, ek nayi umeed aur behtareen yaadein lekar aaye. Janamdin mubarak, Bushra! 💗</p><button id="modalOk" class="pill">Shukriya ♡</button></article></div>
+<div id="surpriseModal" class="modal hidden">
+  <article>
+    <button id="closeModal">×</button>
+    <div>♡</div>
+    <p class="eyebrow">EK AAKHRI PAIGHAM</p>
+    <h2>Keep shining,<br><em>just as you are.</em></h2>
+    <p>Har naya din aapke liye ek nayi khushi, ek nayi umeed aur behtareen yaadein lekar aaye. Janamdin mubarak, Bushra! 💗</p>
+    <button id="modalOk" class="pill">Shukriya ♡</button>
+  </article>
+</div>
+
 <div id="confetti"></div>
 <audio id="birthdayAudio" src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" preload="metadata" loop></audio>
 <script src="script.js"></script>
-</body></html>
+</body>
+</html>
