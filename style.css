@@ -240,3 +240,135 @@ nav{height:65px;padding:0 5%;font-size:7px}
 .countdown-numbers{gap:4px}
 .countdown-numbers b{font-size:24px}
 }
+/* ===== MAGICAL BOW SURPRISE ===== */
+
+.bow-surprise {
+  text-align: center;
+  padding: 55px 20px;
+  margin: 35px auto;
+  max-width: 700px;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #3b102d, #721c50, #30102e);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(255, 100, 180, .2);
+  overflow: hidden;
+}
+
+.bow-heading {
+  font-size: 27px;
+  font-weight: bold;
+  color: #ffd6ed;
+  text-shadow: 0 0 15px #ff72bb;
+}
+
+.bow-surprise p {
+  color: #ffe3f2;
+}
+
+.shoot-bow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 10px;
+  padding: 15px 28px;
+  border: 1px solid #ffb5dc;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff5da8, #a72c75);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 100, 180, .5);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.shoot-bow:active {
+  transform: scale(.92);
+}
+
+.shoot-bow:hover {
+  box-shadow: 0 0 30px #ff80c0;
+  transform: translateY(-3px);
+}
+
+.bow-icon {
+  font-size: 27px;
+}
+
+.bow-hint {
+  font-size: 13px;
+  opacity: .8;
+}
+
+.bow-show {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  background:
+    radial-gradient(ellipse at bottom, #401344, #100b2b 65%, #050518);
+  overflow: hidden;
+}
+
+.bow-show.active {
+  display: block;
+  animation: bowFadeIn .7s ease;
+}
+
+#bowCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bow-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bow-intro {
+  position: absolute;
+  top: 12%;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+  color: #ffe2f3;
+  font-size: clamp(15px, 4vw, 22px);
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #ff70c0;
+  pointer-events: none;
+  animation: bowGlow 2s infinite alternate;
+}
+
+@keyframes bowFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bowGlow {
+  from { opacity: .65; }
+  to { opacity: 1; text-shadow: 0 0 25px #ff65bd; }
+}
+
+@media (max-width: 600px) {
+  .bow-surprise {
+    margin: 25px 12px;
+    padding: 40px 15px;
+  }
+
+  .bow-heading {
+    font-size: 23px;
+  }
+}
