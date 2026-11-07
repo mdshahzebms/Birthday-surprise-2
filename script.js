@@ -695,3 +695,336 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Bushra Birthday Website loaded successfully ❤️");
 
 });
+/* ===== MAGICAL BOW SURPRISE ===== */
+
+(() => {
+  const shootButton = document.getElementById("shootBow");
+  const show = document.getElementById("bowShow");
+  const canvas = document.getElementById("bowCanvas");
+  const closeButton = document.getElementById("bowClose");
+  const intro = document.getElementById("bowIntro");
+
+  if (!shootButton || !show || !canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let animationFrame;
+  let startTime = 0;
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let burstParticles = [];
+  let backgroundStars = [];
+
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    backgroundStars = Array.from({ length: 100 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 1.8 + .4,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
+
+  function heartPoint(t) {
+    return {
+      x: 16 * Math.pow(Math.sin(t), 3),
+      y: -(
+        13 * Math.cos(t) -
+        5 * Math.cos(2 * t) -
+        2 * Math.cos(3 * t) -
+        Math.cos(4 * t)
+      )
+    };
+  }
+
+  function makeBurst(x, y, color) {
+    for (let i = 0; i < 35; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1 + Math.random() * 5;
+
+      burstParticles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        color,
+        size: 2 + Math.random() * 3
+      });
+    }
+  }
+
+  function drawBackground(time) {
+    backgroundStars.forEach(star => {
+      const glow = .35 + .65 *
+        Math.abs(Math.sin(time * .002 + star.phase));
+
+      ctx.globalAlpha = glow;
+      ctx.fillStyle = "#fff5ff";
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.globalAlpha = 1;
+  }
+
+  function drawArrow(progress) {
+    const x = width / 2;
+    const startY = height * .88;
+    const endY = height * .22;
+    const y = startY - (startY - endY) * progress;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(-Math.PI / 2);
+
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = "#ff8dcc";
+    ctx.strokeStyle = "#ffe4f5";
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.moveTo(-35, 0);
+    ctx.lineTo(35, 0);
+    ctx.stroke();
+
+    ctx.fillStyle = "#ffb8df";
+    ctx.beginPath();
+    ctx.moveTo(45, 0);
+    ctx.lineTo(30, -7);
+    ctx.lineTo(30, 7);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(-30, 0);
+    ctx.lineTo(-42, -10);
+    ctx.moveTo(-30, 0);
+    ctx.lineTo(-42, 10);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function drawBalloons(time) {
+    const positions = [
+      [-.32, -.10], [-.20, .08], [-.10, -.18],
+      [.10, -.18], [.20, .08], [.32, -.10]
+    ];
+
+    positions.forEach((pos, i) => {
+      const x = width / 2 + pos[0] * width;
+      const y = height * .43 + pos[1] * height;
+
+      const colors = [
+        "#ff73b7", "#ffd166", "#8be9fd",
+        "#c9a0ff", "#ff8b8b", "#a8f0c6"
+      ];
+
+      ctx.fillStyle = colors[i];
+      ctx.strokeStyle = colors[i];
+      ctx.lineWidth = 1.5;
+
+      ctx.beginPath();
+      ctx.ellipse(x, y, 17, 23, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(x, y + 23);
+      ctx.lineTo(x - 3, y + 31);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x, y + 31);
+      ctx.lineTo(x + Math.sin(time * .01 + i) * 5, y + 65);
+      ctx.stroke();
+    });
+  }
+
+  function drawHeart(time) {
+    const cx = width / 2;
+    const cy = height * .53;
+    const scale = Math.min(width / 42, height / 35) * .72;
+    const total = 120;
+
+    const progress = Math.min(1, Math.max(0, (time - 2.2) / 2.8));
+    const visible = Math.floor(total * progress);
+
+    ctx.save();
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = "#ff70c0";
+
+    for (let i = 0; i < visible; i++) {
+      const t = (i / total) * Math.PI * 2;
+      const point = heartPoint(t);
+
+      const x = cx + point.x * scale;
+      const y = cy + point.y * scale;
+
+      const twinkle = .55 + .45 * Math.sin(time * .006 + i);
+
+      ctx.globalAlpha = twinkle;
+      ctx.fillStyle = i % 5 === 0 ? "#ffffff" : "#ffb9e3";
+
+      ctx.beginPath();
+      ctx.arc(x, y, i % 4 === 0 ? 2.5 : 1.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.restore();
+
+    if (progress >= 1) {
+      const textSize = Math.min(42, width * .105);
+
+      ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = `bold ${textSize}px Georgia`;
+
+      ctx.shadowColor = "#ff65c0";
+      ctx.shadowBlur = 25;
+
+      const gradient = ctx.createLinearGradient(
+        cx - 100, cy, cx + 100, cy
+      );
+
+      gradient.addColorStop(0, "#fff1fa");
+      gradient.addColorStop(.5, "#ff9bd2");
+      gradient.addColorStop(1, "#ffffff");
+
+      ctx.fillStyle = gradient;
+      ctx.fillText("BUSHRA", cx, cy + 5);
+
+      ctx.restore();
+
+      // Naam ke aas-paas chamakte sitare
+      for (let i = 0; i < 8; i++) {
+        const angle = time * .001 + i * Math.PI / 4;
+        const sx = cx + Math.cos(angle) * 95;
+        const sy = cy + Math.sin(angle) * 35;
+
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "#ff8dcc";
+        ctx.shadowBlur = 15;
+        ctx.font = "17px Arial";
+        ctx.fillText("✦", sx, sy);
+      }
+    }
+  }
+
+  function drawBurstParticles() {
+    burstParticles.forEach(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += .035;
+      particle.life -= .012;
+
+      ctx.globalAlpha = Math.max(0, particle.life);
+      ctx.fillStyle = particle.color;
+      ctx.shadowColor = particle.color;
+      ctx.shadowBlur = 10;
+
+      ctx.beginPath();
+      ctx.arc(
+        particle.x,
+        particle.y,
+        particle.size,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+    });
+
+    burstParticles = burstParticles.filter(p => p.life > 0);
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+  }
+
+  function animate(timestamp) {
+    const elapsed = (timestamp - startTime) / 1000;
+
+    ctx.clearRect(0, 0, width, height);
+
+    drawBackground(timestamp);
+
+    // Arrow flies towards the sky
+    if (elapsed < 1.5) {
+      drawArrow(Math.min(1, elapsed / 1.5));
+    }
+
+    // Balloons appear and burst
+    if (elapsed >= 1.5 && elapsed < 2.4) {
+      drawBalloons(timestamp);
+
+      if (elapsed < 1.6) {
+        const colors = [
+          "#ff73b7", "#ffd166", "#8be9fd",
+          "#c9a0ff", "#ff8b8b", "#a8f0c6"
+        ];
+
+        for (let i = 0; i < 6; i++) {
+          makeBurst(
+            width / 2 + (i - 2.5) * width * .12,
+            height * .43,
+            colors[i]
+          );
+        }
+      }
+    }
+
+    drawBurstParticles();
+
+    // Stars create a heart and Bushra's name
+    if (elapsed >= 2.2) {
+      drawHeart(elapsed);
+    }
+
+    if (elapsed > 8) {
+      cancelAnimationFrame(animationFrame);
+      return;
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  function startShow() {
+    cancelAnimationFrame(animationFrame);
+
+    resizeCanvas();
+    burstParticles = [];
+    startTime = performance.now();
+
+    show.classList.add("active");
+
+    if (intro) {
+      intro.textContent = "A wish is flying to the stars... ✨";
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  function closeShow() {
+    cancelAnimationFrame(animationFrame);
+    show.classList.remove("active");
+    ctx.clearRect(0, 0, width, height);
+  }
+
+  shootButton.addEventListener("click", startShow);
+  closeButton?.addEventListener("click", closeShow);
+
+  window.addEventListener("resize", () => {
+    if (show.classList.contains("active")) {
+      resizeCanvas();
+    }
+  });
+
+})();
