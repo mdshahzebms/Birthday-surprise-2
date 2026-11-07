@@ -1,235 +1,474 @@
-const lock=document.getElementById('lockScreen'),page=document.getElementById('birthdayScreen'),pass=document.getElementById('password'),audio=document.getElementById('birthdayAudio'),music=document.getElementById('musicBtn');
-function unlock(){if(pass.value.trim()==='1911'){lock.classList.add('hidden');page.classList.remove('hidden');scrollTo(0,0)}else{document.getElementById('error').textContent='Code sahi nahi hai, ek baar phir koshish karo ♡';pass.select()}}
-document.getElementById('unlockBtn').onclick=unlock;pass.onkeydown=e=>{if(e.key==='Enter')unlock()};
-const reasons=['Aapki muskurahat aam din ko bhi khaas bana deti hai.','Aap apne andaaz mein bilkul alag ho.','Aapki chhoti chhoti khushiyan bhi keemti hain.','Aapke sapne bahut khoobsurat hain.','Aap jis tarah apni baat kehti ho, woh khaas hai.','Aapki maujoodgi se pal yaadgaar ban jaate hain.','Aap hamesha apni roshni lekar aati ho.','Aapki hasi mein ek alag si mithaas hai.','Aapki har nayi shuruaat khoobsurat ho.','Aap bas aap ho — aur wahi kaafi khaas hai.','Aapki achhai aapki pyari pehchaan hai.','Aapke liye dher saari khushiyan honi chahiye.','Aap mushkil din mein bhi umeed dhoond leti ho.','Aapka andaaz apna aur khaas hai.','Aapke hone se yaadein haseen lagti hain.'];
-let n=0;function showReason(){document.getElementById('reasonNumber').textContent=String(n+1).padStart(2,'0');document.getElementById('reasonText').textContent=reasons[n%reasons.length]}
-document.getElementById('nextReason').onclick=()=>{n=(n+1)%100;showReason()};document.getElementById('prevReason').onclick=()=>{n=(n+99)%100;showReason()};
-document.getElementById('letterBtn').onclick=()=>{let p=document.getElementById('letterPaper');p.classList.toggle('open');document.getElementById('letterBtn').textContent=p.classList.contains('open')?'Khat band karo':'Khat kholo ♡'};
-music.onclick=async()=>{if(audio.paused){try{await audio.play();music.textContent='♫ Gaana band karo';document.getElementById('songStatus').textContent='Abhi gaana chal raha hai ♡'}catch(e){document.getElementById('songStatus').textContent='Gaane ki file ka naam aur jagah check karo.'}}else{audio.pause();music.textContent='♫ Gaana chalao';document.getElementById('songStatus').textContent='Gaana rok diya gaya hai.'}};
-audio.onended=()=>{music.textContent='♫ Gaana chalao'};audio.ontimeupdate=()=>{if(audio.duration)document.querySelector('.track span').style.width=(audio.currentTime/audio.duration*100)+'%'};
-function confetti(){let c=document.getElementById('confetti');['♡','✦','✿','•'].forEach((s,j)=>{for(let i=0;i<12;i++){let e=document.createElement('span');e.className='piece';e.textContent=s;e.style.left=Math.random()*100+'%';e.style.animationDelay=Math.random()+'s';e.style.color=['#e6a8c0','#d6b77d','#fff'][j%3];c.appendChild(e);setTimeout(()=>e.remove(),3500)}})}
-document.getElementById('wishBtn').onclick=()=>{document.querySelector('.note').textContent='Aapki har achhi wish poori ho ✨';confetti()};
-document.getElementById('envelopeBtn').onclick=()=>{let e=document.getElementById('envelopeBtn');e.classList.toggle('open');document.getElementById('envelopeHint').textContent=e.classList.contains('open')?'Aapke liye dil se ek paighaam ♡':'Lifafe par tap karke kholo'};
-const wishes=['Aapke har din mein sukoon aur khushi ho.','Aapke sapne ek-ek karke poore hon.','Aapko hamesha achhe logon ka saath mile.','Aapki muskurahat kabhi kam na ho.','Har nayi subah ek nayi umeed laaye.','Aap apne aap par hamesha fakhr kar sako.','Aapki mehnat ko khoobsurat manzil mile.','Aapke dil ko hamesha sukoon mile.','Aapki zindagi yaadon se roshan rahe.','Aane wala saal aapke liye behtareen ho.'];
-let lastWish=-1;document.getElementById('drawWish').onclick=()=>{let i;do{i=Math.floor(Math.random()*wishes.length)}while(i===lastWish);lastWish=i;document.getElementById('jarWish').textContent=wishes[i]+' ♡';document.getElementById('wishJar').classList.add('shake');setTimeout(()=>document.getElementById('wishJar').classList.remove('shake'),500);confetti()};
-document.getElementById('blowCandle').onclick=()=>{document.getElementById('flame').classList.add('out');document.getElementById('candleMessage').textContent='Aapki har achhi wish ko poora hone ka mauka mile. ✨';document.getElementById('blowCandle').textContent='Wish bhej di ♡';confetti()};
-function surprise(){document.getElementById('surpriseModal').classList.remove('hidden');confetti()}
-document.getElementById('fireworkBtn').onclick=surprise;['closeModal','modalOk'].forEach(id=>document.getElementById(id).onclick=()=>document.getElementById('surpriseModal').classList.add('hidden'));document.getElementById('surpriseModal').onclick=e=>{if(e.target.id==='surpriseModal')e.currentTarget.classList.add('hidden')};showReason();
-// FEATURE 6: STARS
-document.querySelectorAll('.star-point').forEach(star => {
-  star.onclick = () => {
-    document.getElementById('starMessage').textContent =
-      star.dataset.message;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (id) => document.getElementById(id);
+  const on = (id, event, callback) => {
+    const el = $(id);
+    if (el) el.addEventListener(event, callback);
   };
-});
 
-// FEATURE 7: OPEN WHEN LETTERS
-document.querySelectorAll('.when-open').forEach(btn => {
-  btn.onclick = () => {
-    const message = btn.parentElement.querySelector('p');
-    message.textContent = btn.dataset.message;
-    btn.textContent = 'Paighaam khul gaya ♡';
-  };
-});
+  const lockScreen = $("lockScreen");
+  const birthdayScreen = $("birthdayScreen");
+  const passwordInput = $("password");
+  const audio = $("birthdayAudio");
 
-// FEATURE 8: POLAROID
-document.querySelectorAll('.polaroid').forEach(card => {
-  card.onclick = () => {
-    document.getElementById('polaroidMessage').textContent =
-      card.dataset.caption;
-  };
-});
+  /* PASSWORD UNLOCK */
 
-// FEATURE 9: TREASURE HUNT
-const treasureClues = [
-  'Clue 1: Jahan gaana bajta hai, wahan agla raaz chhupa hai.',
-  'Clue 2: Ab us jagah jao jahan ek khat aapka intezaar karta hai.',
-  'Clue 3: Aakhri surprise isi page ke aakhri hisse mein hai.'
-];
+  function unlock() {
+    if (!passwordInput) return;
 
-let treasureIndex = 0;
+    if (passwordInput.value.trim() === "1911") {
+      if (lockScreen) lockScreen.classList.add("hidden");
+      if (birthdayScreen) birthdayScreen.classList.remove("hidden");
 
-document.getElementById('treasureNext').onclick = () => {
-  treasureIndex++;
+      document.body.classList.add("unlocked");
 
-  if (treasureIndex < treasureClues.length) {
-    document.getElementById('treasureClue').textContent =
-      treasureClues[treasureIndex];
-
-    document.getElementById('treasureIcon').textContent =
-      ['🗝️', '✉️', '⭐'][treasureIndex];
-  } else {
-    document.getElementById('treasureClue').textContent =
-      'Aap hi is kahani ka sabse khoobsurat treasure ho. Janamdin mubarak, Bushra! ♡';
-
-    document.getElementById('treasureIcon').textContent = '💝';
-    document.getElementById('treasureResult').textContent =
-      '✧ TREASURE FOUND ✧';
-
-    document.getElementById('treasureNext').disabled = true;
-    document.getElementById('treasureNext').textContent = 'Mil gaya ♡';
-
-    confetti();
-  }
-};
-
-// FEATURE 10: BIRTHDAY COUNTDOWN
-const birthdayInput = document.getElementById('birthdayDate');
-let countdownInterval;
-
-function updateCountdown() {
-  if (!birthdayInput.value) return;
-
-  const now = new Date();
-  const parts = birthdayInput.value.split('-').map(Number);
-
-  let target = new Date(
-    now.getFullYear(), parts[1] - 1, parts[2], 0, 0, 0
-  );
-
-  if (target <= now) {
-    target = new Date(
-      now.getFullYear() + 1, parts[1] - 1, parts[2], 0, 0, 0
-    );
-  }
-
-  let diff = target - now;
-
-  const days = Math.floor(diff / 86400000);
-  diff %= 86400000;
-
-  const hours = Math.floor(diff / 3600000);
-  diff %= 3600000;
-
-  const minutes = Math.floor(diff / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-
-  document.getElementById('cdDays').textContent = days;
-  document.getElementById('cdHours').textContent = hours;
-  document.getElementById('cdMinutes').textContent = minutes;
-  document.getElementById('cdSeconds').textContent = seconds;
-
-  document.getElementById('countdownMessage').textContent =
-    'Agle birthday tak ka intezaar shuru ♡';
-}
-
-birthdayInput.onchange = () => {
-  clearInterval(countdownInterval);
-  updateCountdown();
-  countdownInterval = setInterval(updateCountdown, 1000);
-};
-
-// FEATURE 11: VINYL MUSIC PLAYER
-document.getElementById('vinylPlayBtn').onclick = async () => {
-  if (audio.paused) {
-    try {
-      await audio.play();
-      document.getElementById('vinylPlayBtn').textContent =
-        '♫ Gaana band karo';
-      document.getElementById('vinylDisc').classList.add('spinning');
-    } catch (error) {
-      document.getElementById('songStatus').textContent =
-        'Gaane ki file ka naam aur jagah check karo.';
+      if (typeof confetti === "function") confetti();
+    } else {
+      const error = $("error");
+      if (error) error.textContent = "Password sahi nahi hai. Dobara try karo ❤️";
+      passwordInput.value = "";
+      passwordInput.focus();
     }
-  } else {
-    audio.pause();
-    document.getElementById('vinylPlayBtn').textContent =
-      '♫ Gaana chalao';
-    document.getElementById('vinylDisc').classList.remove('spinning');
-  }
-};
-
-audio.addEventListener('play', () => {
-  document.getElementById('vinylDisc').classList.add('spinning');
-});
-
-audio.addEventListener('pause', () => {
-  document.getElementById('vinylDisc').classList.remove('spinning');
-});
-
-// FEATURE 12: VIRTUAL CAKE
-document.getElementById('addCakeCandle').onclick = () => {
-  const holder = document.getElementById('cakeCandles');
-
-  if (holder.children.length >= 9) {
-    document.getElementById('cakeMessage').textContent =
-      'Cake par kaafi candles ho gayi hain! ♡';
-    return;
   }
 
-  const candle = document.createElement('span');
-  candle.className = 'cake-candle';
-  candle.innerHTML = '<i></i>';
-  holder.appendChild(candle);
-};
+  on("unlockBtn", "click", unlock);
 
-document.getElementById('blowCakeCandles').onclick = () => {
-  document.querySelectorAll('.cake-candle').forEach(candle => {
-    candle.classList.add('out');
+  on("password", "keydown", (e) => {
+    if (e.key === "Enter") unlock();
   });
 
-  document.getElementById('cakeMessage').textContent =
-    'Aapki har achhi wish ko pankh milein! ✨';
+  /* CONFETTI EFFECT */
 
-  confetti();
-};
+  function confetti() {
+    const emojis = ["💗", "💕", "✨", "🌸", "💖", "🎉"];
 
-// FEATURE 13: FORTUNE COOKIE
-const fortunes = [
-  'Aane wale dino mein ek khoobsurat mauka aapka intezaar kar raha hai.',
-  'Aapki mehnat aur sabr ek din zaroor rang layenge.',
-  'Aaj kisi apne ko muskurane ki wajah dena.',
-  'Nayi shuruaat ke liye kabhi der nahi hoti.',
-  'Aapki zindagi mein sukoon aur khushiyan badhti rahein.',
-  'Ek chhoti si khushi aaj aapka din bana sakti hai.'
-];
+    for (let i = 0; i < 35; i++) {
+      const item = document.createElement("div");
 
-let lastFortune = -1;
+      item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
-document.getElementById('fortuneCookie').onclick = () => {
-  let index;
+      Object.assign(item.style, {
+        position: "fixed",
+        left: Math.random() * 100 + "vw",
+        top: "-30px",
+        fontSize: (16 + Math.random() * 18) + "px",
+        zIndex: "999",
+        pointerEvents: "none",
+        transition: "transform 3s ease, opacity 3s ease"
+      });
 
-  do {
-    index = Math.floor(Math.random() * fortunes.length);
-  } while (index === lastFortune);
+      document.body.appendChild(item);
 
-  lastFortune = index;
+      requestAnimationFrame(() => {
+        item.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 500}deg)`;
+        item.style.opacity = "0";
+      });
 
-  document.getElementById('fortuneMessage').textContent =
-    fortunes[index] + ' ♡';
-};
-
-// FEATURE 14: MAGIC EFFECTS
-document.getElementById('magicButton').onclick = () => {
-  const layer = document.getElementById('magicLayer');
-  const symbols = ['✿', '✧', '♡', '❀', '✦'];
-
-  for (let i = 0; i < 28; i++) {
-    const petal = document.createElement('span');
-
-    petal.className = 'magic-petal';
-    petal.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    petal.style.left = Math.random() * 100 + '%';
-    petal.style.animationDelay = Math.random() + 's';
-    petal.style.color = ['#d98dab', '#e5b7c8', '#d6b77d'][i % 3];
-
-    layer.appendChild(petal);
-
-    setTimeout(() => petal.remove(), 5000);
+      setTimeout(() => item.remove(), 3200);
+    }
   }
 
-  document.getElementById('magicMessage').textContent =
-    'Aapke liye khushiyon ki baarish ♡';
-};
+  /* REASONS */
 
-// FEATURE 15: INTERACTIVE TIMELINE
-document.querySelectorAll('.timeline-item').forEach(item => {
-  item.onclick = () => {
-    item.classList.toggle('active');
+  const reasons = [
+    "Tumhari muskurahat mere din ko khoobsurat bana deti hai.",
+    "Tumhari baaton mein ek alag hi sukoon hai.",
+    "Tum jis tarah chhoti chhoti baaton ka khayal rakhti ho.",
+    "Tumhari simplicity mujhe bahut pasand hai.",
+    "Tumhari hasi sabse pyari lagti hai.",
+    "Tumhare saath waqt ka pata hi nahi chalta.",
+    "Tumhari har chhoti khushi mere liye khaas hai.",
+    "Tumhara caring nature bahut special hai.",
+    "Tumhari baatein yaad reh jaati hain.",
+    "Tumhari presence hi din achha bana deti hai.",
+    "Tumhare saath har memory khaas ban jaati hai.",
+    "Tumhari innocence dil ko chhoo leti hai.",
+    "Tum apne andaaz mein sabse alag ho.",
+    "Tumhari khushi dekhkar achha lagta hai.",
+    "Bas tum, tumhari wajah se hi special ho."
+  ];
 
-    const sign = item.querySelector('span');
-    sign.textContent = item.classList.contains('active') ? '−' : '+';
-  };
+  let reasonIndex = 0;
+
+  function showReason() {
+    const number = $("reasonNumber");
+    const text = $("reasonText");
+
+    if (number) number.textContent = `${reasonIndex + 1} / ${reasons.length}`;
+    if (text) text.textContent = reasons[reasonIndex];
+  }
+
+  on("prevReason", "click", () => {
+    reasonIndex = (reasonIndex - 1 + reasons.length) % reasons.length;
+    showReason();
+  });
+
+  on("nextReason", "click", () => {
+    reasonIndex = (reasonIndex + 1) % reasons.length;
+    showReason();
+  });
+
+  showReason();
+
+  /* LETTER */
+
+  on("letterBtn", "click", () => {
+    const paper = $("letterPaper");
+    if (!paper) return;
+
+    paper.classList.toggle("hidden");
+    const button = $("letterBtn");
+
+    if (button) {
+      button.textContent = paper.classList.contains("hidden")
+        ? "💌 Letter kholo"
+        : "Letter band karo";
+    }
+  });
+
+  /* ENVELOPE */
+
+  on("envelopeBtn", "click", () => {
+    const hint = $("envelopeHint");
+    if (hint) {
+      hint.textContent =
+        "Is chhote se envelope mein tumhare liye dher saari achhi wishes aur pyaar bhari yaadein hain. 💌";
+    }
+    confetti();
+  });
+
+  /* MUSIC PLAYER */
+
+  function updateMusicButtons() {
+    if (!audio) return;
+
+    const playing = !audio.paused;
+
+    const musicBtn = $("musicBtn");
+    const vinylBtn = $("vinylPlayBtn");
+    const vinyl = $("vinylDisc");
+    const status = $("songStatus");
+
+    if (musicBtn) {
+      musicBtn.textContent = playing ? "♫ Gaana band karo" : "♫ Gaana chalao";
+    }
+
+    if (vinylBtn) {
+      vinylBtn.textContent = playing ? "Pause Music" : "Play Music";
+    }
+
+    if (vinyl) vinyl.classList.toggle("playing", playing);
+
+    if (status) {
+      status.textContent = playing
+        ? "♪ Abhi gaana chal raha hai"
+        : "♪ Gaana ruk gaya hai";
+    }
+  }
+
+  async function toggleMusic() {
+    if (!audio) return;
+
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch (error) {
+        const status = $("songStatus");
+        if (status) {
+          status.textContent = "Gaana nahi chal pa raha. File ka path check karo.";
+        }
+      }
+    } else {
+      audio.pause();
+    }
+
+    updateMusicButtons();
+  }
+
+  on("musicBtn", "click", toggleMusic);
+  on("vinylPlayBtn", "click", toggleMusic);
+
+  if (audio) {
+    audio.addEventListener("play", updateMusicButtons);
+    audio.addEventListener("pause", updateMusicButtons);
+    audio.addEventListener("ended", updateMusicButtons);
+  }
+
+  updateMusicButtons();
+
+  /* WISH JAR */
+
+  const wishes = [
+    "Tumhari zindagi hamesha khushiyon se bhari rahe. 🌸",
+    "Tumhare har sapne ko ek khoobsurat manzil mile. ✨",
+    "Har subah tumhare chehre par muskurahat laaye. 💗",
+    "Tumhe hamesha achhe log aur achhe pal milen.",
+    "Tumhari har dua qubool ho. 🤍",
+    "Tumhari zindagi mein sukoon aur pyaar bana rahe."
+  ];
+
+  on("drawWish", "click", () => {
+    const wish = $("jarWish");
+    if (wish) {
+      wish.textContent = wishes[Math.floor(Math.random() * wishes.length)];
+    }
+  });
+
+  /* CANDLE */
+
+  on("blowCandle", "click", () => {
+    const flame = $("flame");
+    const message = $("candleMessage");
+
+    if (flame) flame.textContent = "💨";
+
+    if (message) {
+      message.textContent = "Tumhari har achhi wish poori ho. Happy Birthday! 🎂";
+    }
+
+    confetti();
+  });
+
+  /* STARS */
+
+  document.querySelectorAll(".star-point").forEach((star) => {
+    star.addEventListener("click", () => {
+      const message = $("starMessage");
+      if (message) {
+        message.textContent = star.dataset.message || "Tum meri duniya ka ek khoobsurat hissa ho. ✨";
+      }
+    });
+  });
+
+  /* OPEN WHEN */
+
+  document.querySelectorAll(".when-open").forEach((button) => {
+    button.addEventListener("click", () => {
+      const message = button.dataset.message || "Yaad rakhna, tum bahut special ho. 💗";
+      const old = button.querySelector(".when-message");
+
+      if (old) {
+        old.remove();
+      } else {
+        const paragraph = document.createElement("p");
+        paragraph.className = "when-message";
+        paragraph.textContent = message;
+        paragraph.style.marginTop = "12px";
+        button.appendChild(paragraph);
+      }
+    });
+  });
+
+  /* POLAROIDS */
+
+  document.querySelectorAll(".polaroid").forEach((photo) => {
+    photo.addEventListener("click", () => {
+      const message = $("polaroidMessage");
+      if (message) {
+        message.textContent =
+          photo.dataset.caption || "Ek aur pyari si yaad. 📸";
+      }
+    });
+  });
+
+  /* TREASURE HUNT */
+
+  const clues = [
+    "Pehla clue: Us jagah ko dekho jahan humari yaadein sambhali hain. 📸",
+    "Doosra clue: Ab dil ki baaton wali jagah par jao. 💌",
+    "Aakhiri clue: Birthday magic mein tumhara surprise chhupa hai. ✨"
+  ];
+
+  let clueIndex = 0;
+
+  function showClue() {
+    const clue = $("treasureClue");
+    const icon = $("treasureIcon");
+    const result = $("treasureResult");
+
+    if (clue) clue.textContent = clues[clueIndex];
+    if (icon) icon.textContent = ["🔍", "💗", "🎁"][clueIndex];
+    if (result) result.textContent = "";
+  }
+
+  on("treasureNext", "click", () => {
+    if (clueIndex < clues.length - 1) {
+      clueIndex++;
+      showClue();
+    } else {
+      const result = $("treasureResult");
+      if (result) result.textContent = "Tumne apna treasure dhoondh liya! 🎉 Tum khud sabse khoobsurat surprise ho. 💗";
+
+      const button = $("treasureNext");
+      if (button) button.textContent = "Mil gaya! ❤️";
+
+      confetti();
+    }
+  });
+
+  showClue();
+
+  /* BIRTHDAY COUNTDOWN */
+
+  let countdownTimer = null;
+
+  function updateCountdown() {
+    const dateInput = $("birthdayDate");
+    if (!dateInput || !dateInput.value) return;
+
+    const target = new Date(dateInput.value + "T00:00:00");
+    const now = new Date();
+
+    if (Number.isNaN(target.getTime())) return;
+
+    if (target <= now) {
+      target.setFullYear(target.getFullYear() + 1);
+    }
+
+    const difference = target - now;
+
+    const days = Math.floor(difference / 86400000);
+    const hours = Math.floor((difference % 86400000) / 3600000);
+    const minutes = Math.floor((difference % 3600000) / 60000);
+    const seconds = Math.floor((difference % 60000) / 1000);
+
+    if ($("cdDays")) $("cdDays").textContent = days;
+    if ($("cdHours")) $("cdHours").textContent = hours;
+    if ($("cdMinutes")) $("cdMinutes").textContent = minutes;
+    if ($("cdSeconds")) $("cdSeconds").textContent = seconds;
+
+    const message = $("countdownMessage");
+    if (message) message.textContent = "Us khaas din ka intezaar... 💗";
+  }
+
+  on("birthdayDate", "change", () => {
+    updateCountdown();
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = setInterval(updateCountdown, 1000);
+  });
+
+  /* VIRTUAL CAKE */
+
+  let candleCount = 3;
+  let cakeBlown = false;
+
+  function updateCake() {
+    const candles = $("cakeCandles");
+    if (candles) {
+      candles.textContent = cakeBlown
+        ? "💨".repeat(candleCount)
+        : "🕯️".repeat(candleCount);
+    }
+  }
+
+  on("addCakeCandle", "click", () => {
+    if (candleCount < 20) candleCount++;
+    cakeBlown = false;
+    updateCake();
+
+    const message = $("cakeMessage");
+    if (message) message.textContent = "Ek aur candle, ek aur wish! 🕯️";
+  });
+
+  on("blowCakeCandles", "click", () => {
+    cakeBlown = true;
+    updateCake();
+
+    const message = $("cakeMessage");
+    if (message) message.textContent = "Saari wishes tumhare naam! Happy Birthday! 🎂💗";
+
+    confetti();
+  });
+
+  updateCake();
+
+  /* FORTUNE COOKIE */
+
+  const fortunes = [
+    "Tumhare aane wale din bahut khoobsurat honge. ✨",
+    "Tumhari muskurahat kabhi kam na ho. 💗",
+    "Ek nayi khushi tumhara intezaar kar rahi hai. 🌸",
+    "Tum jitni special ho, utni hi khoobsurat tumhari duniya ho.",
+    "Har din tumhe muskurane ki ek nayi wajah mile. 🤍"
+  ];
+
+  on("fortuneCookie", "click", () => {
+    const message = $("fortuneMessage");
+    if (message) {
+      message.textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
+    }
+    confetti();
+  });
+
+  /* MAGIC PETALS */
+
+  on("magicButton", "click", () => {
+    const layer = $("magicLayer");
+    if (!layer) return;
+
+    const petals = ["🌸", "💗", "✨", "🌷", "💕"];
+
+    for (let i = 0; i < 30; i++) {
+      const petal = document.createElement("span");
+      petal.className = "magic-petal";
+      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+
+      petal.style.left = Math.random() * 100 + "%";
+      petal.style.animationDelay = Math.random() * 2 + "s";
+      petal.style.fontSize = (15 + Math.random() * 20) + "px";
+
+      layer.appendChild(petal);
+
+      setTimeout(() => petal.remove(), 7000);
+    }
+
+    const message = $("magicMessage");
+    if (message) message.textContent = "Yeh saari khushiyan tumhare liye! 🌸💗";
+  });
+
+  /* TIMELINE */
+
+  document.querySelectorAll(".timeline-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.toggle("active");
+    });
+  });
+
+  /* FINAL SURPRISE */
+
+  function openSurprise() {
+    const modal = $("surpriseModal");
+    if (modal) modal.classList.remove("hidden");
+    confetti();
+  }
+
+  function closeSurprise() {
+    const modal = $("surpriseModal");
+    if (modal) modal.classList.add("hidden");
+  }
+
+  on("fireworkBtn", "click", openSurprise);
+  on("closeModal", "click", closeSurprise);
+  on("modalOk", "click", closeSurprise);
+
+  on("surpriseModal", "click", (event) => {
+    if (event.target === $("surpriseModal")) closeSurprise();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeSurprise();
+  });
+
+  /* SMOOTH NAVIGATION */
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
 });
