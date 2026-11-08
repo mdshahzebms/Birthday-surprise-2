@@ -1,266 +1,592 @@
-<!doctype html>
-<html lang="hi">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#3b0822">
-<title>Bushra ke naam — Birthday Surprise</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bushra ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+ --cream:#f8eee5;
+ --pink:#e8a5a9;
+ --dark:#792e37;
+ --soft:#f3d9d1;
+ --text:#87515a;
+}
+
+body{
+ background:var(--cream);
+ color:var(--text);
+ font-family:'Playfair Display',serif;
+ overflow-x:hidden;
+}
+
+button{cursor:pointer;font-family:inherit}
+.screen{
+ min-height:100vh;
+ width:100%;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ padding:25px;
+ position:relative;
+ overflow:hidden;
+}
+.screen.active{display:flex}
+
+.small{
+ font-family:'Caveat',cursive;
+ font-size:22px;
+ color:#a87878;
+}
+.heading{
+ font-family:'Caveat',cursive;
+ font-size:clamp(42px,8vw,76px);
+ color:var(--dark);
+ font-weight:500;
+}
+.subheading{
+ font-family:'Caveat',cursive;
+ font-size:25px;
+ margin-top:8px;
+ color:#a87979;
+}
+.primary{
+ border:1px solid #c98d91;
+ background:#fff8f2;
+ color:var(--dark);
+ padding:12px 28px;
+ border-radius:30px;
+ font-size:15px;
+ margin-top:25px;
+ transition:.3s;
+}
+.primary:hover{background:#eab9b7;transform:translateY(-3px)}
+.hidden{display:none!important}
+
+/* GIFT SCREEN */
+#giftScreen{background:#f8eee7}
+.gift{
+ width:190px;height:165px;
+ position:relative;
+ margin-bottom:35px;
+ cursor:pointer;
+ animation:giftFloat 2.5s ease-in-out infinite;
+}
+.gift-box{
+ position:absolute;
+ width:190px;height:125px;
+ bottom:0;
+ background:repeating-linear-gradient(110deg,#f6b1b9 0 5px,#f9c8ca 5px 10px);
+ border:4px solid #733b43;
+ border-radius:4px;
+ box-shadow:0 15px 30px #9c687033;
+}
+.gift-lid{
+ position:absolute;
+ top:30px;left:-10px;
+ width:210px;height:35px;
+ background:#e99da8;
+ border:4px solid #733b43;
+ z-index:2;
+}
+.ribbon{
+ position:absolute;
+ left:82px;top:35px;
+ width:25px;height:125px;
+ background:#fff0e9;
+ border-left:3px solid #733b43;
+ border-right:3px solid #733b43;
+ z-index:3;
+}
+.bow{
+ position:absolute;
+ top:-10px;left:53px;
+ width:85px;height:45px;
+ z-index:4;
+}
+.bow:before,.bow:after{
+ content:"";position:absolute;
+ width:42px;height:32px;
+ border:5px solid #733b43;
+ border-radius:50% 50% 10% 50%;
+ background:#f2a6b0;
+}
+.bow:before{left:0;transform:rotate(25deg)}
+.bow:after{right:0;transform:scaleX(-1) rotate(25deg)}
+.gift:active{transform:scale(.95)}
+@keyframes giftFloat{50%{transform:translateY(-10px)}}
+
+/* ROSE TRANSITION */
+#roseScreen{
+ position:fixed;inset:0;
+ z-index:50;
+ background:#f9e9dc;
+ display:none;
+ overflow:hidden;
+}
+#roseScreen.active{display:flex}
+.rose{
+ position:absolute;
+ font-size:clamp(25px,5vw,55px);
+ animation:roseFall 4s linear forwards;
+ opacity:0;
+}
+@keyframes roseFall{
+ 0%{transform:translateY(-100px) rotate(0);opacity:0}
+ 15%{opacity:1}
+ 100%{transform:translateY(110vh) rotate(360deg);opacity:.9}
+}
+
+/* WELCOME */
+#welcomeScreen{background:radial-gradient(circle,#fff8f0,#f4dfd1)}
+.couple-art{
+ font-size:105px;
+ margin:25px 0;
+ filter:drop-shadow(0 10px 10px #b67b7b33);
+ animation:float 3s infinite ease-in-out;
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+.dots{letter-spacing:9px;color:#b77a80;margin-top:25px}
+
+/* QUOTE */
+#quoteScreen{background:linear-gradient(145deg,#f9eee4,#f3dcd0)}
+.quote-card{
+ max-width:520px;
+ padding:35px 25px;
+ background:#fff9f1;
+ box-shadow:0 10px 40px #9b6c5720;
+ border-radius:8px;
+ font-family:'Caveat',cursive;
+ font-size:clamp(25px,5vw,36px);
+ color:#74343d;
+ line-height:1.7;
+ transform:rotate(-1deg);
+}
+.quote-card span{color:#d17b82}
+
+/* PASSWORD */
+#lockScreen{background:radial-gradient(circle,#fff9f0,#f3dfd2)}
+.lock-flower{
+ font-size:55px;
+ margin-bottom:10px;
+}
+#lockScreen h2{
+ font-family:'Caveat',cursive;
+ font-size:38px;
+ color:#7d3740;
+}
+.pin-dots{
+ display:flex;gap:13px;
+ margin:20px 0 10px;
+}
+.pin-dot{
+ width:13px;height:13px;
+ border:1px solid #b87b82;
+ border-radius:50%;
+}
+.pin-dot.filled{background:#a84d59}
+.keypad{
+ display:grid;
+ grid-template-columns:repeat(3,58px);
+ gap:12px;
+ margin-top:20px;
+}
+.key{
+ height:52px;width:58px;
+ border:0;border-radius:50%;
+ background:#fff8f1;
+ color:#80434a;
+ box-shadow:0 3px 12px #a4777020;
+ font-size:17px;
+ transition:.2s;
+}
+.key:active{transform:scale(.9);background:#edc4bd}
+.key.special{font-size:12px}
+#error{height:20px;color:#b44b55;font-size:13px}
+
+/* GALLERY */
+#galleryScreen{
+ display:block;
+ background:
+ radial-gradient(ellipse at top,#fff5e8,#f5e0cb);
+ padding:55px 15px 90px;
+}
+.gallery-title{
+ text-align:center;
+ margin:15px 0 35px;
+}
+.gallery{
+ max-width:900px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px;
+ align-items:center;
+}
+.photo{
+ background:#fffdf8;
+ padding:9px 9px 28px;
+ box-shadow:0 8px 20px #6c4b3722;
+ transform:rotate(var(--r));
+ transition:.3s;
+}
+.photo:hover{transform:rotate(0) scale(1.04);z-index:2}
+.photo-box{
+ height:190px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ gap:8px;
+ background:linear-gradient(145deg,#f5d6cd,#e9c7b7);
+ color:#986a68;
+ font-family:'Caveat',cursive;
+ font-size:20px;
+}
+.photo-box span{font-size:38px}
+.caption{
+ font-family:'Caveat',cursive;
+ font-size:21px;
+ color:#87515a;
+ margin-top:9px;
+}
+.gallery-note{
+ font-family:'Caveat',cursive;
+ font-size:26px;
+ text-align:center;
+ margin:45px auto;
+}
+
+/* LETTER */
+.letter-wrap{
+ max-width:650px;
+ margin:35px auto;
+ padding:35px 28px;
+ background:linear-gradient(150deg,#fff7ed,#f8e2d8);
+ box-shadow:0 12px 40px #8c5b4930;
+ text-align:left;
+}
+.letter-wrap h2{
+ font-family:'Caveat',cursive;
+ font-size:36px;
+ text-align:center;
+ color:#813b44;
+ margin-bottom:20px;
+}
+.letter-wrap p{
+ font-family:'Caveat',cursive;
+ font-size:22px;
+ line-height:1.8;
+ color:#765057;
+ margin-bottom:15px;
+}
+.letter-end{text-align:center;font-size:30px;color:#b45e6a;margin-top:25px}
+.music{
+ position:fixed;
+ right:18px;bottom:18px;
+ z-index:20;
+ background:#fff8f0;
+ border:1px solid #d8a5a3;
+ color:#813b44;
+ border-radius:50px;
+ padding:12px 18px;
+ box-shadow:0 5px 20px #8d575522;
+}
+footer{
+ text-align:center;
+ padding:30px;
+ font-family:'Caveat',cursive;
+ font-size:23px;
+ color:#a16b70;
+}
+
+@media(max-width:600px){
+ .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
+ .photo-box{height:145px}
+ .photo{padding:7px 7px 22px}
+ .caption{font-size:18px}
+ .letter-wrap{padding:25px 20px}
+}
+</style>
 </head>
+
 <body>
 
-<div class="grain"></div>
-
-<main>
-<section id="lockScreen" class="lock-screen">
-  <div class="lock-card">
-    <div class="heart">♡</div>
-    <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
-    <h1>Sirf aapke liye,<br><em>Bushra.</em></h1>
-    <p>Ek chhoti si duniya banayi hai… jismein har cheez aapke naam hai.</p>
-    <label for="password">Apna secret code daalo</label>
-    <input id="password" type="password" inputmode="numeric" maxlength="12" placeholder="••••">
-    <button id="unlockBtn" class="pill">Darwaza kholo ↗</button>
-    <p id="error" class="error"></p>
-    <small>Ek secret, sirf aap jaanti ho ✦</small>
-  </div>
+<!-- GIFT -->
+<section id="giftScreen" class="screen active">
+ <div class="gift" onclick="openGift()">
+  <div class="bow"></div>
+  <div class="gift-lid"></div>
+  <div class="gift-box"></div>
+  <div class="ribbon"></div>
+ </div>
+ <h1 class="heading">For you, Bushra.</h1>
+ <p class="small">(tap to open)</p>
 </section>
 
-<div id="birthdayScreen" class="hidden">
-
-<nav>
-  <a class="brand">b<span>♡</span></a>
-  <span>EK KHAAS DIN · EK KHAAS INSAAN</span>
-  <button id="musicBtn" class="music">♫ Gaana chalao</button>
-</nav>
-
-<!-- 01: WELCOME -->
-<section class="hero">
-  <div>
-    <p class="eyebrow">AAJ KI SAARI KHUSHIYAN · AAPKE NAAM</p>
-    <h1>Ek din, ek kahani,<br>aur dher saari <em>khushiyan.</em></h1>
-    <p class="desc">Aaj ka din aapki muskurahat, aapki khushiyon aur un saari khoobsurat cheezon ke naam jo aap deserve karti ho.</p>
-    <button id="wishBtn" class="pill">Haan, bilkul ♡</button>
-    <a href="#memories">Surprise dekho ↓</a>
-    <small class="note">MADE WITH CARE, JUST FOR YOU</small>
-  </div>
-
-  <div class="preview">
-    <small>✦ BIRTHDAY EDITION <span>01 / 05</span></small>
-    <div class="cake">
-      <i></i><b></b><strong></strong><label></label>
-    </div>
-    <p>Happy Birthday, Bushra! <span>♡</span></p>
-  </div>
+<!-- ROSES -->
+<section id="roseScreen" class="screen">
+ <div style="font-size:70px;z-index:2">🌹</div>
+ <h1 class="heading" style="z-index:2">A garden for you</h1>
 </section>
 
-<div class="ticker">HAPPY BIRTHDAY ✦ KHUSH RAHO HAMESHA ✦ YOU ARE ONE OF A KIND</div>
-
-<!-- CHAPTER 02: MEMORIES -->
-<section id="memories" class="chapter">
-  <div class="chapter-heading">
-    <span>CHAPTER 01</span>
-    <p>YAADON KA KHOOBSURAT SAFAR</p>
-    <h2>Little moments,<br><em>big memories.</em></h2>
-  </div>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">YAADON KA CHHOTA SA KONA</p>
-      <h2>Moments to <em>remember.</em></h2>
-      <p>Yahan aapki pasandida tasveerein aur unki kahaniyan sajengi.</p>
-    </header>
-
-    <div class="scrap-grid">
-      <article class="scrap-card">
-        <div class="photo-placeholder">♡<small>PHOTO 01</small></div>
-        <p>Ek khoobsurat yaad</p>
-      </article>
-      <article class="scrap-card">
-        <div class="photo-placeholder">✦<small>PHOTO 02</small></div>
-        <p>Ek pyara sa pal</p>
-      </article>
-      <article class="scrap-card">
-        <div class="photo-placeholder">✿<small>PHOTO 03</small></div>
-        <p>Hamesha yaad rehne wali muskurahat</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">DIL KE KAREEB</p>
-      <h2>Little pieces of <em>forever.</em></h2>
-      <p>Har card par tap karo aur ek paighaam dekho.</p>
-    </header>
-
-    <div class="polaroid-wall">
-      <button class="polaroid" data-caption="Woh pal jo dil ke kareeb rahega ♡">
-        <span>♡</span><b>Ek khaas lamha</b>
-      </button>
-      <button class="polaroid" data-caption="Chhoti si yaad, badi si muskurahat.">
-        <span>✿</span><b>Muskurahat wala din</b>
-      </button>
-      <button class="polaroid" data-caption="Kuch yaadein hamesha saath rehti hain.">
-        <span>✦</span><b>Ek pyari kahani</b>
-      </button>
-    </div>
-    <p id="polaroidMessage" class="feature-message">Kisi card par tap karo ♡</p>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">EK CHHOTA SA SAFAR</p>
-      <h2>Moments that make a <em>story.</em></h2>
-    </header>
-
-    <div class="memory-timeline">
-      <button class="timeline-item">
-        <b>01 · Ek nayi shuruaat</b><span>+</span>
-        <p>Har khoobsurat kahani ek chhote se kadam se shuru hoti hai.</p>
-      </button>
-      <button class="timeline-item">
-        <b>02 · Yaadon ke pal</b><span>+</span>
-        <p>Hasi, chhoti khushiyan aur woh lamhe jo hamesha yaad rehte hain.</p>
-      </button>
-      <button class="timeline-item">
-        <b>03 · Aaj ka jashn</b><span>+</span>
-        <p>Aaj ka din aapka hai. Ise apni muskurahat ke naam karo.</p>
-      </button>
-      <button class="timeline-item">
-        <b>04 · Aane wala kal</b><span>+</span>
-        <p>Naye sapne, naye mauke aur be-shumaar khushiyan aapka intezaar kar rahi hain. ♡</p>
-      </button>
-    </div>
-  </section>
+<!-- WELCOME -->
+<section id="welcomeScreen" class="screen">
+ <p class="small">A little something made with love</p>
+ <h1 class="heading">From me to you.</h1>
+ <p class="subheading">This is how much I love you.</p>
+ <div class="couple-art">🧸💕🧸</div>
+ <p class="small">A little world, just for you</p>
+ <div class="dots">• • •</div>
+ <button class="primary" onclick="showScreen('quoteScreen')">Continue ♡</button>
 </section>
 
-<!-- CHAPTER 03: FROM THE HEART -->
-<section class="chapter alternate">
-  <div class="chapter-heading">
-    <span>CHAPTER 02</span>
-    <p>DIL SE NIKLE KUCH LAFZ</p>
-    <h2>Words from the <em>heart.</em></h2>
-  </div>
-
-  <section id="reasons" class="section">
-    <header>
-      <p class="eyebrow">CHHOTI CHHOTI BAATEIN</p>
-      <h2>Reasons <em>Why You’re Special</em></h2>
-      <p>Har ek wajah apni jagah khaas hai.</p>
-    </header>
-
-    <div class="reasons">
-      <div class="reason">
-        <small>NO. <b id="reasonNumber">01</b> / 100</small>
-        <div>♡</div>
-        <p id="reasonText">Aapki muskurahat aam din ko bhi khaas bana deti hai.</p>
-        <button id="prevReason">← Peechhe</button>
-        <button id="nextReason">Agli wajah →</button>
-      </div>
-      <aside>
-        <b>“</b>
-        <p>Har insaan ki apni ek roshni hoti hai. Aapki roshni aapki apni hai — aur woh bahut khoobsurat hai.</p>
-        <small>— Ek khaas paighaam</small>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section letter">
-    <div>
-      <p class="eyebrow">DIL SE LIKHA HUA</p>
-      <h2>A letter I never<br><em>wanted to keep unsent…</em></h2>
-      <p>Kuch baatein lafzon mein kehna aasaan nahi hota. Isliye yeh chhota sa khat.</p>
-      <button id="letterBtn" class="pill">Khat kholo ♡</button>
-    </div>
-
-    <article id="letterPaper">
-      <small>TO BUSHRA · WITH CARE</small>
-      <h3>Dear Bushra,</h3>
-      <p>Aapki zindagi ka yeh naya saal khoobsurat mauke, himmat bhare sapne, dil se nikli hasi aur aise be-shumaar pal lekar aaye jin par aapko khud par fakhr ho.</p>
-      <p>May your wishes find their way to you, may your heart feel light, and may the year ahead be full of lovely beginnings.</p>
-      <p>Hamesha apni tarah roshan rehna. Aapka aaj aur aane wala har kal khushiyon se bhara ho.</p>
-      <i>Bahut saari achhi duaaon ke saath, ♡</i>
-    </article>
-  </section>
-
-  <section class="section envelope-section">
-    <header>
-      <p class="eyebrow">SIRF AAPKE LIYE</p>
-      <h2>Ek chhota sa <em>raaz.</em></h2>
-      <p>Is lifafe ke andar ek paighaam chhupa hai.</p>
-    </header>
-    <button id="envelopeBtn" class="envelope" aria-label="Lifafa kholo">
-      <span class="env-letter">Aapki zindagi hamesha umeed, sukoon aur khoobsurat maukon se bhari rahe. Aap jahan bhi raho, khushiyan aapka saath dein. ♡</span>
-      <span class="env-flap"></span>
-      <span class="env-heart">♡</span>
-    </button>
-    <p class="hint" id="envelopeHint">Lifafe par tap karke kholo</p>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">JAB KABHI ZAROORAT HO</p>
-      <h2>Open when… <em>♡</em></h2>
-      <p>Apne mood ke hisaab se ek lifafa kholo.</p>
-    </header>
-
-    <div class="when-grid">
-      <article class="when-card">
-        <h3>Jab khushi ho ☀</h3>
-        <button class="pill when-open" data-message="Aapki khushi ka jashn manane ke liye ek aur wajah mil gayi! Is pal ko poori tarah jeena. ♡">Lifafa kholo</button>
-        <p></p>
-      </article>
-      <article class="when-card">
-        <h3>Jab din mushkil ho ☁</h3>
-        <button class="pill when-open" data-message="Har din ek jaisa nahi hota. Khud ko waqt do, achhe din phir aayenge. ♡">Lifafa kholo</button>
-        <p></p>
-      </article>
-      <article class="when-card">
-        <h3>Jab hausla chahiye ✨</h3>
-        <button class="pill when-open" data-message="Apni himmat par bharosa rakho. Aap naye safar shuru kar sakti ho. ♡">Lifafa kholo</button>
-        <p></p>
-      </article>
-      <article class="when-card">
-        <h3>Jab yaad aaye ♡</h3>
-        <button class="pill when-open" data-message="Yeh chhota sa page yaad dilaye ki aapki khushi kitni keemti hai. ♡">Lifafa kholo</button>
-        <p></p>
-      </article>
-    </div>
-  </section>
+<!-- QUOTE -->
+<section id="quoteScreen" class="screen">
+ <div class="quote-card">
+  In your <span>smile</span>, I found my peace.<br>
+  In your <span>love</span>, I found my home.
+ </div>
+ <p class="small" style="margin-top:35px">Something special is waiting for you...</p>
+ <button class="primary" onclick="showScreen('lockScreen')">Open my heart ♡</button>
 </section>
 
-<!-- CHAPTER 04: BIRTHDAY MAGIC -->
-<section class="chapter">
-  <div class="chapter-heading">
-    <span>CHAPTER 03</span>
-    <p>THODI SI JAADUI RAUNAQ</p>
-    <h2>A little birthday <em>magic.</em></h2>
+<!-- PASSWORD -->
+<section id="lockScreen" class="screen">
+ <div class="lock-flower">🌸</div>
+ <h2>Enter Password</h2>
+ <p class="small">Only you know the secret</p>
+ <div class="pin-dots" id="pinDots">
+  <i class="pin-dot"></i><i class="pin-dot"></i>
+  <i class="pin-dot"></i><i class="pin-dot"></i>
+ </div>
+ <p id="error"></p>
+ <div class="keypad">
+  <button class="key" onclick="pressKey('1')">1</button>
+  <button class="key" onclick="pressKey('2')">2</button>
+  <button class="key" onclick="pressKey('3')">3</button>
+  <button class="key" onclick="pressKey('4')">4</button>
+  <button class="key" onclick="pressKey('5')">5</button>
+  <button class="key" onclick="pressKey('6')">6</button>
+  <button class="key" onclick="pressKey('7')">7</button>
+  <button class="key" onclick="pressKey('8')">8</button>
+  <button class="key" onclick="pressKey('9')">9</button>
+  <button class="key special" onclick="clearPin()">Clear</button>
+  <button class="key" onclick="pressKey('0')">0</button>
+  <button class="key special" onclick="deletePin()">⌫</button>
+ </div>
+ <p class="small" style="margin-top:22px">A little secret between us ♡</p>
+</section>
+
+<!-- GALLERY -->
+<section id="galleryScreen" class="screen">
+ <div class="gallery-title">
+  <p class="small">Our little memories</p>
+  <h1 class="heading">Beautiful moments.</h1>
+  <p class="subheading">Every picture holds a little story ♡</p>
+ </div>
+
+ <div class="gallery">
+  <div class="photo" style="--r:-4deg">
+   <div class="photo-box"><span>📷</span>Our first memory</div>
+   <p class="caption">A moment to remember</p>
   </div>
+  <div class="photo" style="--r:3deg">
+   <div class="photo-box"><span>🌅</span>Our happy place</div>
+   <p class="caption">My favourite view</p>
+  </div>
+  <div class="photo" style="--r:2deg">
+   <div class="photo-box"><span>💗</span>Little moments</div>
+   <p class="caption">The best feeling</p>
+  </div>
+  <div class="photo" style="--r:4deg">
+   <div class="photo-box"><span>🌸</span>Sweet memories</div>
+   <p class="caption">Always special</p>
+  </div>
+  <div class="photo" style="--r:-3deg">
+   <div class="photo-box"><span>🧸</span>My favourite person</div>
+   <p class="caption">You make me smile</p>
+  </div>
+  <div class="photo" style="--r:3deg">
+   <div class="photo-box"><span>❤️</span>Forever a memory</div>
+   <p class="caption">A piece of my heart</p>
+  </div>
+ </div>
 
-  <section class="section">
-    <header>
-      <p class="eyebrow">AAPKE LIYE EK AASMAAN</p>
-      <h2>A sky full of <em>wishes.</em></h2>
-      <p>Har sitare par tap karo aur ek paighaam pao.</p>
-    </header>
-    <div class="star-sky">
-      <button class="star-point" data-message="Aapki har subah umeed ki nayi roshni laaye.">✦</button>
-      <button class="star-point" data-message="Aapke sapne khoobsurat hain. Unhe poora karne ka hausla rakho.">✧</button>
-      <button class="star-point" data-message="Aapki muskurahat hamesha aise hi bani rahe.">✦</button>
-      <button class="star-point" data-message="Aapko zindagi mein dher saari khushiyan milen.">✧</button>
-      <button class="star-point" data-message="Aap hamesha apni roshni mein chamakti raho.">✦</button>
-      <button class="star-point" data-message="Aane wala har din ek pyari yaad lekar aaye.">✧</button>
-    </div>
-    <p id="starMessage" class="feature-message">Kisi sitare ko chuno ♡</p>
-  </section>
+ <p class="gallery-note">
+  If I could keep one thing forever,<br>
+  it would be every moment with you. ♡
+ </p>
 
-  <section class="section">
-    <header>
-      <p class="eyebrow">SIRF EK CHHOTI SI WISH</p>
-      <h2>Make a <em>wish.</em></h2>
+ <button class="primary" onclick="showScreen('letterScreen')">
+  Read your letter ♡
+ </button>
+</section>
+
+<!-- LETTER -->
+<section id="letterScreen" class="screen" style="display:none">
+ <p class="small">A letter from my heart</p>
+ <h1 class="heading">To my Bushra.</h1>
+
+ <div class="letter-wrap">
+  <h2>My Dearest Bushra, ♡</h2>
+
+  <p>
+   I am writing this little note just because you deserve to know how
+   special you are. I may not always find the perfect words, but I
+   hope this little surprise makes you smile.
+  </p>
+
+  <p>
+   You make ordinary moments feel beautiful. Your smile brings
+   happiness, and your presence makes even simple days feel special.
+   I am grateful for all the little memories and every reason to smile.
+  </p>
+
+  <p>
+   I hope your days are filled with happiness, your dreams come true,
+   and you always find reasons to smile. Never forget how wonderful
+   and special you are.
+  </p>
+
+  <p>
+   This little website is just a small way of saying that you deserve
+   all the beautiful things in the world.
+  </p>
+
+  <p style="text-align:right">
+   With lots of love,<br>
+   Always thinking of you ♡
+  </p>
+  <div class="letter-end">♡</div>
+ </div>
+
+ <button class="primary" onclick="showScreen('finalScreen')">
+  One last thing...
+ </button>
+</section>
+
+<!-- END -->
+<section id="finalScreen" class="screen">
+ <div style="font-size:75px">💐</div>
+ <h1 class="heading">Happy Birthday, Bushra!</h1>
+ <p class="subheading">May your life always bloom like flowers.</p>
+ <p class="small" style="margin-top:20px">You deserve all the happiness in the world.</p>
+ <div style="font-size:45px;margin-top:30px">🌷 🌸 💗 🌹</div>
+ <button class="primary" onclick="showScreen('giftScreen')">Start again ♡</button>
+</section>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫ Play music</button>
+
+<audio id="birthdayAudio" loop preload="metadata">
+ <source src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const screens=document.querySelectorAll('.screen');
+const audio=document.getElementById('birthdayAudio');
+const musicBtn=document.getElementById('musicBtn');
+let pin='';
+
+function showScreen(id){
+ screens.forEach(s=>{
+  s.classList.remove('active');
+  s.style.display='none';
+ });
+ const target=document.getElementById(id);
+ target.style.display='flex';
+ target.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openGift(){
+ const rose=document.getElementById('roseScreen');
+ rose.classList.add('active');
+ rose.style.display='flex';
+
+ for(let i=0;i<65;i++){
+  setTimeout(()=>{
+   const flower=document.createElement('div');
+   flower.className='rose';
+   flower.textContent=['🌹','🌸','🌷','💐'][Math.floor(Math.random()*4)];
+   flower.style.left=Math.random()*100+'%';
+   flower.style.animationDuration=(3+Math.random()*3)+'s';
+   flower.style.fontSize=(25+Math.random()*30)+'px';
+   rose.appendChild(flower);
+   setTimeout(()=>flower.remove(),6500);
+  },i*65);
+ }
+
+ setTimeout(()=>{
+  rose.classList.remove('active');
+  rose.style.display='none';
+  showScreen('welcomeScreen');
+ },4800);
+}
+
+function updateDots(){
+ document.querySelectorAll('.pin-dot').forEach((dot,i)=>{
+  dot.classList.toggle('filled',i<pin.length);
+ });
+}
+
+function pressKey(number){
+ if(pin.length>=4)return;
+ pin+=number;
+ updateDots();
+
+ if(pin.length===4){
+  setTimeout(()=>{
+   if(pin==='1911'){
+    document.getElementById('error').textContent='';
+    showScreen('galleryScreen');
+   }else{
+    document.getElementById('error').textContent='Wrong password, try again ♡';
+    pin='';
+    updateDots();
+   }
+  },250);
+ }
+}
+
+function clearPin(){
+ pin='';
+ updateDots();
+ document.getElementById('error').textContent='';
+}
+function deletePin(){
+ pin=pin.slice(0,-1);
+ updateDots();
+}
+
+function toggleMusic(){
+ if(audio.paused){
+  audio.play().then(()=>{
+   musicBtn.textContent='♫ Pause music';
+  }).catch(()=>{
+   musicBtn.textContent='Tap to play music';
+  });
+ }else{
+  audio.pause();
+  musicBtn.textContent='♫ Play music';
+ }
+}
+
+audio.addEventListener('play',()=>musicBtn.textContent='♫ Pause music');
+audio.addEventListener('pause',()=>musicBtn.textContent='♫ Play music');
+</script>
+
+</body>
+</html>
+ish.</em></h2>
       <p>Apne dil mein ek achhi si wish socho, phir candle ko bujhao.</p>
     </header>
     <div class="candle-scene">
