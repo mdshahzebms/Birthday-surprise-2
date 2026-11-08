@@ -7,737 +7,497 @@
 <title>For Bushra ♡</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f8eddf;color:#74454a;font-family:'Playfair Display',serif}
+button{font:inherit;cursor:pointer}
+.page{display:none;min-height:100vh;position:relative;overflow:hidden}
+.page.active{display:flex}
+.paper{
+ background:
+ radial-gradient(ellipse at 20% 20%,#fff8e9 0%,transparent 55%),
+ linear-gradient(135deg,#f9efdf,#f1dfca);
+}
+.script{font-family:'Caveat',cursive}
+h1{font-family:'Caveat',cursive;font-weight:500;color:#813d46}
+.small{font-family:'Caveat',cursive;color:#a77b75;font-size:21px}
+.action{
+ border:1px solid #b9847e;background:#fff8ed;
+ color:#82434b;border-radius:30px;padding:12px 27px;
+ font-size:15px;transition:.25s;margin-top:25px;
+}
+.action:hover{background:#efd1c7;transform:translateY(-2px)}
+.center{align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px}
+.corner-flower{position:absolute;font-size:55px;opacity:.8;pointer-events:none}
+.top-left{top:-14px;left:-12px;transform:rotate(-25deg)}
+.top-right{top:-18px;right:-12px;transform:rotate(25deg)}
+.bottom-left{bottom:-20px;left:-12px}
+.bottom-right{bottom:-20px;right:-12px}
 
-:root{
- --cream:#f8eee5;
- --pink:#e8a5a9;
- --dark:#792e37;
- --soft:#f3d9d1;
- --text:#87515a;
+/* FIRST PAGE */
+#p1{background:#f7ecdc}
+.intro-flower{font-size:48px;margin-bottom:18px}
+.gift-wrap{width:180px;height:170px;position:relative;margin:20px auto;cursor:pointer;animation:giftFloat 3s infinite}
+.gift-base{
+ position:absolute;bottom:0;left:10px;width:160px;height:112px;
+ background:#e9a5a5;border:2px solid #9c5c60;
+ box-shadow:5px 9px 0 #d5b6a0;
 }
+.gift-top{
+ position:absolute;top:40px;left:0;width:180px;height:30px;
+ background:#f2c0b5;border:2px solid #9c5c60;z-index:2;
+}
+.gift-ribbon{
+ position:absolute;top:40px;left:78px;width:24px;height:112px;
+ background:#fff0d9;border-left:2px solid #9c5c60;border-right:2px solid #9c5c60;z-index:3;
+}
+.gift-bow{
+ position:absolute;top:5px;left:54px;width:72px;height:42px;z-index:4;
+}
+.gift-bow:before,.gift-bow:after{
+ content:"";position:absolute;width:36px;height:30px;
+ border:3px solid #9c5c60;border-radius:50% 50% 10% 50%;
+ background:#f4c3ba;
+}
+.gift-bow:before{left:0;transform:rotate(25deg)}
+.gift-bow:after{right:0;transform:scaleX(-1) rotate(25deg)}
+@keyframes giftFloat{50%{transform:translateY(-9px)}}
 
-body{
- background:var(--cream);
- color:var(--text);
- font-family:'Playfair Display',serif;
- overflow-x:hidden;
+/* FLOWER SCREEN */
+#p2{background:#f8eadc;align-items:center;justify-content:center}
+.flower-wall{
+ position:absolute;inset:0;display:grid;
+ grid-template-columns:repeat(5,1fr);
+ grid-auto-rows:95px;gap:0;opacity:.9;
+ transform:scale(1.15);
 }
+.flower-wall span{
+ display:flex;align-items:center;justify-content:center;
+ font-size:clamp(35px,8vw,75px);
+ animation:flowerWave 3s ease-in-out infinite alternate;
+}
+.flower-wall span:nth-child(even){animation-delay:-1.5s}
+.flower-wall span:nth-child(3n){transform:rotate(20deg)}
+.flower-overlay{
+ position:absolute;inset:0;
+ background:linear-gradient(#f8eadcaa,#f8eadc99);
+}
+.flower-title{position:relative;z-index:2;text-align:center}
+.flower-title h1{font-size:clamp(45px,9vw,78px)}
+@keyframes flowerWave{to{transform:translateY(9px) rotate(10deg)}}
 
-button{cursor:pointer;font-family:inherit}
-.screen{
- min-height:100vh;
- width:100%;
- display:none;
- align-items:center;
- justify-content:center;
- flex-direction:column;
- text-align:center;
- padding:25px;
- position:relative;
- overflow:hidden;
+/* FROM ME TO YOU */
+#p3{background:#f8eddf}
+#p3 h1{font-size:clamp(45px,9vw,76px)}
+.couple{
+ position:relative;width:250px;height:210px;margin:20px auto 5px;
 }
-.screen.active{display:flex}
-
-.small{
- font-family:'Caveat',cursive;
- font-size:22px;
- color:#a87878;
+.person{
+ position:absolute;bottom:5px;width:105px;height:115px;
+ border-radius:55% 55% 25% 25%;
 }
-.heading{
- font-family:'Caveat',cursive;
- font-size:clamp(42px,8vw,76px);
- color:var(--dark);
- font-weight:500;
+.person.one{left:22px;background:#c58e83;transform:rotate(-9deg)}
+.person.two{right:22px;background:#d5a09a;transform:rotate(9deg)}
+.person:before{
+ content:"";position:absolute;width:65px;height:65px;
+ border-radius:50%;background:#d8aa91;top:-48px;left:20px;
+ border:2px solid #94665e;
 }
-.subheading{
- font-family:'Caveat',cursive;
- font-size:25px;
- margin-top:8px;
- color:#a87979;
+.person.one:after,.person.two:after{
+ content:"";position:absolute;top:-55px;width:70px;height:40px;
+ background:#604d48;border-radius:50% 50% 20% 20%;
+ left:17px;
 }
-.primary{
- border:1px solid #c98d91;
- background:#fff8f2;
- color:var(--dark);
- padding:12px 28px;
- border-radius:30px;
- font-size:15px;
- margin-top:25px;
- transition:.3s;
+.heart-between{
+ position:absolute;top:40px;left:105px;z-index:3;
+ font-size:40px;animation:heartbeat 1.4s infinite;
 }
-.primary:hover{background:#eab9b7;transform:translateY(-3px)}
-.hidden{display:none!important}
-
-/* GIFT SCREEN */
-#giftScreen{background:#f8eee7}
-.gift{
- width:190px;height:165px;
- position:relative;
- margin-bottom:35px;
- cursor:pointer;
- animation:giftFloat 2.5s ease-in-out infinite;
-}
-.gift-box{
- position:absolute;
- width:190px;height:125px;
- bottom:0;
- background:repeating-linear-gradient(110deg,#f6b1b9 0 5px,#f9c8ca 5px 10px);
- border:4px solid #733b43;
- border-radius:4px;
- box-shadow:0 15px 30px #9c687033;
-}
-.gift-lid{
- position:absolute;
- top:30px;left:-10px;
- width:210px;height:35px;
- background:#e99da8;
- border:4px solid #733b43;
- z-index:2;
-}
-.ribbon{
- position:absolute;
- left:82px;top:35px;
- width:25px;height:125px;
- background:#fff0e9;
- border-left:3px solid #733b43;
- border-right:3px solid #733b43;
- z-index:3;
-}
-.bow{
- position:absolute;
- top:-10px;left:53px;
- width:85px;height:45px;
- z-index:4;
-}
-.bow:before,.bow:after{
- content:"";position:absolute;
- width:42px;height:32px;
- border:5px solid #733b43;
- border-radius:50% 50% 10% 50%;
- background:#f2a6b0;
-}
-.bow:before{left:0;transform:rotate(25deg)}
-.bow:after{right:0;transform:scaleX(-1) rotate(25deg)}
-.gift:active{transform:scale(.95)}
-@keyframes giftFloat{50%{transform:translateY(-10px)}}
-
-/* ROSE TRANSITION */
-#roseScreen{
- position:fixed;inset:0;
- z-index:50;
- background:#f9e9dc;
- display:none;
- overflow:hidden;
-}
-#roseScreen.active{display:flex}
-.rose{
- position:absolute;
- font-size:clamp(25px,5vw,55px);
- animation:roseFall 4s linear forwards;
- opacity:0;
-}
-@keyframes roseFall{
- 0%{transform:translateY(-100px) rotate(0);opacity:0}
- 15%{opacity:1}
- 100%{transform:translateY(110vh) rotate(360deg);opacity:.9}
-}
-
-/* WELCOME */
-#welcomeScreen{background:radial-gradient(circle,#fff8f0,#f4dfd1)}
-.couple-art{
- font-size:105px;
- margin:25px 0;
- filter:drop-shadow(0 10px 10px #b67b7b33);
- animation:float 3s infinite ease-in-out;
-}
-@keyframes float{50%{transform:translateY(-10px)}}
-.dots{letter-spacing:9px;color:#b77a80;margin-top:25px}
+@keyframes heartbeat{50%{transform:scale(1.2)}}
 
 /* QUOTE */
-#quoteScreen{background:linear-gradient(145deg,#f9eee4,#f3dcd0)}
-.quote-card{
- max-width:520px;
- padding:35px 25px;
- background:#fff9f1;
- box-shadow:0 10px 40px #9b6c5720;
- border-radius:8px;
- font-family:'Caveat',cursive;
- font-size:clamp(25px,5vw,36px);
- color:#74343d;
- line-height:1.7;
+#p4{background:#f7ebdc}
+.quote{
+ background:#fff8e9;border:1px solid #e9d4bd;
+ padding:30px 28px;max-width:430px;width:90%;
+ box-shadow:0 12px 35px #9b756322;
  transform:rotate(-1deg);
+ font-family:'Caveat',cursive;font-size:clamp(26px,5vw,37px);
+ line-height:1.55;color:#75434a;
 }
-.quote-card span{color:#d17b82}
+.quote em{color:#b15f68}
 
-/* PASSWORD */
-#lockScreen{background:radial-gradient(circle,#fff9f0,#f3dfd2)}
-.lock-flower{
- font-size:55px;
- margin-bottom:10px;
-}
-#lockScreen h2{
- font-family:'Caveat',cursive;
- font-size:38px;
- color:#7d3740;
-}
-.pin-dots{
- display:flex;gap:13px;
- margin:20px 0 10px;
-}
+/* PASSCODE */
+#p5{background:radial-gradient(circle at 50% 40%,#fff8e9,#f1dfce)}
+.lock-flower{font-size:40px;margin-bottom:6px}
+#p5 h1{font-size:36px}
+.pin-dots{display:flex;gap:14px;margin:19px 0 12px}
 .pin-dot{
- width:13px;height:13px;
- border:1px solid #b87b82;
+ width:11px;height:11px;border:1px solid #b78c80;
  border-radius:50%;
 }
-.pin-dot.filled{background:#a84d59}
+.pin-dot.on{background:#9b5960}
 .keypad{
- display:grid;
- grid-template-columns:repeat(3,58px);
- gap:12px;
- margin-top:20px;
+ display:grid;grid-template-columns:repeat(3,55px);
+ gap:12px;margin:15px auto;
 }
 .key{
- height:52px;width:58px;
- border:0;border-radius:50%;
- background:#fff8f1;
- color:#80434a;
- box-shadow:0 3px 12px #a4777020;
- font-size:17px;
- transition:.2s;
+ width:55px;height:55px;border:1px solid #ead9c8;
+ border-radius:50%;background:#fffaf1;color:#79515a;
+ box-shadow:0 4px 12px #9b75631a;font-size:17px;
+ transition:.15s;
 }
-.key:active{transform:scale(.9);background:#edc4bd}
-.key.special{font-size:12px}
-#error{height:20px;color:#b44b55;font-size:13px}
+.key:active{transform:scale(.9);background:#edcfc3}
+#pinError{height:20px;font-size:13px;color:#a34f59}
 
 /* GALLERY */
-#galleryScreen{
- display:block;
- background:
- radial-gradient(ellipse at top,#fff5e8,#f5e0cb);
- padding:55px 15px 90px;
+#p6{background:#f7ecdc;padding:55px 15px 65px;display:none}
+#p6.active{display:block}
+.gallery-heading{text-align:center;margin-bottom:35px}
+.gallery-heading h1{font-size:clamp(42px,8vw,70px)}
+.photo-grid{
+ max-width:850px;margin:auto;
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:16px;align-items:center;
 }
-.gallery-title{
- text-align:center;
- margin:15px 0 35px;
-}
-.gallery{
- max-width:900px;
- margin:auto;
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
- align-items:center;
-}
-.photo{
- background:#fffdf8;
- padding:9px 9px 28px;
- box-shadow:0 8px 20px #6c4b3722;
- transform:rotate(var(--r));
+.polaroid{
+ background:#fffdf7;padding:8px 8px 24px;
+ box-shadow:0 7px 20px #82654c25;
+ transform:rotate(var(--tilt));
  transition:.3s;
 }
-.photo:hover{transform:rotate(0) scale(1.04);z-index:2}
-.photo-box{
- height:190px;
- display:flex;
- align-items:center;
- justify-content:center;
- flex-direction:column;
- gap:8px;
- background:linear-gradient(145deg,#f5d6cd,#e9c7b7);
- color:#986a68;
- font-family:'Caveat',cursive;
- font-size:20px;
+.polaroid:hover{transform:rotate(0) scale(1.04)}
+.photo-placeholder{
+ height:190px;background:linear-gradient(145deg,#eed3c5,#e6c1b1);
+ display:flex;align-items:center;justify-content:center;
+ flex-direction:column;color:#986c66;
+ font-family:'Caveat',cursive;font-size:20px;
 }
-.photo-box span{font-size:38px}
-.caption{
- font-family:'Caveat',cursive;
- font-size:21px;
- color:#87515a;
- margin-top:9px;
+.photo-placeholder span{font-size:38px;margin-bottom:8px}
+.photo-caption{
+ font-family:'Caveat',cursive;text-align:center;
+ font-size:21px;margin-top:8px;color:#89545a;
 }
-.gallery-note{
- font-family:'Caveat',cursive;
- font-size:26px;
- text-align:center;
- margin:45px auto;
+.gallery-end{
+ font-family:'Caveat',cursive;text-align:center;
+ font-size:27px;line-height:1.4;margin:38px auto 15px;
 }
 
 /* LETTER */
-.letter-wrap{
- max-width:650px;
- margin:35px auto;
- padding:35px 28px;
- background:linear-gradient(150deg,#fff7ed,#f8e2d8);
- box-shadow:0 12px 40px #8c5b4930;
- text-align:left;
+#p7{background:#f6e7d6;padding:45px 16px 65px;display:none}
+#p7.active{display:block}
+.letter-paper{
+ max-width:670px;margin:30px auto;
+ padding:35px 30px;
+ background:
+ repeating-linear-gradient(to bottom,#fff8eb 0,#fff8eb 37px,#e8c9b8 38px);
+ box-shadow:0 8px 25px #80604b25;
+ border:1px solid #e6cdb8;
 }
-.letter-wrap h2{
+.letter-paper h2{
+ font-family:'Caveat',cursive;font-size:37px;
+ text-align:center;margin-bottom:20px;color:#82434b;
+}
+.letter-paper p{
+ font-family:'Caveat',cursive;font-size:23px;
+ line-height:1.65;margin-bottom:20px;color:#765159;
+}
+.sign{text-align:right!important}
+.final-words{
  font-family:'Caveat',cursive;
- font-size:36px;
- text-align:center;
- color:#813b44;
- margin-bottom:20px;
+ font-size:clamp(45px,9vw,76px);
+ color:#9c4d55;text-align:center;
+ margin-top:35px;
 }
-.letter-wrap p{
- font-family:'Caveat',cursive;
- font-size:22px;
- line-height:1.8;
- color:#765057;
- margin-bottom:15px;
-}
-.letter-end{text-align:center;font-size:30px;color:#b45e6a;margin-top:25px}
-.music{
- position:fixed;
- right:18px;bottom:18px;
- z-index:20;
- background:#fff8f0;
- border:1px solid #d8a5a3;
- color:#813b44;
- border-radius:50px;
- padding:12px 18px;
- box-shadow:0 5px 20px #8d575522;
-}
-footer{
- text-align:center;
- padding:30px;
- font-family:'Caveat',cursive;
- font-size:23px;
- color:#a16b70;
-}
+.final-sub{text-align:center;font-family:'Caveat',cursive;font-size:24px;color:#a27670}
 
+/* MUSIC */
+.music-button{
+ position:fixed;right:15px;bottom:15px;z-index:20;
+ border:1px solid #d4b4a0;border-radius:30px;
+ background:#fff8ec;color:#82434b;padding:10px 16px;
+}
 @media(max-width:600px){
- .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
- .photo-box{height:145px}
- .photo{padding:7px 7px 22px}
- .caption{font-size:18px}
- .letter-wrap{padding:25px 20px}
+ .photo-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+ .photo-placeholder{height:145px}
+ .polaroid{padding:6px 6px 19px}
+ .photo-caption{font-size:18px}
+ .letter-paper{padding:25px 19px}
+ .letter-paper p{font-size:21px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- GIFT -->
-<section id="giftScreen" class="screen active">
- <div class="gift" onclick="openGift()">
-  <div class="bow"></div>
-  <div class="gift-lid"></div>
-  <div class="gift-box"></div>
-  <div class="ribbon"></div>
+<!-- 1. GIFT -->
+<section id="p1" class="page active center paper">
+ <div class="corner-flower top-left">🌸</div>
+ <div class="corner-flower top-right">🌷</div>
+ <div class="intro-flower">🌹</div>
+
+ <div class="gift-wrap" onclick="go('p2')">
+  <div class="gift-bow"></div>
+  <div class="gift-top"></div>
+  <div class="gift-base"></div>
+  <div class="gift-ribbon"></div>
  </div>
- <h1 class="heading">For you, Bushra.</h1>
- <p class="small">(tap to open)</p>
+
+ <h1 style="font-size:65px">For Bushra</h1>
+ <p class="small">A little gift, made just for you</p>
+ <button class="action" onclick="go('p2')">Open your gift ♡</button>
+ <div class="corner-flower bottom-left">🌷</div>
+ <div class="corner-flower bottom-right">🌸</div>
 </section>
 
-<!-- ROSES -->
-<section id="roseScreen" class="screen">
- <div style="font-size:70px;z-index:2">🌹</div>
- <h1 class="heading" style="z-index:2">A garden for you</h1>
-</section>
-
-<!-- WELCOME -->
-<section id="welcomeScreen" class="screen">
- <p class="small">A little something made with love</p>
- <h1 class="heading">From me to you.</h1>
- <p class="subheading">This is how much I love you.</p>
- <div class="couple-art">🧸💕🧸</div>
- <p class="small">A little world, just for you</p>
- <div class="dots">• • •</div>
- <button class="primary" onclick="showScreen('quoteScreen')">Continue ♡</button>
-</section>
-
-<!-- QUOTE -->
-<section id="quoteScreen" class="screen">
- <div class="quote-card">
-  In your <span>smile</span>, I found my peace.<br>
-  In your <span>love</span>, I found my home.
+<!-- 2. FLOWER WALL -->
+<section id="p2" class="page">
+ <div class="flower-wall" id="flowerWall"></div>
+ <div class="flower-overlay"></div>
+ <div class="flower-title">
+  <p class="small">A garden full of love</p>
+  <h1>For someone special</h1>
+  <button class="action" onclick="go('p3')">Continue ♡</button>
  </div>
- <p class="small" style="margin-top:35px">Something special is waiting for you...</p>
- <button class="primary" onclick="showScreen('lockScreen')">Open my heart ♡</button>
 </section>
 
-<!-- PASSWORD -->
-<section id="lockScreen" class="screen">
+<!-- 3. FROM ME TO YOU -->
+<section id="p3" class="page center paper">
+ <div class="corner-flower top-left">🌹</div>
+ <p class="small">A little surprise for you</p>
+ <h1>From me to you.</h1>
+ <p class="small">This is how much I love you</p>
+
+ <div class="couple">
+  <div class="person one"></div>
+  <div class="person two"></div>
+  <div class="heart-between">♡</div>
+ </div>
+
+ <p class="small">Made with love, especially for Bushra</p>
+ <button class="action" onclick="go('p4')">Next page ♡</button>
+</section>
+
+<!-- 4. QUOTE -->
+<section id="p4" class="page center paper">
+ <div class="quote">
+  In your <em>smile</em>, I found my peace.<br>
+  In your <em>love</em>, I found my home.
+ </div>
+ <p class="small" style="margin-top:35px">Some things are too special for words...</p>
+ <button class="action" onclick="go('p5')">One more thing ♡</button>
+</section>
+
+<!-- 5. PASSWORD -->
+<section id="p5" class="page center">
  <div class="lock-flower">🌸</div>
- <h2>Enter Password</h2>
- <p class="small">Only you know the secret</p>
- <div class="pin-dots" id="pinDots">
+ <h1>Enter Password</h1>
+ <p class="small">Only you know this little secret</p>
+
+ <div class="pin-dots">
   <i class="pin-dot"></i><i class="pin-dot"></i>
   <i class="pin-dot"></i><i class="pin-dot"></i>
  </div>
- <p id="error"></p>
+ <div id="pinError"></div>
+
  <div class="keypad">
-  <button class="key" onclick="pressKey('1')">1</button>
-  <button class="key" onclick="pressKey('2')">2</button>
-  <button class="key" onclick="pressKey('3')">3</button>
-  <button class="key" onclick="pressKey('4')">4</button>
-  <button class="key" onclick="pressKey('5')">5</button>
-  <button class="key" onclick="pressKey('6')">6</button>
-  <button class="key" onclick="pressKey('7')">7</button>
-  <button class="key" onclick="pressKey('8')">8</button>
-  <button class="key" onclick="pressKey('9')">9</button>
-  <button class="key special" onclick="clearPin()">Clear</button>
-  <button class="key" onclick="pressKey('0')">0</button>
-  <button class="key special" onclick="deletePin()">⌫</button>
+  <button class="key" onclick="keyPress('1')">1</button>
+  <button class="key" onclick="keyPress('2')">2</button>
+  <button class="key" onclick="keyPress('3')">3</button>
+  <button class="key" onclick="keyPress('4')">4</button>
+  <button class="key" onclick="keyPress('5')">5</button>
+  <button class="key" onclick="keyPress('6')">6</button>
+  <button class="key" onclick="keyPress('7')">7</button>
+  <button class="key" onclick="keyPress('8')">8</button>
+  <button class="key" onclick="keyPress('9')">9</button>
+  <button class="key" onclick="clearPin()">C</button>
+  <button class="key" onclick="keyPress('0')">0</button>
+  <button class="key" onclick="backPin()">⌫</button>
  </div>
- <p class="small" style="margin-top:22px">A little secret between us ♡</p>
+ <p class="small">A little world made just for you ♡</p>
 </section>
 
-<!-- GALLERY -->
-<section id="galleryScreen" class="screen">
- <div class="gallery-title">
-  <p class="small">Our little memories</p>
-  <h1 class="heading">Beautiful moments.</h1>
-  <p class="subheading">Every picture holds a little story ♡</p>
+<!-- 6. PHOTO GALLERY -->
+<section id="p6" class="page">
+ <div class="gallery-heading">
+  <p class="small">Every picture has a story</p>
+  <h1>Our memories.</h1>
+  <p class="small">Little moments, big feelings ♡</p>
  </div>
 
- <div class="gallery">
-  <div class="photo" style="--r:-4deg">
-   <div class="photo-box"><span>📷</span>Our first memory</div>
-   <p class="caption">A moment to remember</p>
+ <div class="photo-grid">
+  <div class="polaroid" style="--tilt:-4deg">
+   <div class="photo-placeholder"><span>🌸</span>Photo one</div>
+   <div class="photo-caption">A beautiful moment</div>
   </div>
-  <div class="photo" style="--r:3deg">
-   <div class="photo-box"><span>🌅</span>Our happy place</div>
-   <p class="caption">My favourite view</p>
+  <div class="polaroid" style="--tilt:3deg">
+   <div class="photo-placeholder"><span>💕</span>Photo two</div>
+   <div class="photo-caption">My favourite memory</div>
   </div>
-  <div class="photo" style="--r:2deg">
-   <div class="photo-box"><span>💗</span>Little moments</div>
-   <p class="caption">The best feeling</p>
+  <div class="polaroid" style="--tilt:2deg">
+   <div class="photo-placeholder"><span>🌷</span>Photo three</div>
+   <div class="photo-caption">A little happiness</div>
   </div>
-  <div class="photo" style="--r:4deg">
-   <div class="photo-box"><span>🌸</span>Sweet memories</div>
-   <p class="caption">Always special</p>
+  <div class="polaroid" style="--tilt:4deg">
+   <div class="photo-placeholder"><span>🧸</span>Photo four</div>
+   <div class="photo-caption">Sweet memories</div>
   </div>
-  <div class="photo" style="--r:-3deg">
-   <div class="photo-box"><span>🧸</span>My favourite person</div>
-   <p class="caption">You make me smile</p>
+  <div class="polaroid" style="--tilt:-3deg">
+   <div class="photo-placeholder"><span>❤️</span>Photo five</div>
+   <div class="photo-caption">A special day</div>
   </div>
-  <div class="photo" style="--r:3deg">
-   <div class="photo-box"><span>❤️</span>Forever a memory</div>
-   <p class="caption">A piece of my heart</p>
+  <div class="polaroid" style="--tilt:3deg">
+   <div class="photo-placeholder"><span>🌹</span>Photo six</div>
+   <div class="photo-caption">Always precious</div>
   </div>
  </div>
 
- <p class="gallery-note">
-  If I could keep one thing forever,<br>
-  it would be every moment with you. ♡
- </p>
-
- <button class="primary" onclick="showScreen('letterScreen')">
-  Read your letter ♡
- </button>
+ <div class="gallery-end">
+  If I could save every beautiful moment,<br>
+  I would save them all with you. ♡
+ </div>
+ <div style="text-align:center">
+  <button class="action" onclick="go('p7')">Read your letter ♡</button>
+ </div>
 </section>
 
-<!-- LETTER -->
-<section id="letterScreen" class="screen" style="display:none">
- <p class="small">A letter from my heart</p>
- <h1 class="heading">To my Bushra.</h1>
+<!-- 7. LETTER -->
+<section id="p7" class="page">
+ <div style="text-align:center">
+  <p class="small">A few words from my heart</p>
+  <h1 style="font-size:60px">Dear Bushra...</h1>
+ </div>
 
- <div class="letter-wrap">
+ <div class="letter-paper">
   <h2>My Dearest Bushra, ♡</h2>
 
   <p>
-   I am writing this little note just because you deserve to know how
-   special you are. I may not always find the perfect words, but I
-   hope this little surprise makes you smile.
+   I don't know how to put every feeling into words, but I wanted
+   to make something special for you. Something that could remind
+   you how wonderful and important you are.
   </p>
 
   <p>
-   You make ordinary moments feel beautiful. Your smile brings
-   happiness, and your presence makes even simple days feel special.
-   I am grateful for all the little memories and every reason to smile.
+   Your smile makes ordinary days feel beautiful. Every little
+   memory becomes special, and every happy moment becomes
+   something worth remembering.
   </p>
 
   <p>
-   I hope your days are filled with happiness, your dreams come true,
-   and you always find reasons to smile. Never forget how wonderful
-   and special you are.
+   I hope life brings you endless happiness, beautiful surprises,
+   and countless reasons to smile. May all your dreams find
+   their way to you.
   </p>
 
   <p>
-   This little website is just a small way of saying that you deserve
-   all the beautiful things in the world.
+   No matter how many pages I write, there will always be more
+   lovely things left to say. So I made this little website to
+   say what words sometimes cannot.
   </p>
 
-  <p style="text-align:right">
-   With lots of love,<br>
-   Always thinking of you ♡
+  <p class="sign">
+   With love,<br>
+   Always wishing you happiness ♡
   </p>
-  <div class="letter-end">♡</div>
  </div>
 
- <button class="primary" onclick="showScreen('finalScreen')">
-  One last thing...
- </button>
+ <div class="final-words">I will always love you</div>
+ <p class="final-sub">For Bushra, with love ♡</p>
+
+ <div style="text-align:center">
+  <button class="action" onclick="go('p1')">Start again ♡</button>
+ </div>
 </section>
 
-<!-- END -->
-<section id="finalScreen" class="screen">
- <div style="font-size:75px">💐</div>
- <h1 class="heading">Happy Birthday, Bushra!</h1>
- <p class="subheading">May your life always bloom like flowers.</p>
- <p class="small" style="margin-top:20px">You deserve all the happiness in the world.</p>
- <div style="font-size:45px;margin-top:30px">🌷 🌸 💗 🌹</div>
- <button class="primary" onclick="showScreen('giftScreen')">Start again ♡</button>
-</section>
-
-<button class="music" id="musicBtn" onclick="toggleMusic()">♫ Play music</button>
+<button class="music-button" id="musicButton" onclick="toggleMusic()">♫ Play music</button>
 
 <audio id="birthdayAudio" loop preload="metadata">
  <source src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const screens=document.querySelectorAll('.screen');
-const audio=document.getElementById('birthdayAudio');
-const musicBtn=document.getElementById('musicBtn');
-let pin='';
+const allPages=document.querySelectorAll('.page');
 
-function showScreen(id){
- screens.forEach(s=>{
-  s.classList.remove('active');
-  s.style.display='none';
- });
- const target=document.getElementById(id);
- target.style.display='flex';
- target.classList.add('active');
+function go(id){
+ allPages.forEach(page=>page.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function openGift(){
- const rose=document.getElementById('roseScreen');
- rose.classList.add('active');
- rose.style.display='flex';
+const flowerWall=document.getElementById('flowerWall');
+const flowerList=['🌹','🤍','🌸','🌷','🌺'];
 
- for(let i=0;i<65;i++){
-  setTimeout(()=>{
-   const flower=document.createElement('div');
-   flower.className='rose';
-   flower.textContent=['🌹','🌸','🌷','💐'][Math.floor(Math.random()*4)];
-   flower.style.left=Math.random()*100+'%';
-   flower.style.animationDuration=(3+Math.random()*3)+'s';
-   flower.style.fontSize=(25+Math.random()*30)+'px';
-   rose.appendChild(flower);
-   setTimeout(()=>flower.remove(),6500);
-  },i*65);
- }
-
- setTimeout(()=>{
-  rose.classList.remove('active');
-  rose.style.display='none';
-  showScreen('welcomeScreen');
- },4800);
+for(let i=0;i<65;i++){
+ const flower=document.createElement('span');
+ flower.textContent=flowerList[i%flowerList.length];
+ flower.style.animationDelay=(Math.random()*2)+'s';
+ flowerWall.appendChild(flower);
 }
 
-function updateDots(){
- document.querySelectorAll('.pin-dot').forEach((dot,i)=>{
-  dot.classList.toggle('filled',i<pin.length);
+let enteredPin='';
+const correctPin='1911';
+
+function updatePin(){
+ document.querySelectorAll('.pin-dot').forEach((dot,index)=>{
+  dot.classList.toggle('on',index<enteredPin.length);
  });
 }
 
-function pressKey(number){
- if(pin.length>=4)return;
- pin+=number;
- updateDots();
+function keyPress(number){
+ if(enteredPin.length>=4)return;
+ enteredPin+=number;
+ updatePin();
 
- if(pin.length===4){
+ if(enteredPin.length===4){
   setTimeout(()=>{
-   if(pin==='1911'){
-    document.getElementById('error').textContent='';
-    showScreen('galleryScreen');
+   if(enteredPin===correctPin){
+    document.getElementById('pinError').textContent='';
+    enteredPin='';
+    updatePin();
+    go('p6');
    }else{
-    document.getElementById('error').textContent='Wrong password, try again ♡';
-    pin='';
-    updateDots();
+    document.getElementById('pinError').textContent='Try again ♡';
+    enteredPin='';
+    updatePin();
    }
   },250);
  }
 }
 
 function clearPin(){
- pin='';
- updateDots();
- document.getElementById('error').textContent='';
+ enteredPin='';
+ updatePin();
+ document.getElementById('pinError').textContent='';
 }
-function deletePin(){
- pin=pin.slice(0,-1);
- updateDots();
+
+function backPin(){
+ enteredPin=enteredPin.slice(0,-1);
+ updatePin();
 }
+
+const audio=document.getElementById('birthdayAudio');
+const musicButton=document.getElementById('musicButton');
 
 function toggleMusic(){
  if(audio.paused){
   audio.play().then(()=>{
-   musicBtn.textContent='♫ Pause music';
+   musicButton.textContent='♫ Pause music';
   }).catch(()=>{
-   musicBtn.textContent='Tap to play music';
+   musicButton.textContent='Tap to play music';
   });
  }else{
   audio.pause();
-  musicBtn.textContent='♫ Play music';
+  musicButton.textContent='♫ Play music';
  }
 }
 
-audio.addEventListener('play',()=>musicBtn.textContent='♫ Pause music');
-audio.addEventListener('pause',()=>musicBtn.textContent='♫ Play music');
+audio.addEventListener('play',()=>{
+ musicButton.textContent='♫ Pause music';
+});
+audio.addEventListener('pause',()=>{
+ musicButton.textContent='♫ Play music';
+});
 </script>
 
-</body>
-</html>
-ish.</em></h2>
-      <p>Apne dil mein ek achhi si wish socho, phir candle ko bujhao.</p>
-    </header>
-    <div class="candle-scene">
-      <div class="flame" id="flame"></div>
-      <div class="candle"><span></span></div>
-      <div class="candle-base"></div>
-    </div>
-    <button id="blowCandle" class="pill">Meri wish poori ho ✨</button>
-    <p id="candleMessage" class="hint">Aapki har achhi wish ko pankh milein.</p>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">SIRF AAPKE LIYE</p>
-      <h2>A little birthday <em>cake.</em></h2>
-      <p>Candles lagao aur apni wish ke saath bujhao.</p>
-    </header>
-    <div class="virtual-cake">
-      <div id="cakeCandles" class="cake-candles">
-        <span class="cake-candle"><i></i></span>
-        <span class="cake-candle"><i></i></span>
-        <span class="cake-candle"><i></i></span>
-      </div>
-      <div class="cake-top"></div>
-      <div class="cake-body">Happy Birthday ♡</div>
-      <div class="cake-plate"></div>
-    </div>
-    <button id="addCakeCandle" class="pill">Candle lagao</button>
-    <button id="blowCakeCandles" class="pill">Candles bujhao ✨</button>
-    <p id="cakeMessage" class="feature-message">Aapke liye dher saari khushiyan!</p>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">KISMAT KA PAIGHAAM</p>
-      <h2>Fortune <em>cookie.</em></h2>
-      <p>Cookie kholo aur apna lucky message pao.</p>
-    </header>
-    <button id="fortuneCookie" class="fortune-cookie">♡</button>
-    <p id="fortuneMessage" class="feature-message">Cookie par tap karo ♡</p>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">CHHOTA SA KHEL</p>
-      <h2>Find the hidden <em>surprise.</em></h2>
-      <p>Teen clues ke baad milega ek khaas paighaam.</p>
-    </header>
-    <div class="treasure-card">
-      <div id="treasureIcon">🗝️</div>
-      <p id="treasureClue">Clue 1: Jahan gaana bajta hai, wahan agla raaz chhupa hai.</p>
-      <button id="treasureNext" class="pill">Agla clue dekho</button>
-      <p id="treasureResult"></p>
-    </div>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">EK GAANA, EK YAAD</p>
-      <h2>Let the music <em>spin.</em></h2>
-      <p>Gaana chalao aur vinyl ko ghoomte dekho.</p>
-    </header>
-    <div class="vinyl-player">
-      <div class="vinyl-disc" id="vinylDisc">
-        <div class="vinyl-label">♡<small>BUSHRA</small></div>
-      </div>
-      <div>
-        <h3>Jeena Jeena</h3>
-        <p>Ek dhun, is khaas din ke naam.</p>
-        <button id="vinylPlayBtn" class="pill">♫ Gaana chalao</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">JAADUI RAUNAQ</p>
-      <h2>Make it <em>magical.</em></h2>
-      <p>Chamak aur phoolon ki baarish bulao.</p>
-    </header>
-    <button id="magicButton" class="pill">Jaadu shuru karo ✨</button>
-    <p id="magicMessage" class="feature-message">Ek chhoti si magical baarish aapke liye.</p>
-    <div id="magicLayer"></div>
-  </section>
-
-  <section class="section">
-    <header>
-      <p class="eyebrow">AGLE JASHN TAK</p>
-      <h2>Birthday <em>countdown.</em></h2>
-      <p>Birthday ki tareekh chuno.</p>
-    </header>
-    <div class="countdown-card">
-      <label for="birthdayDate">Birthday ki tareekh</label>
-      <input type="date" id="birthdayDate">
-      <div class="countdown-numbers">
-        <div><b id="cdDays">--</b><small>DIN</small></div>
-        <div><b id="cdHours">--</b><small>GHANTE</small></div>
-        <div><b id="cdMinutes">--</b><small>MINUTE</small></div>
-        <div><b id="cdSeconds">--</b><small>SECOND</small></div>
-      </div>
-      <p id="countdownMessage">Tareekh chunte hi countdown shuru hoga ♡</p>
-    </div>
-  </section>
-
-  <section class="section jar-section">
-    <header>
-      <p class="eyebrow">JAB BHI DIL CHAHE</p>
-      <h2>A jar full of <em>wishes.</em></h2>
-      <p>Ek wish nikalo — har baar ek naya paighaam milega.</p>
-    </header>
-    <div class="jar-wrap">
-      <div class="jar" id="wishJar">
-        <span>♡</span><span>✦</span><span>✿</span><span>♡</span><span>✧</span><span>✦</span>
-      </div>
-      <button id="drawWish" class="pill">Ek wish nikalo ✨</button>
-      <p id="jarWish" class="jar-wish">Aapke liye 10 chhoti-chhoti duaaein rakhi hain.</p>
-    </div>
-  </section>
-</section>
-
-
-<!-- CHAPTER 05: FINAL SURPRISE -->
-<section class="final">
-  <p class="eyebrow">CHAPTER 04 · AAKHRI PAIGHAM</p>
-  <h2>May your world always<br>feel a little more <em>magical.</em></h2>
-  <p>Happy Birthday, Bushra. Aap bahut saari khushiyan deserve karti ho. ♡</p>
-  <button id="fireworkBtn" class="pill pale">Aakhri surprise dekho ✨</button>
-</section>
-
-<footer>
-  <b>b♡</b>
-  <p>Aapke khaas din ke liye, dil se banaya.</p>
-  <small>HAPPY BIRTHDAY · BUSHRA</small>
-</footer>
-
-</div>
-</main>
-
-<div id="surpriseModal" class="modal hidden">
-  <article>
-    <button id="closeModal">×</button>
-    <div>♡</div>
-    <p class="eyebrow">EK AAKHRI PAIGHAM</p>
-    <h2>Keep shining,<br><em>just as you are.</em></h2>
-    <p>Har naya din aapke liye ek nayi khushi, ek nayi umeed aur behtareen yaadein lekar aaye. Janamdin mubarak, Bushra! 💗</p>
-    <button id="modalOk" class="pill">Shukriya ♡</button>
-  </article>
-</div>
-
-<div id="confetti"></div>
-<audio id="birthdayAudio" src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" preload="metadata" loop></audio>
-<script src="script.js"></script>
 </body>
 </html>
