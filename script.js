@@ -1,282 +1,204 @@
 
-/* =========================================
-   BUSHRA BIRTHDAY WEBSITE - COMPLETE SCRIPT
-   Password: 1911
-========================================= */
-
 const $ = (id) => document.getElementById(id);
-const on = (id, event, callback) => {
-  const element = $(id);
-  if (element) element.addEventListener(event, callback);
-};
 
-document.addEventListener("DOMContentLoaded", () => {
+// Screens
+const intro = $("intro");
+const lockScreen = $("lockScreen");
+const birthdayScreen = $("birthdayScreen");
 
-  /* ---------- 1. PASSWORD LOCK ---------- */
+const giftWrap = $("giftWrap");
+const openGift = $("openGift");
 
-  const lockScreen = $("lockScreen");
-  const birthdayScreen = $("birthdayScreen");
-  const passwordInput = $("password");
-  const errorMessage = $("error");
+// Gift open karne par password screen
+function showLock() {
+  intro.classList.add("hidden");
+  lockScreen.classList.remove("hidden");
+}
 
-  function unlockWebsite() {
-    if (!passwordInput) return;
+giftWrap.addEventListener("click", showLock);
 
-    if (passwordInput.value.trim() === "1911") {
-      lockScreen?.classList.add("hidden");
-      birthdayScreen?.classList.remove("hidden");
+giftWrap.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    showLock();
+  }
+});
 
-      if (errorMessage) errorMessage.textContent = "";
+openGift.addEventListener("click", showLock);
 
-      createConfetti(35);
-    } else {
-      if (errorMessage) {
-        errorMessage.textContent = "Oops! Password galat hai. Dobara try karo ❤️";
-      }
+// Password system
+let entered = "";
 
-      passwordInput.value = "";
-      passwordInput.focus();
+const dots = [...$("dots").children];
+
+function refreshDots() {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("filled", i < entered.length);
+  });
+}
+
+function unlock() {
+  if (entered === "1911") {
+    lockScreen.classList.add("hidden");
+    birthdayScreen.classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    startPetals();
+  } else {
+    $("errorMsg").textContent =
+      "Code sahi nahi hai. Dobara koshish kijiye.";
+
+    entered = "";
+    refreshDots();
+  }
+}
+
+// Keypad buttons
+$("keypad").addEventListener("click", (e) => {
+  const button = e.target.closest("button");
+  if (!button) return;
+
+  const key = button.dataset.key;
+
+  if (key === "clear") {
+    entered = entered.slice(0, -1);
+  } else if (key === "enter") {
+    unlock();
+    return;
+  } else if (entered.length < 4) {
+    entered += key;
+
+    if (entered.length === 4) {
+      refreshDots();
+      setTimeout(unlock, 180);
+      return;
     }
   }
 
-  on("unlockBtn", "click", unlockWebsite);
+  refreshDots();
+  $("errorMsg").textContent = "";
+});
 
-  on("password", "keydown", (event) => {
-    if (event.key === "Enter") unlockWebsite();
-  });
+// Music player
+const audio = $("birthdayAudio");
+const musicBtn = $("musicBtn");
 
-
-  /* ---------- 2. 100 REASONS ---------- */
-
-  const reasons = [
-    "Kyunki aap meri zindagi ko khoobsurat bana dete ho.",
-    "Kyunki aapki muskurahat mera din achcha kar deti hai.",
-    "Kyunki aapse baat karke sukoon milta hai.",
-    "Kyunki aap meri chhoti-chhoti baatein samajhte ho.",
-    "Kyunki aapke saath waqt ka pata hi nahi chalta.",
-    "Kyunki aapki khushi mere liye bahut maayne rakhti hai.",
-    "Kyunki aap meri boring life ko special bana dete ho.",
-    "Kyunki aapki awaaz sunna achcha lagta hai.",
-    "Kyunki aapke saath har din ek nayi yaad ban sakta hai.",
-    "Kyunki aap jaise ho, waise hi bahut special ho.",
-    "Kyunki aap meri baaton ko dhyan se sunte ho.",
-    "Kyunki aapki narazgi mein bhi apnapan hota hai.",
-    "Kyunki aapke saath khulkar baat kar sakta hoon.",
-    "Kyunki aap meri duniya ka khoobsurat hissa ho.",
-    "Kyunki aapki ek message se chehre par muskurahat aa jaati hai.",
-    "Kyunki aapke saath khamoshi bhi achchi lagti hai.",
-    "Kyunki aap meri chhoti khushiyon ko bada bana dete ho.",
-    "Kyunki aapke saath sapne dekhna achcha lagta hai.",
-    "Kyunki aapki fikr karna mujhe achcha lagta hai.",
-    "Kyunki aap meri favourite notification ho.",
-    "Kyunki aapke saath hasi-mazaak karna achcha lagta hai.",
-    "Kyunki aapki baaton mein ek alag si mithaas hai.",
-    "Kyunki aap mujhe behtar insaan banne ki wajah dete ho.",
-    "Kyunki aapke saath har chhoti baat bhi yaadgaar hai.",
-    "Kyunki aap meri life mein ek special jagah rakhte ho.",
-    "Kyunki aapki aankhon mein ek alag si chamak hai.",
-    "Kyunki aapke saath future ke baare mein sochna achcha lagta hai.",
-    "Kyunki aap meri achchi aur buri dono baatein jaante ho.",
-    "Kyunki aapki hansi sunna favourite hai.",
-    "Kyunki aapke saath simple moments bhi special ban jaate hain.",
-    "Kyunki aapki presence hi kaafi hoti hai.",
-    "Kyunki aapke saath baatein kabhi khatam nahi hoti.",
-    "Kyunki aap meri fikr karte ho.",
-    "Kyunki aapke saath har mausam achcha lagta hai.",
-    "Kyunki aap mujhe apna sa mehsoos karate ho.",
-    "Kyunki aapki chhoti-chhoti aadatein pyari hain.",
-    "Kyunki aapke saath naye experiences share karna achcha lagta hai.",
-    "Kyunki aap meri yaadon ka khoobsurat hissa ho.",
-    "Kyunki aapki baaton se dil halka ho jaata hai.",
-    "Kyunki aapke saath waqt bitana kabhi waste nahi lagta.",
-    "Kyunki aapki khushi dekhkar mujhe bhi khushi hoti hai.",
-    "Kyunki aap mere din ka achcha hissa ho.",
-    "Kyunki aapke saath har baat share karne ka mann karta hai.",
-    "Kyunki aapki simplicity bahut achchi lagti hai.",
-    "Kyunki aap meri duniya mein rang bhar dete ho.",
-    "Kyunki aapke saath chhoti si walk bhi yaadgaar hogi.",
-    "Kyunki aapke saath naye sapne dekhna achcha lagta hai.",
-    "Kyunki aap mujhe apni baat kehne ka mauka dete ho.",
-    "Kyunki aapki care mere liye important hai.",
-    "Kyunki aapke saath har din kuch naya seekhne ko milta hai.",
-    "Kyunki aap meri favourite memories ka hissa ho.",
-    "Kyunki aapki ek muskurahat bahut kuch keh jaati hai.",
-    "Kyunki aapke saath chai peena bhi special lagega.",
-    "Kyunki aapke saath baarish dekhna achcha lagega.",
-    "Kyunki aapke saath lambi-lambi baatein karna pasand hai.",
-    "Kyunki aap meri life mein positivity laate ho.",
-    "Kyunki aapki chhoti si tareef bhi din bana deti hai.",
-    "Kyunki aapke saath har celebration aur bhi special hoga.",
-    "Kyunki aap meri baaton mein chhupi feelings samajh lete ho.",
-    "Kyunki aapke saath memories banana chahta hoon.",
-    "Kyunki aapki har nayi achievement par khushi hoti hai.",
-    "Kyunki aap apne andaaz mein sabse alag ho.",
-    "Kyunki aapke saath waqt guzarna sukoon deta hai.",
-    "Kyunki aapki pasand jaan-na achcha lagta hai.",
-    "Kyunki aapke saath har chhoti journey khoobsurat ho sakti hai.",
-    "Kyunki aap meri life ki ek pyari si kahani ho.",
-    "Kyunki aapke saath hasi ke pal jama karna chahta hoon.",
-    "Kyunki aapki baaton mein apnapan hai.",
-    "Kyunki aapke saath naye places explore karna achcha lagega.",
-    "Kyunki aap meri khushiyon ki wajah ban jaate ho.",
-    "Kyunki aapke saath har din ek nayi shuruaat ho sakta hai.",
-    "Kyunki aap meri life mein bahut important ho.",
-    "Kyunki aapke saath favourite gaane sunna achcha lagega.",
-    "Kyunki aapki yaad kabhi-kabhi bina wajah bhi aa jaati hai.",
-    "Kyunki aapke saath har baat mein ek alag maza hai.",
-    "Kyunki aapki personality bahut pyari hai.",
-    "Kyunki aapke saath waqt bitane ki khwahish rehti hai.",
-    "Kyunki aap mere liye ek khoobsurat surprise ho.",
-    "Kyunki aapke saath har chhoti jeet celebrate karna chahta hoon.",
-    "Kyunki aapki baatein yaad reh jaati hain.",
-    "Kyunki aapke saath future ki achchi yaadein banana chahta hoon.",
-    "Kyunki aap meri duniya ko thoda aur roshan kar dete ho.",
-    "Kyunki aapke saath dil ki baat kehna aasaan lagta hai.",
-    "Kyunki aap meri favourite conversations ka hissa ho.",
-    "Kyunki aapke saath har din ek nayi wajah milti hai muskurane ki.",
-    "Kyunki aapki chhoti si attention bhi special lagti hai.",
-    "Kyunki aapke saath ek simple sa din bhi yaadgaar ban sakta hai.",
-    "Kyunki aap meri life mein khushiyon ka ek pyara sabab ho.",
-    "Kyunki aapke saath har pal ko yaad rakhna chahta hoon.",
-    "Kyunki aapki baaton mein ek alag hi comfort hai.",
-    "Kyunki aapke saath apni favourite memories share karna achcha lagta hai.",
-    "Kyunki aap meri life ki khoobsurat possibilities mein se ek ho.",
-    "Kyunki aapke saath muskurane ki wajah milti hai.",
-    "Kyunki aapka hona hi ek achchi baat hai.",
-    "Kyunki aap jaise ho, waise hi bahut khaas ho.",
-    "Kyunki aapki khushi aur sukoon mere liye important hain.",
-    "Kyunki aapke saath aur bhi khoobsurat yaadein banani hain.",
-    "Kyunki aap meri kahani ka ek bahut pyara hissa ho.",
-    "Aur sabse badi wajah... kyunki aap Bushra ho! ❤️"
-  ];
-
-  let reasonIndex = 0;
-
-  function showReason() {
-    const number = $("reasonNumber");
-    const text = $("reasonText");
-
-    if (number) {
-      number.textContent =
-        String(reasonIndex + 1).padStart(2, "0") + " / 100";
-    }
-
-    if (text) {
-      text.textContent = reasons[reasonIndex];
-      text.classList.remove("reason-animate");
-      void text.offsetWidth;
-      text.classList.add("reason-animate");
-    }
-  }
-
-  on("nextReason", "click", () => {
-    reasonIndex = (reasonIndex + 1) % reasons.length;
-    showReason();
-  });
-
-  on("prevReason", "click", () => {
-    reasonIndex = (reasonIndex - 1 + reasons.length) % reasons.length;
-    showReason();
-  });
-
-  showReason();
-
-
-  /* ---------- 3. LOVE LETTER ---------- */
-
-  on("letterBtn", "click", () => {
-    const paper = $("letterPaper");
-    if (!paper) return;
-
-    paper.classList.toggle("show");
-    paper.classList.toggle("open");
-
-    createConfetti(12);
-  });
-
-
-  /* ---------- 4. ENVELOPE ---------- */
-
-  on("envelopeBtn", "click", () => {
-    const envelope = $("envelopeBtn");
-    const hint = $("envelopeHint");
-
-    if (!envelope) return;
-
-    const isOpen = envelope.classList.toggle("open");
-
-    if (hint) {
-      hint.textContent = isOpen
-        ? "Aapke liye ek chhota sa surprise ❤️"
-        : "Is envelope ko kholkar dekho 💌";
-    }
-
-    if (isOpen) createConfetti(15);
-  });
-
-
-  /* ---------- 5. BACKGROUND MUSIC ---------- */
-
-  const audio = $("birthdayAudio");
-  const musicButton = $("musicBtn");
-  const vinylButton = $("vinylPlayBtn");
-  const vinylDisc = $("vinylDisc");
-
-  function syncMusicButtons() {
-    const playing = audio && !audio.paused;
-
-    if (musicButton) {
-      musicButton.textContent = playing ? "⏸ Music Pause" : "▶ Play Music";
-    }
-
-    if (vinylButton) {
-      vinylButton.textContent = playing ? "⏸ Pause" : "▶ Play";
-    }
-
-    if (vinylDisc) {
-      vinylDisc.classList.toggle("playing", Boolean(playing));
-    }
-  }
-
-  async function toggleMusic() {
-    if (!audio) return;
-
+musicBtn.addEventListener("click", async () => {
+  try {
     if (audio.paused) {
-      try {
-        await audio.play();
-      } catch (error) {
-        const status = $("songStatus");
-        if (status) {
-          status.textContent = "Music start nahi hua. Dobara Play dabao.";
-        }
-      }
+      await audio.play();
+      musicBtn.innerHTML =
+        '♫ <span>Gaana chal raha hai</span>';
     } else {
       audio.pause();
+      musicBtn.innerHTML =
+        '♫ <span>Gaana chalao</span>';
     }
+  } catch (error) {
+    musicBtn.innerHTML =
+      '♫ <span>Audio file check karein</span>';
+  }
+});
 
-    syncMusicButtons();
+audio.addEventListener("pause", () => {
+  musicBtn.innerHTML =
+    '♫ <span>Gaana chalao</span>';
+});
+
+audio.addEventListener("play", () => {
+  musicBtn.innerHTML =
+    '♫ <span>Gaana chal raha hai</span>';
+});
+
+// 100 reasons
+const reasons = [
+  "Aapki muskurahat din ko roshan kar deti hai.",
+  "Aapki baaton mein ek alag hi sukoon hai.",
+  "Aap chhoti-chhoti cheezon ko khaas bana deti hain.",
+  "Aapka dil bohot khoobsurat hai.",
+  "Aapki hansi sun kar khushi hoti hai.",
+  "Aap apne andaaz mein sabse alag hain.",
+  "Aapki maujoodgi se mahaul achha lagta hai.",
+  "Aapke khwaab bohot pyaare hain.",
+  "Aapki saadgi dil ko chhoo jaati hai.",
+  "Aap bas aap hain, aur wahi kaafi hai.",
+  "Aapki har chhoti khushi maayne rakhti hai.",
+  "Aapki baaton ko yaad karna achha lagta hai.",
+  "Aapke saath waqt jaldi guzar jaata hai.",
+  "Aapki aankhon mein umeed chamakti hai.",
+  "Aapka hona ek pyaari si baat hai.",
+  "Aapki fikr karna achha lagta hai.",
+  "Aapki awaaz mein apnapan hai.",
+  "Aap har din ko yaadgaar bana sakti hain.",
+  "Aapki khushi sabse zaroori hai.",
+  "Aapki har ada apni si lagti hai."
+];
+
+let reasonIndex = 0;
+
+$("nextReason").addEventListener("click", () => {
+  reasonIndex = (reasonIndex + 1) % 100;
+
+  $("reasonCount").textContent =
+    String(reasonIndex + 1).padStart(2, "0") + " / 100";
+
+  $("reasonText").textContent =
+    reasons[reasonIndex % reasons.length];
+});
+
+// Final surprise
+$("finalBtn").addEventListener("click", () => {
+  $("finalMessage").classList.remove("hidden");
+
+  $("finalBtn").textContent =
+    "Surprise mil gaya ♡";
+});
+
+// Falling flower petals
+let petalsStarted = false;
+
+function startPetals() {
+  if (petalsStarted) return;
+  petalsStarted = true;
+
+  if (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
   }
 
-  on("musicBtn", "click", toggleMusic);
-  on("vinylPlayBtn", "click", toggleMusic);
+  setInterval(() => {
+    if (birthdayScreen.classList.contains("hidden")) return;
 
-  if (audio) {
-    audio.addEventListener("play", syncMusicButtons);
-    audio.addEventListener("pause", syncMusicButtons);
-    audio.addEventListener("ended", syncMusicButtons);
-    audio.addEventListener("timeupdate", () => {
-      const track = document.querySelector(".track span");
-      if (!track || !audio.duration) return;
+    const petal = document.createElement("span");
 
-      track.style.width =
-        (audio.currentTime / audio.duration) * 100 + "%";
-    });
-  }
+    petal.className = "petal";
 
-  syncMusicButtons();
+    petal.textContent = ["✿", "❀", "♡"][
+      Math.floor(Math.random() * 3)
+    ];
 
+    petal.style.left = Math.random() * 100 + "%";
 
-  /* ---------- 6. CONFETTI ---------- */
+    petal.style.fontSize =
+      10 + Math.random() * 12 + "px";
+
+    petal.style.animationDuration =
+      7 + Math.random() * 7 + "s";
+
+    $("petals").appendChild(petal);
+
+    setTimeout(() => {
+      petal.remove();
+    }, 15000);
+
+  }, 700);
+}
+TTI ---------- */
 
   function createConfetti(amount = 45) {
     const container = $("confetti");
