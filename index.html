@@ -1,311 +1,131 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Bushra ♡</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
-
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#f8eddf;color:#74454a;font-family:'Playfair Display',serif}
-button{font:inherit;cursor:pointer}
-.page{display:none;min-height:100vh;position:relative;overflow:hidden}
-.page.active{display:flex}
-.paper{
- background:
- radial-gradient(ellipse at 20% 20%,#fff8e9 0%,transparent 55%),
- linear-gradient(135deg,#f9efdf,#f1dfca);
-}
-.script{font-family:'Caveat',cursive}
-h1{font-family:'Caveat',cursive;font-weight:500;color:#813d46}
-.small{font-family:'Caveat',cursive;color:#a77b75;font-size:21px}
-.action{
- border:1px solid #b9847e;background:#fff8ed;
- color:#82434b;border-radius:30px;padding:12px 27px;
- font-size:15px;transition:.25s;margin-top:25px;
-}
-.action:hover{background:#efd1c7;transform:translateY(-2px)}
-.center{align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px}
-.corner-flower{position:absolute;font-size:55px;opacity:.8;pointer-events:none}
-.top-left{top:-14px;left:-12px;transform:rotate(-25deg)}
-.top-right{top:-18px;right:-12px;transform:rotate(25deg)}
-.bottom-left{bottom:-20px;left:-12px}
-.bottom-right{bottom:-20px;right:-12px}
-
-/* FIRST PAGE */
-#p1{background:#f7ecdc}
-.intro-flower{font-size:48px;margin-bottom:18px}
-.gift-wrap{width:180px;height:170px;position:relative;margin:20px auto;cursor:pointer;animation:giftFloat 3s infinite}
-.gift-base{
- position:absolute;bottom:0;left:10px;width:160px;height:112px;
- background:#e9a5a5;border:2px solid #9c5c60;
- box-shadow:5px 9px 0 #d5b6a0;
-}
-.gift-top{
- position:absolute;top:40px;left:0;width:180px;height:30px;
- background:#f2c0b5;border:2px solid #9c5c60;z-index:2;
-}
-.gift-ribbon{
- position:absolute;top:40px;left:78px;width:24px;height:112px;
- background:#fff0d9;border-left:2px solid #9c5c60;border-right:2px solid #9c5c60;z-index:3;
-}
-.gift-bow{
- position:absolute;top:5px;left:54px;width:72px;height:42px;z-index:4;
-}
-.gift-bow:before,.gift-bow:after{
- content:"";position:absolute;width:36px;height:30px;
- border:3px solid #9c5c60;border-radius:50% 50% 10% 50%;
- background:#f4c3ba;
-}
-.gift-bow:before{left:0;transform:rotate(25deg)}
-.gift-bow:after{right:0;transform:scaleX(-1) rotate(25deg)}
-@keyframes giftFloat{50%{transform:translateY(-9px)}}
-
-/* FLOWER SCREEN */
-#p2{background:#f8eadc;align-items:center;justify-content:center}
-.flower-wall{
- position:absolute;inset:0;display:grid;
- grid-template-columns:repeat(5,1fr);
- grid-auto-rows:95px;gap:0;opacity:.9;
- transform:scale(1.15);
-}
-.flower-wall span{
- display:flex;align-items:center;justify-content:center;
- font-size:clamp(35px,8vw,75px);
- animation:flowerWave 3s ease-in-out infinite alternate;
-}
-.flower-wall span:nth-child(even){animation-delay:-1.5s}
-.flower-wall span:nth-child(3n){transform:rotate(20deg)}
-.flower-overlay{
- position:absolute;inset:0;
- background:linear-gradient(#f8eadcaa,#f8eadc99);
-}
-.flower-title{position:relative;z-index:2;text-align:center}
-.flower-title h1{font-size:clamp(45px,9vw,78px)}
-@keyframes flowerWave{to{transform:translateY(9px) rotate(10deg)}}
-
-/* FROM ME TO YOU */
-#p3{background:#f8eddf}
-#p3 h1{font-size:clamp(45px,9vw,76px)}
-.couple{
- position:relative;width:250px;height:210px;margin:20px auto 5px;
-}
-.person{
- position:absolute;bottom:5px;width:105px;height:115px;
- border-radius:55% 55% 25% 25%;
-}
-.person.one{left:22px;background:#c58e83;transform:rotate(-9deg)}
-.person.two{right:22px;background:#d5a09a;transform:rotate(9deg)}
-.person:before{
- content:"";position:absolute;width:65px;height:65px;
- border-radius:50%;background:#d8aa91;top:-48px;left:20px;
- border:2px solid #94665e;
-}
-.person.one:after,.person.two:after{
- content:"";position:absolute;top:-55px;width:70px;height:40px;
- background:#604d48;border-radius:50% 50% 20% 20%;
- left:17px;
-}
-.heart-between{
- position:absolute;top:40px;left:105px;z-index:3;
- font-size:40px;animation:heartbeat 1.4s infinite;
-}
-@keyframes heartbeat{50%{transform:scale(1.2)}}
-
-/* QUOTE */
-#p4{background:#f7ebdc}
-.quote{
- background:#fff8e9;border:1px solid #e9d4bd;
- padding:30px 28px;max-width:430px;width:90%;
- box-shadow:0 12px 35px #9b756322;
- transform:rotate(-1deg);
- font-family:'Caveat',cursive;font-size:clamp(26px,5vw,37px);
- line-height:1.55;color:#75434a;
-}
-.quote em{color:#b15f68}
-
-/* PASSCODE */
-#p5{background:radial-gradient(circle at 50% 40%,#fff8e9,#f1dfce)}
-.lock-flower{font-size:40px;margin-bottom:6px}
-#p5 h1{font-size:36px}
-.pin-dots{display:flex;gap:14px;margin:19px 0 12px}
-.pin-dot{
- width:11px;height:11px;border:1px solid #b78c80;
- border-radius:50%;
-}
-.pin-dot.on{background:#9b5960}
-.keypad{
- display:grid;grid-template-columns:repeat(3,55px);
- gap:12px;margin:15px auto;
-}
-.key{
- width:55px;height:55px;border:1px solid #ead9c8;
- border-radius:50%;background:#fffaf1;color:#79515a;
- box-shadow:0 4px 12px #9b75631a;font-size:17px;
- transition:.15s;
-}
-.key:active{transform:scale(.9);background:#edcfc3}
-#pinError{height:20px;font-size:13px;color:#a34f59}
-
-/* GALLERY */
-#p6{background:#f7ecdc;padding:55px 15px 65px;display:none}
-#p6.active{display:block}
-.gallery-heading{text-align:center;margin-bottom:35px}
-.gallery-heading h1{font-size:clamp(42px,8vw,70px)}
-.photo-grid{
- max-width:850px;margin:auto;
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:16px;align-items:center;
-}
-.polaroid{
- background:#fffdf7;padding:8px 8px 24px;
- box-shadow:0 7px 20px #82654c25;
- transform:rotate(var(--tilt));
- transition:.3s;
-}
-.polaroid:hover{transform:rotate(0) scale(1.04)}
-.photo-placeholder{
- height:190px;background:linear-gradient(145deg,#eed3c5,#e6c1b1);
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;color:#986c66;
- font-family:'Caveat',cursive;font-size:20px;
-}
-.photo-placeholder span{font-size:38px;margin-bottom:8px}
-.photo-caption{
- font-family:'Caveat',cursive;text-align:center;
- font-size:21px;margin-top:8px;color:#89545a;
-}
-.gallery-end{
- font-family:'Caveat',cursive;text-align:center;
- font-size:27px;line-height:1.4;margin:38px auto 15px;
-}
-
-/* LETTER */
-#p7{background:#f6e7d6;padding:45px 16px 65px;display:none}
-#p7.active{display:block}
-.letter-paper{
- max-width:670px;margin:30px auto;
- padding:35px 30px;
- background:
- repeating-linear-gradient(to bottom,#fff8eb 0,#fff8eb 37px,#e8c9b8 38px);
- box-shadow:0 8px 25px #80604b25;
- border:1px solid #e6cdb8;
-}
-.letter-paper h2{
- font-family:'Caveat',cursive;font-size:37px;
- text-align:center;margin-bottom:20px;color:#82434b;
-}
-.letter-paper p{
- font-family:'Caveat',cursive;font-size:23px;
- line-height:1.65;margin-bottom:20px;color:#765159;
-}
-.sign{text-align:right!important}
-.final-words{
- font-family:'Caveat',cursive;
- font-size:clamp(45px,9vw,76px);
- color:#9c4d55;text-align:center;
- margin-top:35px;
-}
-.final-sub{text-align:center;font-family:'Caveat',cursive;font-size:24px;color:#a27670}
-
-/* MUSIC */
-.music-button{
- position:fixed;right:15px;bottom:15px;z-index:20;
- border:1px solid #d4b4a0;border-radius:30px;
- background:#fff8ec;color:#82434b;padding:10px 16px;
-}
-@media(max-width:600px){
- .photo-grid{grid-template-columns:repeat(2,1fr);gap:12px}
- .photo-placeholder{height:145px}
- .polaroid{padding:6px 6px 19px}
- .photo-caption{font-size:18px}
- .letter-paper{padding:25px 19px}
- .letter-paper p{font-size:21px}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4b1730">
+  <title>Bushra ke naam — Ek khaas surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="petal-layer" id="petals" aria-hidden="true"></div>
 
-<!-- 1. GIFT -->
-<section id="p1" class="page active center paper">
- <div class="corner-flower top-left">🌸</div>
- <div class="corner-flower top-right">🌷</div>
- <div class="intro-flower">🌹</div>
+  <main>
+    <section class="intro screen" id="intro">
+      <div class="intro-glow"></div>
+      <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
+      <div class="gift-wrap" id="giftWrap" role="button" tabindex="0" aria-label="Gift kholiye">
+        <div class="gift-bow"><i></i><i></i></div>
+        <div class="gift-lid"></div>
+        <div class="gift-box"><span>♡</span></div>
+      </div>
+      <h1>Sirf aapke liye,<br><em>Bushra.</em></h1>
+      <p class="muted">Ek chhoti si duniya, jisme har cheez aapke naam hai.</p>
+      <button class="primary-btn" id="openGift">Surprise kholiye <span>✦</span></button>
+      <p class="tiny-note">Aahista se… yeh sab aapke liye hai</p>
+    </section>
 
- <div class="gift-wrap" onclick="go('p2')">
-  <div class="gift-bow"></div>
-  <div class="gift-top"></div>
-  <div class="gift-base"></div>
-  <div class="gift-ribbon"></div>
- </div>
+    <section class="lock screen hidden" id="lockScreen">
+      <div class="lock-card">
+        <div class="seal">♡</div>
+        <p class="eyebrow">SIRF AAPKE LIYE</p>
+        <h2>Ek chhota sa secret</h2>
+        <p class="muted">Woh 4 digit code likhiye jo sirf aap jaanti hain.</p>
+        <div class="dots" id="dots"><b></b><b></b><b></b><b></b></div>
+        <div class="keypad" id="keypad">
+          <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+          <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+          <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+          <button class="soft-key" data-key="clear">⌫</button><button data-key="0">0</button><button class="soft-key" data-key="enter">↵</button>
+        </div>
+        <p class="error" id="errorMsg"></p>
+      </div>
+    </section>
 
- <h1 style="font-size:65px">For Bushra</h1>
- <p class="small">A little gift, made just for you</p>
- <button class="action" onclick="go('p2')">Open your gift ♡</button>
- <div class="corner-flower bottom-left">🌷</div>
- <div class="corner-flower bottom-right">🌸</div>
-</section>
+    <section class="site hidden" id="birthdayScreen">
+      <header class="topbar">
+        <a class="brand" href="#home">B<span>♡</span></a>
+        <button class="music-btn" id="musicBtn">♫ <span>Gaana chalao</span></button>
+      </header>
 
-<!-- 2. FLOWER WALL -->
-<section id="p2" class="page">
- <div class="flower-wall" id="flowerWall"></div>
- <div class="flower-overlay"></div>
- <div class="flower-title">
-  <p class="small">A garden full of love</p>
-  <h1>For someone special</h1>
-  <button class="action" onclick="go('p3')">Continue ♡</button>
- </div>
-</section>
+      <section class="hero section" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">EK DUNIYA… SIRF AAPKE NAAM</p>
+          <h1>Khubsurat si<br><em>meri Bushra.</em></h1>
+          <p>Har phool ki khushboo mein, har sitare ki chamak mein… aaj bas aapka hi zikr hai.</p>
+          <a class="primary-btn link-btn" href="#garden">Aage dekhiye <span>↓</span></a>
+        </div>
+        <div class="hero-art">
+          <div class="halo"></div><div class="flower flower-one">✿</div><div class="flower flower-two">❀</div>
+          <div class="couple-art"><span>♡</span><div class="person p1"></div><div class="person p2"></div></div>
+          <div class="floating-heart">♡</div>
+        </div>
+      </section>
 
-<!-- 3. FROM ME TO YOU -->
-<section id="p3" class="page center paper">
- <div class="corner-flower top-left">🌹</div>
- <p class="small">A little surprise for you</p>
- <h1>From me to you.</h1>
- <p class="small">This is how much I love you</p>
+      <section class="section garden" id="garden">
+        <p class="eyebrow">A LITTLE FLOWER GARDEN</p>
+        <h2>Aapke liye kuch <em>phool…</em></h2>
+        <p class="section-intro">Kuch baatein phoolon ki tarah hoti hain—khamosh, magar dil ko khush kar dene wali.</p>
+        <div class="flower-row"><span>🌷</span><span>🌸</span><span>🌼</span><span>🌹</span><span>🌺</span></div>
+        <blockquote>“Aapki maujoodgi se aam sa din bhi khaas ban jaata hai.”</blockquote>
+      </section>
 
- <div class="couple">
-  <div class="person one"></div>
-  <div class="person two"></div>
-  <div class="heart-between">♡</div>
- </div>
+      <section class="section gallery" id="gallery">
+        <p class="eyebrow">YAADON KA CHHOTA SA KONA</p>
+        <h2>Our little <em>moments</em></h2>
+        <p class="section-intro">In khaali frames mein baad mein apni pasandeeda tasveerein lagaiye.</p>
+        <div class="photo-grid">
+          <div class="photo-card"><div class="photo-placeholder">✿</div><span>Ek pyaari si yaad</span></div>
+          <div class="photo-card offset"><div class="photo-placeholder">♡</div><span>Muskurahat wali yaad</span></div>
+          <div class="photo-card"><div class="photo-placeholder">✧</div><span>Sirf humari yaad</span></div>
+        </div>
+      </section>
 
- <p class="small">Made with love, especially for Bushra</p>
- <button class="action" onclick="go('p4')">Next page ♡</button>
-</section>
+      <section class="section reasons" id="reasons">
+        <p class="eyebrow">100 CHHOTI-CHHOTI WAJAHEN</p>
+        <h2>Aap khaas kyun hain? <em>Yeh dekhiye…</em></h2>
+        <div class="reason-card">
+          <span class="reason-count" id="reasonCount">01 / 100</span>
+          <p id="reasonText">Aapki muskurahat din ko roshan kar deti hai.</p>
+          <button class="outline-btn" id="nextReason">Agli wajah <span>→</span></button>
+        </div>
+      </section>
 
-<!-- 4. QUOTE -->
-<section id="p4" class="page center paper">
- <div class="quote">
-  In your <em>smile</em>, I found my peace.<br>
-  In your <em>love</em>, I found my home.
- </div>
- <p class="small" style="margin-top:35px">Some things are too special for words...</p>
- <button class="action" onclick="go('p5')">One more thing ♡</button>
-</section>
+      <section class="section letter-section" id="letter">
+        <p class="eyebrow">DIL SE LIKHA HUA</p>
+        <h2>Ek khat <em>aapke naam</em></h2>
+        <article class="letter">
+          <div class="letter-top">♡ &nbsp; MERI PYAARI BUSHRA &nbsp; ♡</div>
+          <p>Kaise likhu aap kya ho…</p>
+          <p>Baag ho, mehtaab ho, ya khwaabon ka koi haseen jawaab ho.</p>
+          <p>Bas itna jaanta hoon ki aap bohot khaas hain. Aapki hansi, aapki baatein aur aapka andaaz—har cheez apni si lagti hai.</p>
+          <p>Hamesha khush rahiye, apne khwaab poore kijiye, aur yaad rakhiye ki aapki khushi bohot maayne rakhti hai.</p>
+          <p class="sign">Bohot saari duaaon ke saath,<br><em>Aapka apna ♡</em></p>
+        </article>
+      </section>
 
-<!-- 5. PASSWORD -->
-<section id="p5" class="page center">
- <div class="lock-flower">🌸</div>
- <h1>Enter Password</h1>
- <p class="small">Only you know this little secret</p>
+      <section class="final section">
+        <div class="final-heart">♡</div>
+        <p class="eyebrow">THE END… YA SHAYAD SHURUAAT</p>
+        <h2>Aap bohot <em>khaas hain.</em></h2>
+        <p>Yeh chhoti si website bas ek yaad dilane ke liye hai—kisi ki duniya mein aapki jagah bohot khoobsurat hai.</p>
+        <button class="primary-btn" id="finalBtn">Ek aakhri surprise <span>✦</span></button>
+        <p class="tiny-note hidden" id="finalMessage">Aapki har dua qubool ho. Hamesha khush rahiye, Bushra. ♡</p>
+      </section>
+      <footer>Made with ♡, sirf Bushra ke liye</footer>
+    </section>
+  </main>
 
- <div class="pin-dots">
-  <i class="pin-dot"></i><i class="pin-dot"></i>
-  <i class="pin-dot"></i><i class="pin-dot"></i>
- </div>
- <div id="pinError"></div>
-
- <div class="keypad">
-  <button class="key" onclick="keyPress('1')">1</button>
-  <button class="key" onclick="keyPress('2')">2</button>
-  <button class="key" onclick="keyPress('3')">3</button>
-  <button class="key" onclick="keyPress('4')">4</button>
-  <button class="key" onclick="keyPress('5')">5</button>
+  <audio id="birthdayAudio" loop preload="none">
+    <source src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" type="audio/mpeg">
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>
+ass="key" onclick="keyPress('5')">5</button>
   <button class="key" onclick="keyPress('6')">6</button>
   <button class="key" onclick="keyPress('7')">7</button>
   <button class="key" onclick="keyPress('8')">8</button>
