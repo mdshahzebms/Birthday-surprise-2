@@ -70,7 +70,7 @@ if (roseGarden) {
       startPetals();
     } else {
       $("errorMsg").textContent =
-        "Code sahi nahi hai. Dobara koshish kijiye.";
+        "Code sahi nahi hai Babu. Dobara koshish kijiye.";
       code = "";
       updateDots();
     }
