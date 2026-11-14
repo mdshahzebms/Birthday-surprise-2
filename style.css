@@ -2199,3 +2199,37 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
   opacity: 0 !important;
   pointer-events: none !important;
 }
+/* CAKE SLICE SEPARATION */
+#birthdayCake .cake-stage {
+  overflow: visible;
+}
+
+#birthdayCake .cake-slice {
+  position: absolute;
+  z-index: 9;
+  left: calc(50% + 65px);
+  top: 145px;
+  font-size: 65px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0, 0) scale(.5) rotate(0);
+}
+
+#birthdayCake.cut-done .cake-slice {
+  animation: sliceMoveOut 1.8s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes sliceMoveOut {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.5) rotate(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(15px, -10px) scale(.9) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(95px, 35px) scale(1) rotate(18deg);
+  }
+}
