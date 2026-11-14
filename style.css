@@ -764,3 +764,145 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform: translateX(-50%) scale(1);
   }
 }
+
+/* DUDU BUDU COUPLE */
+.dudu-budu {
+  position: relative;
+  width: 290px;
+  height: 290px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  z-index: 3;
+  animation: duduFloat 3s ease-in-out infinite;
+}
+
+.dudu, .budu {
+  position: relative;
+  width: 125px;
+  height: 220px;
+  transform-origin: bottom center;
+}
+
+.dudu { transform: rotate(-5deg); }
+.budu { transform: rotate(5deg); }
+
+.bear-face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 12px;
+  top: 20px;
+  border-radius: 48% 48% 45% 45%;
+  background: #f0c99f;
+  border: 3px solid #bd8b68;
+  z-index: 2;
+}
+
+.bear-ear {
+  position: absolute;
+  top: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e9bd91;
+  border: 3px solid #bd8b68;
+}
+
+.bear-ear.left { left: 13px; }
+.bear-ear.right { right: 13px; }
+
+.bear-eye {
+  position: absolute;
+  top: 40px;
+  width: 8px;
+  height: 10px;
+  border-radius: 50%;
+  background: #38251e;
+}
+
+.bear-eye.left { left: 27px; }
+.bear-eye.right { right: 27px; }
+
+.bear-cheek {
+  position: absolute;
+  top: 57px;
+  width: 17px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ed9da5;
+}
+
+.bear-cheek.left { left: 10px; }
+.bear-cheek.right { right: 10px; }
+
+.bear-nose {
+  position: absolute;
+  top: 57px;
+  left: 43px;
+  width: 13px;
+  height: 10px;
+  border-radius: 50%;
+  background: #704538;
+}
+
+.bear-body {
+  position: absolute;
+  left: 4px;
+  bottom: 0;
+  width: 112px;
+  height: 135px;
+  border-radius: 55px 55px 30px 30px;
+  background: linear-gradient(145deg,#f1cda8,#d9a879);
+  border: 3px solid #bd8b68;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  color: #fff7ed;
+}
+
+.bear-body span {
+  margin-top: -15px;
+}
+
+.budu .bear-face,
+.budu .bear-ear,
+.budu .bear-body {
+  background-color: #f7dce5;
+}
+
+.budu .bear-face {
+  background: #f8e0e5;
+  border-color: #d69aaa;
+}
+
+.budu .bear-ear,
+.budu .bear-body {
+  border-color: #d69aaa;
+}
+
+.budu .bear-body {
+  background: linear-gradient(145deg,#f8dce5,#e9aabe);
+}
+
+.couple-heart {
+  position: absolute;
+  top: 5px;
+  left: 47%;
+  color: #d85c88;
+  font-size: 28px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes duduFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media(max-width:700px) {
+  .dudu-budu {
+    transform: scale(.85);
+    transform-origin: center bottom;
+  }
+}
