@@ -1217,3 +1217,96 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform-origin: bottom center;
   }
 }
+/* DUDU BUBU GARDEN WALKING */
+#roseGarden {
+  position: relative;
+  overflow: hidden;
+}
+
+#roseGarden .garden-walkers {
+  position: absolute;
+  left: -155px;
+  bottom: 7px;
+  width: 145px;
+  height: 120px;
+  z-index: 12;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#roseGarden.garden-active .garden-walkers {
+  visibility: visible;
+  animation: duduBubuGardenWalk 22s linear infinite;
+}
+
+#roseGarden .garden-cartoon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 330px;
+  height: 270px;
+  transform: scale(.42);
+  transform-origin: bottom left;
+  animation: none !important;
+}
+
+#roseGarden .garden-cartoon .cartoon-bear {
+  animation: gardenBearBob .38s ease-in-out infinite alternate;
+}
+
+#roseGarden .garden-cartoon .leg-left {
+  animation: gardenLegLeft .38s ease-in-out infinite alternate;
+  transform-origin: 50% 0;
+}
+
+#roseGarden .garden-cartoon .leg-right {
+  animation: gardenLegRight .38s ease-in-out infinite alternate;
+  transform-origin: 50% 0;
+}
+
+#roseGarden .garden-cartoon .arm-left {
+  animation: gardenArmLeft .38s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+#roseGarden .garden-cartoon .arm-right {
+  animation: gardenArmRight .38s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+@keyframes duduBubuGardenWalk {
+  from { left: -155px; }
+  to { left: calc(100% + 155px); }
+}
+
+@keyframes gardenBearBob {
+  from { translate: 0 0; }
+  to { translate: 0 -3px; }
+}
+
+@keyframes gardenLegLeft {
+  from { rotate: -18deg; }
+  to { rotate: 18deg; }
+}
+
+@keyframes gardenLegRight {
+  from { rotate: 18deg; }
+  to { rotate: -18deg; }
+}
+
+@keyframes gardenArmLeft {
+  from { rotate: 12deg; }
+  to { rotate: -12deg; }
+}
+
+@keyframes gardenArmRight {
+  from { rotate: -12deg; }
+  to { rotate: 12deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #roseGarden.garden-active .garden-walkers {
+    animation: none;
+    left: 34%;
+  }
+}
