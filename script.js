@@ -255,5 +255,50 @@ if (roseGarden) {
 
 });
                           
+/* =================================
+   VINYL PLAYER AUDIO CONNECTION
+================================= */
 
+(() => {
+  const audio = document.getElementById("birthdayAudio");
+  const player = document.getElementById("vinylSection");
+  const playButton = document.getElementById("vinylToggle");
+  const status = document.getElementById("vinylStatus");
+
+  if (!audio || !player || !playButton || !status) return;
+
+  function updateVinyl() {
+    const playing = !audio.paused && !audio.ended;
+
+    player.classList.toggle("is-playing", playing);
+
+    playButton.textContent = playing
+      ? "Ⅱ Gaana Rokein"
+      : "▶ Gaana Chalao";
+
+    status.textContent = playing
+      ? "Abhi aapke liye baj raha hai ♥"
+      : "Gaana shuru karne ke liye play karein";
+  }
+
+  playButton.addEventListener("click", async () => {
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch (error) {
+        status.textContent = "Gaana shuru nahi hua, dobara try karein";
+      }
+    } else {
+      audio.pause();
+    }
+
+    updateVinyl();
+  });
+
+  audio.addEventListener("play", updateVinyl);
+  audio.addEventListener("pause", updateVinyl);
+  audio.addEventListener("ended", updateVinyl);
+
+  updateVinyl();
+})();
 
