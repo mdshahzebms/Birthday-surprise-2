@@ -1310,3 +1310,48 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     left: 34%;
   }
 }
+/* REAL WALKING MOTION FIX */
+#roseGarden .garden-cartoon .cartoon-bear {
+  animation: bearWalkBounce .38s ease-in-out infinite alternate !important;
+}
+
+#roseGarden .garden-cartoon .leg-left {
+  animation: legWalkLeft .38s ease-in-out infinite alternate !important;
+}
+
+#roseGarden .garden-cartoon .leg-right {
+  animation: legWalkRight .38s ease-in-out infinite alternate !important;
+}
+
+#roseGarden .garden-cartoon .arm-left {
+  animation: armWalkLeft .38s ease-in-out infinite alternate !important;
+}
+
+#roseGarden .garden-cartoon .arm-right {
+  animation: armWalkRight .38s ease-in-out infinite alternate !important;
+}
+
+@keyframes bearWalkBounce {
+  from { translate: 0 0; }
+  to { translate: 0 -7px; }
+}
+
+@keyframes legWalkLeft {
+  from { transform: rotate(-28deg) translateY(-2px); }
+  to { transform: rotate(28deg) translateY(2px); }
+}
+
+@keyframes legWalkRight {
+  from { transform: rotate(28deg) translateY(2px); }
+  to { transform: rotate(-28deg) translateY(-2px); }
+}
+
+@keyframes armWalkLeft {
+  from { transform: rotate(25deg); }
+  to { transform: rotate(-25deg); }
+}
+
+@keyframes armWalkRight {
+  from { transform: rotate(-25deg); }
+  to { transform: rotate(25deg); }
+}
