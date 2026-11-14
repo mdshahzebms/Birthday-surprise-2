@@ -516,7 +516,9 @@ window.toggleLoveLetter = function () {
     if (cakeCut) return;
 
     cakeCut = true;
-    draggin/* ===== BIRTHDAY CAKE INTERACTION ===== */
+    draggin
+      
+      /* ===== BIRTHDAY CAKE INTERACTION ===== */
 (() => {
   const section = document.getElementById("birthdayCake");
   if (!section) return;
@@ -602,35 +604,86 @@ window.toggleLoveLetter = function () {
   knife.addEventListener("pointerup", finishDrag);
   knife.addEventListener("pointercancel", finishDrag);
 
-  function completeCakeCut() {
-    if (cutDone) return;
-    cutDone = true;
+/* ===== CAKE SCRIPT - SAFE VERSION ===== */
+(() => {
+  const section = document.getElementById("birthdayCake");
+  if (!section) return;
 
-    section.classList.add("cut-done");
-    knife.style.display = "none";
-    instruction.textContent = "Yay! Cake cut ho gaya! ❤️";
-    blowBtn.textContent = "Happy Birthday Bushra! 🎉";
-    blowBtn.disabled = false;
+  const button = document.getElementById("blowCandlesBtn");
+  const candles = document.getElementById("cakeCandles");
+  const knife = document.getElementById("cakeKnife");
+  const instruction = document.getElementById("cakeInstruction");
+  const celebration = document.getElementById("cakeCelebration");
+  const stage = document.getElementById("cakeStage");
+
+  if (!button || !candles || !knife || !instruction || !celebration || !stage) return;
+
+  let blown = false;
+  let cut = false;
+  let dragging = false;
+  let startX = 0;
+
+  button.addEventListener("click", () => {
+    if (blown || cut) return;
+    blown = true;
+
+    candles.querySelectorAll(".flame").forEach((flame, i) => {
+      setTimeout(() => {
+        flame.style.opacity = "0";
+      }, i * 150);
+    });
 
     setTimeout(() => {
-      celebration.classList.add("fall");
-      createCakeSparkles();
-    }, 650);
-  }
+      candles.style.opacity = "0";
+      knife.classList.add("show");
+      instruction.textContent = "Knife ko pakadkar cake ke beech tak kheenchiyega ❤️";
+      button.textContent = "Candles bujh gayi ❤️";
+      button.disabled = true;
+    }, 700);
+  });
 
-  function createCakeSparkles() {
-    const symbols = ["✨", "💕", "✦", "💖", "🎉"];
+  knife.addEventListener("pointerdown", event => {
+    if (!blown || cut) return;
+    dragging = true;
+    startX = event.clientX;
+    knife.setPointerCapture(event.pointerId);
+  });
 
-    for (let i = 0; i < 24; i++) {
-      const sparkle = document.createElement("span");
-      sparkle.className = "cake-sparkle";
-      sparkle.textContent = symbols[i % symbols.length];
-      sparkle.style.left = `${5 + Math.random() * 90}%`;
-      sparkle.style.top = `${45 + Math.random() * 40}%`;
-      sparkle.style.animationDelay = `${Math.random() * 1.3}s`;
-      stage.appendChild(sparkle);
+  knife.addEventListener("pointermove", event => {
+    if (!dragging || cut) return;
 
-      setTimeout(() => sparkle.remove(), 3500);
+    const dx = event.clientX - startX;
+    knife.style.left = `calc(50% + ${Math.max(-120, Math.min(120, dx))}px)`;
+    knife.style.transform = "translateX(-50%) rotate(-25deg)";
+  });
+
+  function stopDrag() {
+    if (!dragging || cut) return;
+    dragging = false;
+
+    const a = knife.getBoundingClientRect();
+    const b = stage.getBoundingClientRect();
+    const knifeCenter = a.left + a.width / 2;
+    const stageCenter = b.left + b.width / 2;
+
+    if (Math.abs(knifeCenter - stageCenter) < 70) {
+      cut = true;
+      section.classList.add("cut-done");
+      knife.style.display = "none";
+      instruction.textContent = "Cake cut ho gaya! ❤️";
+      button.disabled = false;
+      button.textContent = "Happy Birthday Bushra! 🎉";
+
+      setTimeout(() => {
+        celebration.classList.add("fall");
+      }, 700);
+    } else {
+      instruction.textContent = "Knife ko cake ke beech tak kheenchiyega ❤️";
+      knife.style.left = "50%";
+      knife.style.transform = "translateX(110px) rotate(-25deg)";
     }
   }
+
+  knife.addEventListener("pointerup", stopDrag);
+  knife.addEventListener("pointercancel", stopDrag);
 })();
