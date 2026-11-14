@@ -322,3 +322,22 @@ if (roseGarden) {
       : "Khat kholiye ♡";
   });
 })();
+window.toggleLoveLetter = function () {
+  const letter = document.getElementById("loveLetter");
+  const content = document.getElementById("letterContent");
+  const button = document.getElementById("letterOpenBtn");
+
+  if (!letter || !content || !button) {
+    console.error("Love Letter elements nahi mile");
+    return;
+  }
+
+  const opening = content.hidden;
+
+  content.hidden = !opening;
+  letter.classList.toggle("open", opening);
+
+  button.textContent = opening
+    ? "Khat band kijiye ♡"
+    : "Khat kholiye ♡";
+};
