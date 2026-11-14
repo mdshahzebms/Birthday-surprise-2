@@ -2279,3 +2279,28 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform: translate(85px,28px) rotate(12deg) scale(.96);
   }
 }
+/* BRING CAKE SLICE TO FRONT */
+#birthdayCake .cake {
+  overflow: visible !important;
+}
+
+#birthdayCake .cake-piece {
+  position: absolute;
+  z-index: 20 !important;
+  overflow: visible !important;
+  transform-style: preserve-3d;
+}
+
+#birthdayCake .cake-slice-piece {
+  z-index: 50 !important;
+  transform: translateZ(40px);
+}
+
+#birthdayCake .cake-slice-top,
+#birthdayCake .cake-slice-side {
+  z-index: 51;
+}
+
+#birthdayCake .cake-slice-gap {
+  z-index: 10;
+}
