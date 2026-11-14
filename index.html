@@ -1,323 +1,385 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#4b1730">
-  <title>Bushra ke naam — Ek khaas surprise</title>
+
+  <title>Bushra ke Naam ❤️</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="petal-layer" id="petals" aria-hidden="true"></div>
 
-  <main>
-    <section class="intro screen" id="intro">
-      <div class="intro-glow"></div>
-      <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
-      <div class="gift-wrap" id="giftWrap" role="button" tabindex="0" aria-label="Gift kholiye">
-        <div class="gift-bow"><i></i><i></i></div>
-        <div class="gift-lid"></div>
-        <div class="gift-box"><span>♡</span></div>
+  <!-- Falling petals -->
+  <div class="petal-layer" id="petals"></div>
+
+  <!-- INTRO SCREEN -->
+  <section class="screen intro" id="intro">
+
+    <div class="intro-glow"></div>
+
+    <p class="eyebrow">EK CHHOTI SI SURPRISE</p>
+
+    <h1>Bushra ke liye<br><em>kuch khaas...</em></h1>
+
+    <p class="muted">
+      Ek chhoti si duniya, sirf aapke liye.
+    </p>
+
+    <div class="gift-wrap" id="giftWrap" role="button" tabindex="0" aria-label="Gift kholiye">
+
+      <div class="gift-bow">
+        <i></i>
+        <i></i>
       </div>
-      <h1>Sirf aapke liye,<br><em>Bushra.</em></h1>
-      <p class="muted">Ek chhoti si duniya, jisme har cheez aapke naam hai.</p>
-      <button class="primary-btn" id="openGift">Surprise kholiye <span>✦</span></button>
-      <p class="tiny-note">Aahista se… yeh sab aapke liye hai</p>
-    </section>
 
-    <section class="lock screen hidden" id="lockScreen">
-      <div class="lock-card">
-        <div class="seal">♡</div>
-        <p class="eyebrow">SIRF AAPKE LIYE</p>
-        <h2>Ek chhota sa secret</h2>
-        <p class="muted">Woh 4 digit code likhiye jo sirf aap jaanti hain.</p>
-        <div class="dots" id="dots"><b></b><b></b><b></b><b></b></div>
-        <div class="keypad" id="keypad">
-          <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
-          <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
-          <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
-          <button class="soft-key" data-key="clear">⌫</button><button data-key="0">0</button><button class="soft-key" data-key="enter">↵</button>
-        </div>
-        <p class="error" id="errorMsg"></p>
+      <div class="gift-lid"></div>
+
+      <div class="gift-box">
+        <span>♡</span>
       </div>
+
+    </div>
+
+    <button class="primary-btn" id="openGift">
+      Surprise kholiye ✨
+    </button>
+
+    <p class="tiny-note">
+      Is chhote se gift mein bohot saara pyaar hai.
+    </p>
+
+  </section>
+
+
+  <!-- PASSWORD SCREEN -->
+  <section class="screen lock hidden" id="lockScreen">
+
+    <div class="lock-card">
+
+      <div class="seal">♡</div>
+
+      <p class="eyebrow">SIRF BUSHRA KE LIYE</p>
+
+      <h2>Ek chhota sa secret</h2>
+
+      <p class="muted">
+        Apna special code enter kijiye.
+      </p>
+
+      <div class="dots" id="dots">
+        <b></b>
+        <b></b>
+        <b></b>
+        <b></b>
+      </div>
+
+      <div class="keypad" id="keypad">
+
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+        <button data-key="6">6</button>
+
+        <button data-key="7">7</button>
+        <button data-key="8">8</button>
+        <button data-key="9">9</button>
+
+        <button class="soft-key" data-key="clear">⌫</button>
+        <button data-key="0">0</button>
+        <button class="soft-key" data-key="enter">♡</button>
+
+      </div>
+
+      <p class="error" id="errorMsg"></p>
+
+      <p class="tiny-note">
+        Aapke liye ek pyaari si duniya intezaar kar rahi hai.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN BIRTHDAY WEBSITE -->
+  <main class="site hidden" id="birthdayScreen">
+
+    <!-- NAVIGATION -->
+    <nav class="topbar">
+
+      <a href="#home" class="brand">
+        B<span>♡</span>
+      </a>
+
+      <button class="music-btn" id="musicBtn">
+        ♫ <span>Gaana chalao</span>
+      </button>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">EK KHOOBSURAT DIN KE NAAM</p>
+
+        <h1>Happy Birthday<br><em>Bushra ❤️</em></h1>
+
+        <p>
+          Aaj ka din aapke naam. Aapki muskurahat,
+          aapki khushi aur aapke saare khoobsurat
+          khwaab hamesha yun hi chamakte rahein.
+        </p>
+
+        <a href="#garden" class="primary-btn link-btn">
+          Chaliye shuru karein ♡
+        </a>
+
+      </div>
+
+      <div class="hero-art">
+
+        <div class="halo"></div>
+
+        <div class="couple-art">
+          <div class="person p1"></div>
+          <div class="person p2"></div>
+          <span>♥</span>
+        </div>
+
+        <div class="flower flower-one">✿</div>
+        <div class="flower flower-two">❀</div>
+        <div class="floating-heart">♡</div>
+
+      </div>
+
     </section>
 
-    <section class="site hidden" id="birthdayScreen">
-      <header class="topbar">
-        <a class="brand" href="#home">B<span>♡</span></a>
-        <button class="music-btn" id="musicBtn">♫ <span>Gaana chalao</span></button>
-      </header>
 
-      <section class="hero section" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow">EK DUNIYA… SIRF AAPKE NAAM</p>
-          <h1>Khubsurat si<br><em>meri Bushra.</em></h1>
-          <p>Har phool ki khushboo mein, har sitare ki chamak mein… aaj bas aapka hi zikr hai.</p>
-          <a class="primary-btn link-btn" href="#garden">Aage dekhiye <span>↓</span></a>
-        </div>
-        <div class="hero-art">
-          <div class="halo"></div><div class="flower flower-one">✿</div><div class="flower flower-two">❀</div>
-          <div class="couple-art"><span>♡</span><div class="person p1"></div><div class="person p2"></div></div>
-          <div class="floating-heart">♡</div>
-        </div>
-      </section>
+    <!-- FLOWER GARDEN -->
+    <section class="section garden" id="garden">
 
-      <section class="section garden" id="garden">
-        <p class="eyebrow">A LITTLE FLOWER GARDEN</p>
-        <h2>Aapke liye kuch <em>phool…</em></h2>
-        <p class="section-intro">Kuch baatein phoolon ki tarah hoti hain—khamosh, magar dil ko khush kar dene wali.</p>
-        <div class="flower-row"><span>🌷</span><span>🌸</span><span>🌼</span><span>🌹</span><span>🌺</span></div>
-        <blockquote>“Aapki maujoodgi se aam sa din bhi khaas ban jaata hai.”</blockquote>
-      </section>
+      <p class="eyebrow">EK CHHOTI SI DUNIYA</p>
 
-      <section class="section gallery" id="gallery">
-        <p class="eyebrow">YAADON KA CHHOTA SA KONA</p>
-        <h2>Our little <em>moments</em></h2>
-        <p class="section-intro">In khaali frames mein baad mein apni pasandeeda tasveerein lagaiye.</p>
-        <div class="photo-grid">
-          <div class="photo-card"><div class="photo-placeholder">✿</div><span>Ek pyaari si yaad</span></div>
-          <div class="photo-card offset"><div class="photo-placeholder">♡</div><span>Muskurahat wali yaad</span></div>
-          <div class="photo-card"><div class="photo-placeholder">✧</div><span>Sirf humari yaad</span></div>
-        </div>
-      </section>
+      <h2>Aapke naam ka <em>garden</em></h2>
 
-      <section class="section reasons" id="reasons">
-        <p class="eyebrow">100 CHHOTI-CHHOTI WAJAHEN</p>
-        <h2>Aap khaas kyun hain? <em>Yeh dekhiye…</em></h2>
-        <div class="reason-card">
-          <span class="reason-count" id="reasonCount">01 / 100</span>
-          <p id="reasonText">Aapki muskurahat din ko roshan kar deti hai.</p>
-          <button class="outline-btn" id="nextReason">Agli wajah <span>→</span></button>
-        </div>
-      </section>
+      <p class="section-intro">
+        Har phool ek dua hai, har pankhudi ek khushi.
+        Kaash aapki zindagi hamesha aise hi khushboo
+        se bhari rahe.
+      </p>
 
-      <section class="section letter-section" id="letter">
-        <p class="eyebrow">DIL SE LIKHA HUA</p>
-        <h2>Ek khat <em>aapke naam</em></h2>
-        <article class="letter">
-          <div class="letter-top">♡ &nbsp; MERI PYAARI BUSHRA &nbsp; ♡</div>
-          <p>Kaise likhu aap kya ho…</p>
-          <p>Baag ho, mehtaab ho, ya khwaabon ka koi haseen jawaab ho.</p>
-          <p>Bas itna jaanta hoon ki aap bohot khaas hain. Aapki hansi, aapki baatein aur aapka andaaz—har cheez apni si lagti hai.</p>
-          <p>Hamesha khush rahiye, apne khwaab poore kijiye, aur yaad rakhiye ki aapki khushi bohot maayne rakhti hai.</p>
-          <p class="sign">Bohot saari duaaon ke saath,<br><em>Aapka apna ♡</em></p>
-        </article>
-      </section>
+      <div class="flower-row">
+        <span>🌷</span>
+        <span>🌸</span>
+        <span>🌹</span>
+        <span>🌺</span>
+        <span>🌷</span>
+      </div>
 
-      <section class="final section">
-        <div class="final-heart">♡</div>
-        <p class="eyebrow">THE END… YA SHAYAD SHURUAAT</p>
-        <h2>Aap bohot <em>khaas hain.</em></h2>
-        <p>Yeh chhoti si website bas ek yaad dilane ke liye hai—kisi ki duniya mein aapki jagah bohot khoobsurat hai.</p>
-        <button class="primary-btn" id="finalBtn">Ek aakhri surprise <span>✦</span></button>
-        <p class="tiny-note hidden" id="finalMessage">Aapki har dua qubool ho. Hamesha khush rahiye, Bushra. ♡</p>
-      </section>
-      <footer>Made with ♡, sirf Bushra ke liye</footer>
+      <blockquote>
+        "Aapki muskurahat se khoobsurat
+        koi nazara nahi."
+      </blockquote>
+
     </section>
+
+
+    <!-- PHOTO GALLERY -->
+    <section class="section gallery" id="gallery">
+
+      <p class="eyebrow">KHOOBSURAT YAADEN</p>
+
+      <h2>Our little <em>memories</em></h2>
+
+      <p class="section-intro">
+        Kuch tasveerein, kuch yaadein aur bohot saari
+        pyaari baatein.
+      </p>
+
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <div class="photo-placeholder">🌸</div>
+          <span>Yaad 01 ♡</span>
+        </div>
+
+        <div class="photo-card offset">
+          <div class="photo-placeholder">💕</div>
+          <span>Yaad 02 ♡</span>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-placeholder">🌷</div>
+          <span>Yaad 03 ♡</span>
+        </div>
+
+        <div class="photo-card offset">
+          <div class="photo-placeholder">✨</div>
+          <span>Yaad 04 ♡</span>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-placeholder">💗</div>
+          <span>Yaad 05 ♡</span>
+        </div>
+
+        <div class="photo-card offset">
+          <div class="photo-placeholder">🌹</div>
+          <span>Yaad 06 ♡</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 100 REASONS -->
+    <section class="section reasons" id="reasons">
+
+      <p class="eyebrow">100 CHHOTI CHHOTI BAATEIN</p>
+
+      <h2>100 wajahen <em>aap khaas kyun hain</em></h2>
+
+      <p class="section-intro">
+        Har wajah ek chhoti si baat hai,
+        jo aapko aur bhi khaas banati hai.
+      </p>
+
+      <div class="reason-card">
+
+        <span class="reason-count" id="reasonCount">
+          01 / 20
+        </span>
+
+        <p id="reasonText">
+          Aapki muskurahat din ko roshan kar deti hai.
+        </p>
+
+        <button class="outline-btn" id="nextReason">
+          Agli wajah dekhiye ♡
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOVE LETTER -->
+    <section class="section letter-section" id="letter">
+
+      <p class="eyebrow">DIL SE LIKHA HUA</p>
+
+      <h2>Ek chhota sa <em>letter</em></h2>
+
+      <div class="letter">
+
+        <div class="letter-top">
+          DEAR BUSHRA ♡
+        </div>
+
+        <p>
+          Pata nahi kaise likhun ki aap mere liye
+          kitni khaas hain. Bas itna jaanta hoon ki
+          aapki khushi mere liye bohot maayne rakhti hai.
+        </p>
+
+        <p>
+          Aapke saath judi har chhoti si baat,
+          har muskurahat aur har yaad mere liye
+          anmol hai.
+        </p>
+
+        <p>
+          Meri dua hai ki aapki zindagi mein
+          hamesha khushiyan rahein. Aapke har
+          khwaab ko ek khoobsurat manzil mile.
+        </p>
+
+        <p>
+          Aap hamesha aise hi muskurati rahiye.
+          Aap bohot khaas hain.
+        </p>
+
+        <p class="sign">
+          Hamesha aapka ♡
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL SURPRISE -->
+    <section class="section final" id="final">
+
+      <div class="final-heart">♥</div>
+
+      <p class="eyebrow">BAS EK AAKHRI BAAT</p>
+
+      <h2>Aapke liye <em>ek surprise</em></h2>
+
+      <p>
+        Is poori website mein ek hi baat chhupi hai:
+        aapki khushi bohot khaas hai.
+      </p>
+
+      <button class="primary-btn" id="finalBtn">
+        Aakhri surprise dekhiye ✨
+      </button>
+
+      <div id="finalMessage" class="hidden">
+
+        <h2 style="margin-top:35px">
+          Happy Birthday Bushra ❤️
+        </h2>
+
+        <p>
+          Aapki zindagi hamesha phoolon ki tarah
+          khoobsurat aur sitaaron ki tarah roshan rahe.
+        </p>
+
+        <div style="font-size:35px">
+          🌹 💗 🌸 ✨
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      MADE WITH LOVE ♡ JUST FOR BUSHRA
+    </footer>
+
   </main>
 
-  <audio id="birthdayAudio" loop preload="none">
-    <source src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" type="audio/mpeg">
+
+  <!-- MUSIC FILE -->
+  <audio
+    id="birthdayAudio"
+    src="music/Jeena%20Jeena%20(From%20Badlapur).mp3"
+    preload="none"
+    loop>
   </audio>
+
+
+  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
-</body>
-</html>
-ass="key" onclick="keyPress('5')">5</button>
-  <button class="key" onclick="keyPress('6')">6</button>
-  <button class="key" onclick="keyPress('7')">7</button>
-  <button class="key" onclick="keyPress('8')">8</button>
-  <button class="key" onclick="keyPress('9')">9</button>
-  <button class="key" onclick="clearPin()">C</button>
-  <button class="key" onclick="keyPress('0')">0</button>
-  <button class="key" onclick="backPin()">⌫</button>
- </div>
- <p class="small">A little world made just for you ♡</p>
-</section>
-
-<!-- 6. PHOTO GALLERY -->
-<section id="p6" class="page">
- <div class="gallery-heading">
-  <p class="small">Every picture has a story</p>
-  <h1>Our memories.</h1>
-  <p class="small">Little moments, big feelings ♡</p>
- </div>
-
- <div class="photo-grid">
-  <div class="polaroid" style="--tilt:-4deg">
-   <div class="photo-placeholder"><span>🌸</span>Photo one</div>
-   <div class="photo-caption">A beautiful moment</div>
-  </div>
-  <div class="polaroid" style="--tilt:3deg">
-   <div class="photo-placeholder"><span>💕</span>Photo two</div>
-   <div class="photo-caption">My favourite memory</div>
-  </div>
-  <div class="polaroid" style="--tilt:2deg">
-   <div class="photo-placeholder"><span>🌷</span>Photo three</div>
-   <div class="photo-caption">A little happiness</div>
-  </div>
-  <div class="polaroid" style="--tilt:4deg">
-   <div class="photo-placeholder"><span>🧸</span>Photo four</div>
-   <div class="photo-caption">Sweet memories</div>
-  </div>
-  <div class="polaroid" style="--tilt:-3deg">
-   <div class="photo-placeholder"><span>❤️</span>Photo five</div>
-   <div class="photo-caption">A special day</div>
-  </div>
-  <div class="polaroid" style="--tilt:3deg">
-   <div class="photo-placeholder"><span>🌹</span>Photo six</div>
-   <div class="photo-caption">Always precious</div>
-  </div>
- </div>
-
- <div class="gallery-end">
-  If I could save every beautiful moment,<br>
-  I would save them all with you. ♡
- </div>
- <div style="text-align:center">
-  <button class="action" onclick="go('p7')">Read your letter ♡</button>
- </div>
-</section>
-
-<!-- 7. LETTER -->
-<section id="p7" class="page">
- <div style="text-align:center">
-  <p class="small">A few words from my heart</p>
-  <h1 style="font-size:60px">Dear Bushra...</h1>
- </div>
-
- <div class="letter-paper">
-  <h2>My Dearest Bushra, ♡</h2>
-
-  <p>
-   I don't know how to put every feeling into words, but I wanted
-   to make something special for you. Something that could remind
-   you how wonderful and important you are.
-  </p>
-
-  <p>
-   Your smile makes ordinary days feel beautiful. Every little
-   memory becomes special, and every happy moment becomes
-   something worth remembering.
-  </p>
-
-  <p>
-   I hope life brings you endless happiness, beautiful surprises,
-   and countless reasons to smile. May all your dreams find
-   their way to you.
-  </p>
-
-  <p>
-   No matter how many pages I write, there will always be more
-   lovely things left to say. So I made this little website to
-   say what words sometimes cannot.
-  </p>
-
-  <p class="sign">
-   With love,<br>
-   Always wishing you happiness ♡
-  </p>
- </div>
-
- <div class="final-words">I will always love you</div>
- <p class="final-sub">For Bushra, with love ♡</p>
-
- <div style="text-align:center">
-  <button class="action" onclick="go('p1')">Start again ♡</button>
- </div>
-</section>
-
-<button class="music-button" id="musicButton" onclick="toggleMusic()">♫ Play music</button>
-
-<audio id="birthdayAudio" loop preload="metadata">
- <source src="music/Jeena%20Jeena%20(From%20Badlapur).mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const allPages=document.querySelectorAll('.page');
-
-function go(id){
- allPages.forEach(page=>page.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});
-}
-
-const flowerWall=document.getElementById('flowerWall');
-const flowerList=['🌹','🤍','🌸','🌷','🌺'];
-
-for(let i=0;i<65;i++){
- const flower=document.createElement('span');
- flower.textContent=flowerList[i%flowerList.length];
- flower.style.animationDelay=(Math.random()*2)+'s';
- flowerWall.appendChild(flower);
-}
-
-let enteredPin='';
-const correctPin='1911';
-
-function updatePin(){
- document.querySelectorAll('.pin-dot').forEach((dot,index)=>{
-  dot.classList.toggle('on',index<enteredPin.length);
- });
-}
-
-function keyPress(number){
- if(enteredPin.length>=4)return;
- enteredPin+=number;
- updatePin();
-
- if(enteredPin.length===4){
-  setTimeout(()=>{
-   if(enteredPin===correctPin){
-    document.getElementById('pinError').textContent='';
-    enteredPin='';
-    updatePin();
-    go('p6');
-   }else{
-    document.getElementById('pinError').textContent='Try again ♡';
-    enteredPin='';
-    updatePin();
-   }
-  },250);
- }
-}
-
-function clearPin(){
- enteredPin='';
- updatePin();
- document.getElementById('pinError').textContent='';
-}
-
-function backPin(){
- enteredPin=enteredPin.slice(0,-1);
- updatePin();
-}
-
-const audio=document.getElementById('birthdayAudio');
-const musicButton=document.getElementById('musicButton');
-
-function toggleMusic(){
- if(audio.paused){
-  audio.play().then(()=>{
-   musicButton.textContent='♫ Pause music';
-  }).catch(()=>{
-   musicButton.textContent='Tap to play music';
-  });
- }else{
-  audio.pause();
-  musicButton.textContent='♫ Play music';
- }
-}
-
-audio.addEventListener('play',()=>{
- musicButton.textContent='♫ Pause music';
-});
-audio.addEventListener('pause',()=>{
- musicButton.textContent='♫ Play music';
-});
-</script>
 
 </body>
 </html>
