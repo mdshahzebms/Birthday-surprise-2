@@ -434,3 +434,117 @@ window.toggleLoveLetter = function () {
     ? "Khat band kijiye ♡"
     : "Khat kholiye ♡";
 };
+/* BIRTHDAY CAKE INTERACTION */
+(() => {
+  const stage = document.getElementById("cakeStage");
+  const candles = document.getElementById("cakeCandles");
+  const blowButton = document.getElementById("blowCandles");
+  const knife = document.getElementById("cakeKnife");
+  const smoke = document.getElementById("cakeSmoke");
+  const instruction = document.getElementById("cakeInstruction");
+  const success = document.getElementById("cakeSuccess");
+
+  if (!stage || !candles || !blowButton || !knife) return;
+
+  let candlesBlown = false;
+  let cakeCut = false;
+  let dragging = false;
+  let startX = 0;
+
+  blowButton.addEventListener("click", () => {
+    if (candlesBlown) return;
+
+    candlesBlown = true;
+    candles.classList.add("blown");
+    smoke.classList.remove("show");
+
+    void smoke.offsetWidth;
+    smoke.classList.add("show");
+
+    blowButton.textContent = "Candles Bujh Gayi ❤️";
+    blowButton.disabled = true;
+
+    instruction.textContent =
+      "Ab knife ko finger se pakadkar cake par left se right le jaiye.";
+
+    knife.classList.add("visible");
+  });
+
+  knife.addEventListener("pointerdown", event => {
+    if (!candlesBlown || cakeCut) return;
+
+    dragging = true;
+    startX = event.clientX;
+    knife.setPointerCapture(event.pointerId);
+  });
+
+  knife.addEventListener("pointermove", event => {
+    if (!dragging || cakeCut) return;
+
+    const rect = stage.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    knife.style.left = Math.max(
+      0,
+      Math.min(rect.width - knife.offsetWidth, x - 20)
+    ) + "px";
+
+    knife.style.top = Math.max(
+      0,
+      Math.min(rect.height - knife.offsetHeight, y - 20)
+    ) + "px";
+
+    const distance = Math.abs(event.clientX - startX);
+    const overCake = y > rect.height * 0.40 && y < rect.height * 0.90;
+
+    if (distance > 115 && overCake) {
+      cutCake();
+    }
+  });
+
+  knife.addEventListener("pointerup", () => {
+    dragging = false;
+  });
+
+  knife.addEventListener("pointercancel", () => {
+    dragging = false;
+  });
+
+  function cutCake() {
+    if (cakeCut) return;
+
+    cakeCut = true;
+    dragging = false;
+
+    stage.classList.add("cut");
+    knife.classList.remove("visible");
+
+    instruction.textContent = "Cake cut ho gaya! ❤️";
+
+    setTimeout(() => {
+      success.classList.remove("hidden");
+      blowButton.classList.add("hidden");
+      instruction.classList.add("hidden");
+
+      for (let i = 0; i < 35; i++) {
+        const piece = document.createElement("span");
+        piece.textContent = ["💗", "✨", "🌸", "🎀"][
+          Math.floor(Math.random() * 4)
+        ];
+
+        piece.style.position = "fixed";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = "-25px";
+        piece.style.fontSize = "20px";
+        piece.style.pointerEvents = "none";
+        piece.style.zIndex = "99999";
+        piece.style.animation = `fall ${3 + Math.random() * 2}s linear forwards`;
+
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 5500);
+      }
+    }, 900);
+  }
+})();
