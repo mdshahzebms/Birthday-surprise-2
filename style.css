@@ -2199,37 +2199,83 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
   opacity: 0 !important;
   pointer-events: none !important;
 }
-/* CAKE SLICE SEPARATION */
-#birthdayCake .cake-stage {
-  overflow: visible;
+/* REAL HEART CAKE SLICE */
+#birthdayCake .cake-piece {
+  overflow: visible !important;
 }
 
-#birthdayCake .cake-slice {
+#birthdayCake .cake-slice-gap {
   position: absolute;
-  z-index: 9;
-  left: calc(50% + 65px);
-  top: 145px;
-  font-size: 65px;
+  z-index: 5;
+  top: 24px;
+  left: 132px;
+  width: 110px;
+  height: 105px;
+  clip-path: polygon(0 100%, 100% 12%, 83% 100%);
+  background: linear-gradient(
+    135deg,
+    #b9a1e7,
+    #8064b6 65%,
+    #e8ddfa
+  );
   opacity: 0;
-  pointer-events: none;
-  transform: translate(0, 0) scale(.5) rotate(0);
 }
 
-#birthdayCake.cut-done .cake-slice {
-  animation: sliceMoveOut 1.8s cubic-bezier(.2,.8,.3,1) forwards;
+#birthdayCake .cake-slice-piece {
+  position: absolute;
+  z-index: 7;
+  top: 13px;
+  left: 132px;
+  width: 110px;
+  height: 125px;
+  transform-origin: 8% 85%;
 }
 
-@keyframes sliceMoveOut {
+#birthdayCake .cake-slice-top {
+  position: absolute;
+  inset: 0 0 25px;
+  clip-path: polygon(0 100%, 100% 12%, 83% 100%);
+  background: linear-gradient(
+    145deg,
+    #fff 0%,
+    #fff 42%,
+    #e6dafa 100%
+  );
+  filter: drop-shadow(0 2px 3px rgba(80,50,130,.2));
+}
+
+#birthdayCake .cake-slice-side {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  clip-path: polygon(0 0, 100% 0, 83% 100%, 0 100%);
+  background: linear-gradient(
+    90deg,
+    #9a80ce,
+    #eee7ff,
+    #b29add
+  );
+}
+
+#birthdayCake.cut-done .cake-slice-gap {
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+
+#birthdayCake.cut-done .cake-slice-piece {
+  animation: realCakeSliceOut 1.8s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes realCakeSliceOut {
   0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(.5) rotate(0);
+    transform: translate(0,0) rotate(0) scale(1);
   }
-  25% {
-    opacity: 1;
-    transform: translate(15px, -10px) scale(.9) rotate(8deg);
+  35% {
+    transform: translate(12px,-5px) rotate(3deg) scale(1.02);
   }
   100% {
-    opacity: 1;
-    transform: translate(95px, 35px) scale(1) rotate(18deg);
+    transform: translate(85px,28px) rotate(12deg) scale(.96);
   }
 }
