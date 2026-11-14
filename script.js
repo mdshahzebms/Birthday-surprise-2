@@ -256,3 +256,57 @@ window.addEventListener("scroll", activateRoseGarden);
 window.addEventListener("resize", activateRoseGarden);
 
 setInterval(activateRoseGarden, 500);
+
+
+/* BUSHRA'S GARDEN FLOWERS */
+document.addEventListener("DOMContentLoaded", () => {
+  const garden = document.getElementById("roseGarden");
+  const flowerArea = document.getElementById("gardenFlowers");
+
+  if (!garden || !flowerArea) return;
+
+  const colors = [
+    "#f05b91", "#ff8eae", "#d94d78",
+    "#ffb6c9", "#e85d9a", "#c94d70"
+  ];
+
+  const positions = [
+    [5, 0.75], [12, 0.9], [19, 0.65],
+    [26, 1], [33, 0.8], [40, 1.1],
+    [47, 0.7], [54, 1], [61, 0.8],
+    [68, 1.1], [75, 0.75], [82, 1],
+    [89, 0.8], [95, 0.7], [15, 0.55],
+    [37, 0.6], [58, 0.6], [79, 0.55]
+  ];
+
+  positions.forEach((item, index) => {
+    const flower = document.createElement("div");
+    flower.className = "garden-rose";
+
+    flower.style.left = item[0] + "%";
+    flower.style.setProperty("--plant-size", item[1]);
+    flower.style.setProperty(
+      "--petal-color",
+      colors[index % colors.length]
+    );
+    flower.style.setProperty(
+      "--delay",
+      (index * 0.12) + "s"
+    );
+
+    flower.innerHTML = `
+      <div class="garden-stem"></div>
+      <div class="garden-leaf left"></div>
+      <div class="garden-leaf right"></div>
+      <div class="garden-bloom">
+        <i></i><i></i><i></i>
+        <i></i><i></i><i></i>
+      </div>
+    `;
+
+    flowerArea.appendChild(flower);
+  });
+
+  garden.classList.add("garden-active");
+});
+
