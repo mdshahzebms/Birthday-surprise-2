@@ -478,8 +478,14 @@ window.toggleLoveLetter = function () {
     celebration.classList.remove("fall");
     void celebration.offsetWidth;
     celebration.classList.add("fall");
+celebration.addEventListener("animationend", function hideBirthdayText() {
+  celebration.classList.add("hidden");
+}, { once: true });
 
-    const symbols = ["✨", "💜", "🌸", "🤍", "🎀", "💗"];
+setTimeout(() => {
+  celebration.classList.add("hidden");
+}, 4200);
+    const symbols = ["✨", "💜", "🌸", "🤍", "🎀", "💗", "✨", "💜", "🌸", "🤍", "🎀", "💗"];
 
     for (let i = 0; i < 40; i++) {
       const sparkle = document.createElement("span");
