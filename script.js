@@ -237,3 +237,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
                           
+
+/* OPEN ROSES WHEN GARDEN ENTERS VIEW */
+
+const roseGarden = document.querySelector(".rose-world");
+
+if (roseGarden && "IntersectionObserver" in window) {
+  const gardenObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        roseGarden.classList.add("garden-active");
+        gardenObserver.unobserve(roseGarden);
+      }
+    });
+  }, {
+    threshold: 0.45
+  });
+
+  gardenObserver.observe(roseGarden);
+}
