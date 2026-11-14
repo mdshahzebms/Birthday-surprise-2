@@ -125,51 +125,143 @@ if (roseGarden) {
   });
 
   // REASONS
-  const reasons = [
-    "Aapki muskurahat din ko roshan kar deti hai.",
-    "Aapki baaton mein ek alag hi sukoon hai.",
-    "Aap chhoti-chhoti cheezon ko khaas banati hain.",
-    "Aapka dil bohot khoobsurat hai.",
-    "Aapki hansi sun kar khushi hoti hai.",
-    "Aap apne andaaz mein sabse alag hain.",
-    "Aapki maujoodgi se mahaul achha lagta hai.",
-    "Aapke khwaab bohot pyaare hain.",
-    "Aapki saadgi dil ko chhoo jaati hai.",
-    "Aap bas aap hain, aur wahi kaafi hai.",
-    "Aapki har chhoti khushi maayne rakhti hai.",
-    "Aapki baatein yaad reh jaati hain.",
-    "Aapke saath waqt achha guzarta hai.",
-    "Aapki aankhon mein umeed chamakti hai.",
-    "Aapka hona ek pyaari si baat hai.",
-    "Aapki fikr karna achha lagta hai.",
-    "Aapki awaaz mein apnapan hai.",
-    "Aap har din ko yaadgaar bana sakti hain.",
-    "Aapki khushi bohot maayne rakhti hai.",
-    "Aap bohot khaas hain, bas isliye."
-  ];
 
-  let reasonIndex = 0;
+const reasons = [
+  "Kyunki aap meri zindagi ki sabse pyari wajah ho. ❤️",
+  "Aapki ek muskurahat mera poora din achha kar deti hai. 😊",
+  "Aapki awaaz sunke dil ko sukoon milta hai. 🎶",
+  "Aap bina kahe bhi meri baat samajh leti ho. 🫶",
+  "Aapki chhoti-chhoti baatein mujhe bahut achhi lagti hain. 🥰",
+  "Aapse baat karke kabhi mann nahi bharta. 💬",
+  "Aapka khayal bina kisi wajah ke aa jaata hai. 💭",
+  "Aapki fikr karna mujhe achha lagta hai. 🤗",
+  "Aapki khushi mere liye bahut zaroori hai. 🌸",
+  "Aap udaas hoti ho to mera dil bhi udaas ho jaata hai. 🥺",
 
-  $("nextReason")?.addEventListener("click", () => {
+  "Aap mujhe khud ko behtar banane ki wajah deti ho. 🌱",
+  "Aapke saath main bilkul apne jaisa reh sakta hoon. ❤️",
+  "Aapke saamne mujhe kuch chhupane ka mann nahi karta. 🫂",
+  "Aap meri baat ko samajhne ki koshish karti ho. 💗",
+  "Aap jis tarah meri fikr karti ho, woh mere dil ko chhoo jaata hai. 🥹",
+  "Aapki masoomiyat mujhe bahut pasand hai. 🧸",
+  "Aapki saadgi hi aapko aur bhi pyara banati hai. 🌷",
+  "Aapki muskurahat meri saari tension door kar deti hai. 😍",
+  "Aapka ek chhota sa msg bhi mere chehre par smile le aata hai. 📩",
+  "Aap meri aam si zindagi ko bhi khaas bana deti ho. ✨",
+
+  "Kyunki aap meri aadat ban chuki ho. 💞",
+  "Aapke bina din kuch adhoora sa lagta hai. 🌙",
+  "Aapka naam dekhte hi chehre par khud-ba-khud muskurahat aa jaati hai. ❤️",
+  "Aapki baatein main baar-baar yaad karta hoon. 💭",
+  "Aapka thoda sa bhi dhyaan mere liye bahut hota hai. 🥰",
+  "Aapke saath hui chhoti si baat bhi mujhe yaad reh jaati hai. 📸",
+  "Aap mujhe khaas hone ka ehsaas karwati ho. 🫶",
+  "Aapka mere paas hona mere liye bahut keemti hai. 💎",
+  "Aap mere khayalon ka sabse pyara hissa ban chuki ho. 💗",
+  "Aapke saath aane wale kal ke baare mein sochna achha lagta hai. 🌈",
+
+  "Aap khush hoti ho to main bhi khush ho jaata hoon. 😄",
+  "Aapke sapne mujhe apne sapnon jaise lagte hain. 🌠",
+  "Main chahta hoon ki aap hamesha muskurati raho. 😊",
+  "Aap duniya ki har khushi ki haqdar ho. 🎁",
+  "Aapke liye dua karna mujhe achha lagta hai. 🤲",
+  "Aapki kamyabi par mujhe dil se khushi hoti hai. 🏆",
+  "Aapki pareshani sunna mujhe kabhi bura nahi lagta. 🫂",
+  "Aapki baatein sunte rehna mujhe pasand hai. 🎧",
+  "Aapke saath chup rehna bhi achha lagta hai. 🤍",
+  "Aapke saath waqt bahut jaldi guzar jaata hai. ⏳",
+
+  "Aap meri zindagi ka sabse pyara hissa ban chuki ho. ❤️",
+  "Aapne meri zindagi ko pehle se zyada khoobsurat bana diya hai. 🌹",
+  "Aapki wajah se main bina kisi wajah ke bhi muskura deta hoon. 😁",
+  "Aapka “apna khayal rakhna” kehna bhi mujhe bahut achha lagta hai. 🥺",
+  "Aapka subah ka ek chhota sa msg mera din bana deta hai. 🌞",
+  "Aapka raat ko baat karke jaana dil ko sukoon deta hai. 🌙",
+  "Aapki fikr mein ek alag hi mithaas hai. 🍯",
+  "Aapke baat karne ka andaaz mujhe bahut pasand hai. 💬",
+  "Aapko jitna jaan raha hoon, utni hi zyada khaas lagti ho. 💖",
+  "Aapke baare mein sochna mujhe bahut achha lagta hai. 💭",
+
+  "Kyunki aap sirf khoobsurat nahi, dil ki bhi bahut achhi ho. ❤️",
+  "Aap doosron ki feelings ko samajhti ho. 🫶",
+  "Aapka achha dil mujhe bahut pasand hai. 💗",
+  "Aap jis tarah apno ki fikr karti ho, woh bahut pyara hai. 🤗",
+  "Aap doosron ki izzat karna jaanti ho. 🌷",
+  "Aapki sachchai mujhe aap par bharosa karna sikhati hai. 🤝",
+  "Aapke saath main apne dil ki baat keh sakta hoon. 💌",
+  "Aap meri baaton ko ahmiyat deti ho. 🥹",
+  "Aap meri baat poori tarah sun leti ho. 👂",
+  "Aap meri khamoshi bhi samajhne ki koshish karti ho. 🤍",
+
+  "Kyunki aap meri zindagi mein sirf ek insaan nahi, ek ehsaas ban chuki ho. 💞",
+  "Aapke saath judi har yaad mere liye bahut khaas hai. 📷",
+  "Aapki yaad kabhi bhi bina bataye aa jaati hai. 💭",
+  "Aapki tasveer dekhkar bhi mere chehre par muskurahat aa jaati hai. 🥰",
+  "Aapka naam mere liye baaki sabse alag hai. ❤️",
+  "Mere dil mein aapke liye ek alag jagah hai. 💝",
+  "Woh jagah koi aur kabhi nahi le sakta. 🔐",
+  "Aapki ahmiyat mere lafzon se kahin zyada hai. 🥹",
+  "Aapke baare mein jitna bolun, utna hi kam lagta hai. 📝",
+  "Aap mere liye sirf khaas nahi, bahut zyada khaas ho. 💖",
+
+  "Aapke saath apni chhoti-chhoti khushiyan baantna chahta hoon. 🎀",
+  "Aapke saath apne achhe pal bitana chahta hoon. 🌸",
+  "Aapke bure waqt mein aapke saath rehna chahta hoon. 🫂",
+  "Aapki pareshani door na bhi kar paun, phir bhi aapko akela nahi chhodna chahta. 🤝",
+  "Aapki muskurahat hamesha dekhna chahta hoon. 😊",
+  "Aapko kabhi jaan-bujhkar dukh nahi dena chahta. 🥺",
+  "Aapke saath hamesha pyaar aur izzat se rehna chahta hoon. ❤️",
+  "Aapki feelings mere liye bahut maayne rakhti hain. 💗",
+  "Aapko khush dekhna mere liye bahut badi baat hai. 🌻",
+  "Aapki fikr karne ke liye mujhe kisi wajah ki zaroorat nahi hai. 🫶",
+
+  "Kyunki aap meri sabse pasandida insaan ho. ❤️",
+  "Aapse baat karna meri sabse pasandida baat hai. 💬",
+  "Aap mere sabse pyare khayal ho. 💭",
+  "Aap meri muskurahat ki sabse pyari wajah ho. 😍",
+  "Aap mere dil ke sabse kareeb ho. ❤️",
+  "Aapki har chhoti baat mujhe achhi lagti hai. 🌷",
+  "Aapka thoda sa bhi dhyaan mere liye bahut khaas hai. 🥰",
+  "Aapse baat karne ke liye mujhe kisi bahaane ki zaroorat nahi padti. 📱",
+  "Aapke saath bina kisi khaas baat ke baat karna bhi achha lagta hai. 💞",
+  "Aapke saath rehne ka khayal hi dil ko khush kar deta hai. 🌈",
+
+  "Kyunki aap meri duaon ka sabse pyara hissa ho. 🤲❤️",
+  "Main chahta hoon ki aapki zindagi mein hamesha sukoon rahe. 🕊️",
+  "Main chahta hoon ki aapke saare sapne poore hon. 🌠",
+  "Main chahta hoon ki aapki muskurahat kabhi kam na ho. 😊",
+  "Main chahta hoon ki aapko kabhi apni keemat par shaq na ho. 💎",
+  "Aap jitni khaas mere liye ho, kaash aap khud ko bhi utna hi khaas samjho. 🥹",
+  "Aap meri zindagi mein aayi, iske liye main dil se shukraguzaar hoon. ❤️",
+  "Aapne mere dil mein apni ek aisi jagah bana li hai jo koi aur nahi le sakta. 🔐",
+  "Kyunki aap jaisi ho, waise hi mujhe bahut pyari ho. ❤️",
+  "Aur sabse badi wajah… kyunki aap meri zindagi mein ho. Aapko khaas banane ke liye mujhe kisi wajah ki zaroorat hi nahi. Aapka hona hi mere liye sabse badi wajah hai. ❤️🫂"
+];
+
+let reasonIndex = 0;
+
+const reasonCount = document.getElementById("reasonCount");
+const reasonText = document.getElementById("reasonText");
+const nextReason = document.getElementById("nextReason");
+
+function showReason() {
+  if (!reasonCount || !reasonText) return;
+
+  reasonCount.textContent =
+    String(reasonIndex + 1).padStart(2, "0") + " / 100";
+
+  reasonText.textContent = reasons[reasonIndex];
+}
+
+if (nextReason) {
+  nextReason.addEventListener("click", () => {
     reasonIndex = (reasonIndex + 1) % reasons.length;
-
-    const text = $("reasonText");
-    const count = $("reasonCount");
-
-    text.animate(
-      [
-        { opacity: 0, transform: "translateY(10px)" },
-        { opacity: 1, transform: "translateY(0)" }
-      ],
-      { duration: 450, easing: "ease-out" }
-    );
-
-    text.textContent = reasons[reasonIndex];
-
-    count.textContent =
-      String(reasonIndex + 1).padStart(2, "0") +
-      " / " + reasons.length;
+    showReason();
   });
+}
+
+showReason();
+
 
   // FINAL SURPRISE
   $("finalBtn")?.addEventListener("click", () => {
