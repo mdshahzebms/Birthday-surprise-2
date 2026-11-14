@@ -238,68 +238,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
                           
 
-/* CREATE BUSHRA'S ROSE GARDEN */
 
-const garden = document.getElementById("roseGarden");
-const flowerField = document.getElementById("gardenFlowers");
+/* ROSE GARDEN - FIXED ACTIVATION */
 
-if (garden && flowerField) {
+function activateRoseGarden() {
+  const garden = document.getElementById("roseGarden");
+  if (!garden) return;
 
-  const flowerColors = [
-    "#ed6695",
-    "#f28bad",
-    "#d94d78",
-    "#f6a2bd",
-    "#c94c80",
-    "#ffb4c9"
-  ];
+  const rect = garden.getBoundingClientRect();
 
-  const flowerPositions = [
-    [5, 155, .72], [13, 190, .88],
-    [21, 125, .68], [29, 215, .95],
-    [37, 145, .78], [45, 205, .9],
-    [53, 135, .72], [61, 220, 1],
-    [69, 150, .8], [77, 205, .95],
-    [85, 140, .75], [93, 190, .9],
-    [9, 95, .55], [25, 110, .6],
-    [42, 100, .58], [58, 105, .6],
-    [74, 95, .55], [89, 105, .6]
-  ];
-
-  flowerPositions.forEach((pos, index) => {
-
-    const rose = document.createElement("div");
-    rose.className = "garden-rose";
-
-    rose.style.left = pos[0] + "%";
-    rose.style.height = pos[1] + "px";
-    rose.style.setProperty("--plant-size", pos[2]);
-    rose.style.animationDelay = (index * 0.09) + "s";
-
-    const color = flowerColors[index % flowerColors.length];
-
-    rose.innerHTML = `
-      <div class="garden-stem"></div>
-      <div class="garden-leaf left"></div>
-      <div class="garden-leaf right"></div>
-      <div class="garden-bloom"
-           style="--petal-color:${color};--delay:${index * 0.16}s">
-        <i></i><i></i><i></i>
-        <i></i><i></i><i></i>
-      </div>
-    `;
-
-    flowerField.appendChild(rose);
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        garden.classList.add("garden-active");
-        observer.unobserve(garden);
-      }
-    });
-  }, { threshold: 0.25 });
-
-  observer.observe(garden);
+  if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+    garden.classList.add("garden-active");
+  }
 }
+
+window.addEventListener("scroll", activateRoseGarden);
+window.addEventListener("resize", activateRoseGarden);
+
+setInterval(activateRoseGarden, 500);
