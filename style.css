@@ -1431,3 +1431,64 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     font-size: 21px;
   }
 }
+/* BUTTERFLIES - WIDE GARDEN FLIGHT */
+#roseGarden .butterfly {
+  position: absolute;
+  display: block;
+  z-index: 25;
+  will-change: transform;
+  animation: none;
+}
+
+#roseGarden .butterfly-one {
+  left: 5%;
+  top: 25%;
+  animation: flyAcrossOne 12s linear infinite;
+}
+
+#roseGarden .butterfly-two {
+  left: 75%;
+  top: 45%;
+  animation: flyAcrossTwo 15s linear infinite;
+}
+
+#roseGarden .butterfly-three {
+  left: 15%;
+  top: 65%;
+  animation: flyAcrossThree 13s linear infinite;
+}
+
+#roseGarden .butterfly-four {
+  left: 85%;
+  top: 20%;
+  animation: flyAcrossFour 17s linear infinite;
+}
+
+@keyframes flyAcrossOne {
+  0% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(100px,-55px) rotate(15deg); }
+  50% { transform: translate(220px,25px) rotate(-15deg); }
+  75% { transform: translate(110px,75px) rotate(12deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+@keyframes flyAcrossTwo {
+  0% { transform: translate(0,0) rotate(0deg); }
+  30% { transform: translate(-120px,-65px) rotate(-15deg); }
+  60% { transform: translate(-230px,30px) rotate(15deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+@keyframes flyAcrossThree {
+  0% { transform: translate(0,0) rotate(0deg); }
+  35% { transform: translate(130px,-90px) rotate(15deg); }
+  70% { transform: translate(250px,-15px) rotate(-15deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+@keyframes flyAcrossFour {
+  0% { transform: translate(0,0) rotate(0deg); }
+  30% { transform: translate(-150px,75px) rotate(-15deg); }
+  65% { transform: translate(-260px,100px) rotate(15deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
