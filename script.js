@@ -538,73 +538,55 @@ window.toggleLoveLetter = function () {
   let startY = 0;
   let cutDone = false;
 
-  blowBtn.addEventListener("click", () => {
-    if (candlesBlown) return;
-    candlesBlown = true;
+/* ===== CAKE SCRIPT - SAFE VERSION ===== */
+(() => {
+  const section = document.getElementById("birthdayCake");
+  if (!section) return;
 
-    candles.querySelectorAll(".flame").forEach((flame, index) => {
+  const button = document.getElementById("blowCandlesBtn");
+  const candles = document.getElementById("cakeCandles");
+  const knife = document.getElementById("cakeKnife");
+  const instruction = document.getElementById("cakeInstruction");
+  const celebration = document.getElementById("cakeCelebration");
+  const stage = document.getElementById("cakeStage");
+
+  if (!button || !candles || !knife || !instruction || !celebration || !stage) return;
+
+  let blown = false;
+  let cut = false;
+  let dragging = false;
+  let startX = 0;
+
+  button.addEventListener("click", () => {
+    if (blown || cut) return;
+    blown = true;
+
+    candles.querySelectorAll(".flame").forEach((flame, i) => {
       setTimeout(() => {
-        flame.style.transition = "opacity .35s, transform .35s";
         flame.style.opacity = "0";
-        flame.style.transform = "scale(.1) translateY(-10px)";
-      }, index * 180);
+      }, i * 150);
     });
 
     setTimeout(() => {
       candles.style.opacity = "0";
       knife.classList.add("show");
-      instruction.textContent = "Ab knife ko pakadkar cake ke beech se kheenchiyega ✨";
-      blowBtn.textContent = "Knife ko ungli se kheenchiyega";
-      blowBtn.disabled = true;
-    }, 750);
+      instruction.textContent = "Knife ko pakadkar cake ke beech tak kheenchiyega ❤️";
+      button.textContent = "Candles bujh gayi ❤️";
+      button.disabled = true;
+    }, 700);
   });
 
-  knife.addEventListener("pointerdown", (event) => {
-    if (!candlesBlown || cutDone) return;
+  knife.addEventListener("pointerdown", event => {
+    if (!blown || cut) return;
     dragging = true;
     startX = event.clientX;
-    startY = event.clientY;
     knife.setPointerCapture(event.pointerId);
-    knife.style.cursor = "grabbing";
   });
 
-  knife.addEventListener("pointermove", (event) => {
-    if (!dragging || cutDone) return;
+  knife.addEventListener("pointermove", event => {
 
-    const dx = event.clientX - startX;
-    const dy = event.clientY - startY;
-
-    knife.style.left = `calc(50% + ${Math.max(-125, Math.min(125, dx))}px)`;
-    knife.style.bottom = `${Math.max(7, Math.min(115, 7 + dy))}px`;
-    knife.style.transform = "translateX(-50%) rotate(-25deg)";
-  });
-
-  function finishDrag() {
-    if (!dragging || cutDone) return;
-    dragging = false;
-    knife.style.cursor = "grab";
-
-    const knifeRect = knife.getBoundingClientRect();
-    const stageRect = stage.getBoundingClientRect();
-    const knifeCenter = knifeRect.left + knifeRect.width / 2;
-    const stageCenter = stageRect.left + stageRect.width / 2;
-
-    if (Math.abs(knifeCenter - stageCenter) < 95) {
-      completeCakeCut();
-    } else {
-      instruction.textContent = "Cake ke bilkul beech se knife kheenchiyega ❤️";
-      knife.style.transition = "left .35s, bottom .35s";
-      knife.style.left = "50%";
-      knife.style.bottom = "7px";
-      knife.style.transform = "translateX(110px) rotate(-25deg)";
-      setTimeout(() => knife.style.transition = "", 400);
-    }
-  }
-
-  knife.addEventListener("pointerup", finishDrag);
-  knife.addEventListener("pointercancel", finishDrag);
-
-/* ===== CAKE SCRIPT - SAFE VERSION ===== */
+    
+    /* ===== CAKE SCRIPT - SAFE VERSION ===== */
 (() => {
   const section = document.getElementById("birthdayCake");
   if (!section) return;
