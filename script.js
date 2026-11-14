@@ -516,35 +516,121 @@ window.toggleLoveLetter = function () {
     if (cakeCut) return;
 
     cakeCut = true;
-    dragging = false;
+    draggin/* ===== BIRTHDAY CAKE INTERACTION ===== */
+(() => {
+  const section = document.getElementById("birthdayCake");
+  if (!section) return;
 
-    stage.classList.add("cut");
-    knife.classList.remove("visible");
+  const blowBtn = document.getElementById("blowCandlesBtn");
+  const instruction = document.getElementById("cakeInstruction");
+  const candles = document.getElementById("cakeCandles");
+  const knife = document.getElementById("cakeKnife");
+  const celebration = document.getElementById("cakeCelebration");
+  const stage = document.getElementById("cakeStage");
 
-    instruction.textContent = "Cake cut ho gaya! ❤️";
+  if (!blowBtn || !knife || !celebration || !stage) return;
+
+  let candlesBlown = false;
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let cutDone = false;
+
+  blowBtn.addEventListener("click", () => {
+    if (candlesBlown) return;
+    candlesBlown = true;
+
+    candles.querySelectorAll(".flame").forEach((flame, index) => {
+      setTimeout(() => {
+        flame.style.transition = "opacity .35s, transform .35s";
+        flame.style.opacity = "0";
+        flame.style.transform = "scale(.1) translateY(-10px)";
+      }, index * 180);
+    });
 
     setTimeout(() => {
-      success.classList.remove("hidden");
-      blowButton.classList.add("hidden");
-      instruction.classList.add("hidden");
+      candles.style.opacity = "0";
+      knife.classList.add("show");
+      instruction.textContent = "Ab knife ko pakadkar cake ke beech se kheenchiyega ✨";
+      blowBtn.textContent = "Knife ko ungli se kheenchiyega";
+      blowBtn.disabled = true;
+    }, 750);
+  });
 
-      for (let i = 0; i < 35; i++) {
-        const piece = document.createElement("span");
-        piece.textContent = ["💗", "✨", "🌸", "🎀"][
-          Math.floor(Math.random() * 4)
-        ];
+  knife.addEventListener("pointerdown", (event) => {
+    if (!candlesBlown || cutDone) return;
+    dragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    knife.setPointerCapture(event.pointerId);
+    knife.style.cursor = "grabbing";
+  });
 
-        piece.style.position = "fixed";
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.top = "-25px";
-        piece.style.fontSize = "20px";
-        piece.style.pointerEvents = "none";
-        piece.style.zIndex = "99999";
-        piece.style.animation = `fall ${3 + Math.random() * 2}s linear forwards`;
+  knife.addEventListener("pointermove", (event) => {
+    if (!dragging || cutDone) return;
 
-        document.body.appendChild(piece);
-        setTimeout(() => piece.remove(), 5500);
-      }
-    }, 900);
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+
+    knife.style.left = `calc(50% + ${Math.max(-125, Math.min(125, dx))}px)`;
+    knife.style.bottom = `${Math.max(7, Math.min(115, 7 + dy))}px`;
+    knife.style.transform = "translateX(-50%) rotate(-25deg)";
+  });
+
+  function finishDrag() {
+    if (!dragging || cutDone) return;
+    dragging = false;
+    knife.style.cursor = "grab";
+
+    const knifeRect = knife.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    const knifeCenter = knifeRect.left + knifeRect.width / 2;
+    const stageCenter = stageRect.left + stageRect.width / 2;
+
+    if (Math.abs(knifeCenter - stageCenter) < 95) {
+      completeCakeCut();
+    } else {
+      instruction.textContent = "Cake ke bilkul beech se knife kheenchiyega ❤️";
+      knife.style.transition = "left .35s, bottom .35s";
+      knife.style.left = "50%";
+      knife.style.bottom = "7px";
+      knife.style.transform = "translateX(110px) rotate(-25deg)";
+      setTimeout(() => knife.style.transition = "", 400);
+    }
+  }
+
+  knife.addEventListener("pointerup", finishDrag);
+  knife.addEventListener("pointercancel", finishDrag);
+
+  function completeCakeCut() {
+    if (cutDone) return;
+    cutDone = true;
+
+    section.classList.add("cut-done");
+    knife.style.display = "none";
+    instruction.textContent = "Yay! Cake cut ho gaya! ❤️";
+    blowBtn.textContent = "Happy Birthday Bushra! 🎉";
+    blowBtn.disabled = false;
+
+    setTimeout(() => {
+      celebration.classList.add("fall");
+      createCakeSparkles();
+    }, 650);
+  }
+
+  function createCakeSparkles() {
+    const symbols = ["✨", "💕", "✦", "💖", "🎉"];
+
+    for (let i = 0; i < 24; i++) {
+      const sparkle = document.createElement("span");
+      sparkle.className = "cake-sparkle";
+      sparkle.textContent = symbols[i % symbols.length];
+      sparkle.style.left = `${5 + Math.random() * 90}%`;
+      sparkle.style.top = `${45 + Math.random() * 40}%`;
+      sparkle.style.animationDelay = `${Math.random() * 1.3}s`;
+      stage.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 3500);
+    }
   }
 })();
