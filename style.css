@@ -741,3 +741,26 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform-origin: bottom center;
   }
   }
+
+/* ROSES BLOOM ONLY WHEN GARDEN OPENS */
+.garden-rose .garden-bloom {
+  opacity: 0 !important;
+  animation: none !important;
+  transform: translateX(-50%) scale(0.05);
+}
+
+.rose-world.garden-active .garden-rose .garden-bloom {
+  animation: flowerOpen 1.4s ease-out forwards !important;
+  animation-delay: var(--delay, 0s) !important;
+}
+
+@keyframes flowerOpen {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.05);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
