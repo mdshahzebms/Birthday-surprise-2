@@ -1571,3 +1571,18 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     animation: none;
   }
 }
+/* VINYL ROTATION FIX */
+#vinylSection .vinyl-card.is-playing .vinyl-disc {
+  animation: vinylSpinFixed 3s linear infinite !important;
+  transform-origin: 50% 50% !important;
+  will-change: transform;
+}
+
+@keyframes vinylSpinFixed {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
