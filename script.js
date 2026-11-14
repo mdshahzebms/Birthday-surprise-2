@@ -26,6 +26,7 @@ if (roseGarden) {
     gardenObserver.observe(roseGarden);
   } else {
     roseGarden.classList.add("garden-active");
+    "✨", "🌸", "💗", "🌹"
   }
 }
   // GIFT OPENING
