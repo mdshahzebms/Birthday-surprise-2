@@ -1601,3 +1601,49 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform: rotate(360deg);
   }
 }
+
+/* LOVE LETTER OPENING FIX */
+.letter-open-btn {
+  display: flex;
+  margin: 15px auto 20px;
+}
+
+.letter {
+  overflow: hidden;
+}
+
+.letter-content[hidden] {
+  display: none !important;
+}
+
+.letter.open .letter-content {
+  display: block;
+  animation: letterUnfold .85s ease both;
+}
+
+.letter-content h2 {
+  font-size: 25px;
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+
+.letter-signature {
+  text-align: right;
+  color: #581b36;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  margin-top: 28px;
+}
+
+@keyframes letterUnfold {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scaleY(.96);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
