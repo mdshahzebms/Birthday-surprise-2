@@ -2196,3 +2196,370 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
 @media (max-width: 380px) {
   .cake-stage { transform: scale(.88); transform-origin: top center; margin-bottom: -35px; }
 }
+/* ===== BUSHRA'S WHITE + LAVENDER HEART CAKE ===== */
+
+#birthdayCake {
+  position: relative;
+  overflow: hidden;
+  padding: 75px 16px 85px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(225,215,255,.55), transparent 58%),
+    linear-gradient(180deg, #fffaff, #f8f3ff 55%, #fffaff);
+}
+
+#birthdayCake .cake-heading h2 {
+  color: #65518d;
+}
+
+#birthdayCake .cake-heading p {
+  color: #8879a6;
+}
+
+#birthdayCake .cake-eyebrow {
+  display: inline-block;
+  color: #9b83c6;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+#birthdayCake .cake-stage {
+  height: 345px;
+  max-width: 420px;
+  margin: 12px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+#birthdayCake .cake-glow {
+  width: 260px;
+  height: 230px;
+  border-radius: 50%;
+  background: #c9b6ff;
+  filter: blur(65px);
+  opacity: .5;
+  animation: lavenderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes lavenderGlow {
+  from { opacity: .3; transform: scale(.9); }
+  to { opacity: .65; transform: scale(1.12); }
+}
+
+#birthdayCake .cake {
+  position: absolute;
+  width: 280px;
+  height: 235px;
+  transform: translateY(12px);
+  z-index: 2;
+  animation: cakeFloat 4s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+  0%, 100% { transform: translateY(12px); }
+  50% { transform: translateY(2px); }
+}
+
+#birthdayCake .cake-shadow {
+  position: absolute;
+  width: 245px;
+  height: 34px;
+  left: 18px;
+  bottom: 14px;
+  border-radius: 50%;
+  background: rgba(89,67,130,.2);
+  filter: blur(13px);
+}
+
+#birthdayCake .cake-piece {
+  position: absolute;
+  width: 250px;
+  height: 175px;
+  left: 15px;
+  bottom: 27px;
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+}
+
+#birthdayCake .cake-side {
+  position: absolute;
+  left: 0;
+  top: 32px;
+  width: 250px;
+  height: 135px;
+  background: linear-gradient(
+    90deg,
+    #a995d5,
+    #e4dcfa 24%,
+    #fff 50%,
+    #ded2f8 76%,
+    #a995d5
+  );
+  clip-path: polygon(
+    50% 95%, 8% 57%, 2% 37%, 8% 17%,
+    22% 8%, 36% 12%, 50% 28%,
+    64% 12%, 78% 8%, 92% 17%,
+    98% 37%, 92% 57%
+  );
+  filter: drop-shadow(0 12px 9px rgba(88,66,130,.17));
+}
+
+#birthdayCake .cake-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 125px;
+  overflow: hidden;
+  clip-path: polygon(
+    50% 95%, 8% 57%, 2% 37%, 8% 17%,
+    22% 8%, 36% 12%, 50% 28%,
+    64% 12%, 78% 8%, 92% 17%,
+    98% 37%, 92% 57%
+  );
+  background:
+    radial-gradient(ellipse at 50% 30%, #fff 0%, #fbf9ff 42%, #cfc0f1 100%);
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.8);
+}
+
+#birthdayCake .cake-top::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  clip-path: polygon(
+    50% 95%, 8% 57%, 2% 37%, 8% 17%,
+    22% 8%, 36% 12%, 50% 28%,
+    64% 12%, 78% 8%, 92% 17%,
+    98% 37%, 92% 57%
+  );
+  border: 2px solid rgba(170,148,218,.35);
+  pointer-events: none;
+}
+
+#birthdayCake .cake-name {
+  position: absolute;
+  z-index: 3;
+  top: 31px;
+  left: 50%;
+  width: 150px;
+  transform: translateX(-50%);
+  color: #7963a5;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-shadow: 0 1px 2px white;
+}
+
+#birthdayCake .cake-heart {
+  position: absolute;
+  z-index: 3;
+  top: 77px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #a88bd8;
+  font-size: 18px;
+}
+
+#birthdayCake .cake-pearl {
+  position: absolute;
+  z-index: 3;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #fff, #d4c4f4 75%);
+  box-shadow: 0 1px 4px rgba(103,79,151,.25);
+}
+
+#birthdayCake .pearl-one { top: 28px; left: 40px; }
+#birthdayCake .pearl-two { top: 28px; right: 40px; }
+#birthdayCake .pearl-three { top: 65px; left: 28px; }
+#birthdayCake .pearl-four { top: 65px; right: 28px; }
+#birthdayCake .pearl-five { top: 15px; left: 50%; }
+
+#birthdayCake .cake-flower {
+  position: absolute;
+  z-index: 3;
+  color: #a58bd4;
+  font-size: 17px;
+  font-style: normal;
+  text-shadow: 0 1px 3px white;
+}
+
+#birthdayCake .flower-one { top: 17px; left: 78px; }
+#birthdayCake .flower-two { top: 17px; right: 78px; }
+
+#birthdayCake .cake-ribbon {
+  position: absolute;
+  z-index: 2;
+  top: 112px;
+  left: 3px;
+  width: 244px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #a58bd2, #eee7ff, #a58bd2);
+  opacity: .9;
+}
+
+#birthdayCake .cake-candles {
+  position: absolute;
+  z-index: 6;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 23px;
+  transition: opacity .5s ease;
+}
+
+#birthdayCake .candle {
+  position: relative;
+  display: block;
+  width: 9px;
+  height: 42px;
+  border-radius: 4px 4px 2px 2px;
+  background: repeating-linear-gradient(
+    135deg, #fff 0 5px, #bba8e8 5px 9px
+  );
+  box-shadow: 0 2px 5px rgba(91,69,136,.2);
+}
+
+#birthdayCake .flame {
+  position: absolute;
+  width: 12px;
+  height: 19px;
+  left: -1.5px;
+  top: -20px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: radial-gradient(
+    circle at 60% 65%,
+    #fffbd0 0 15%, #ffd16b 38%, #ff9950 75%
+  );
+  box-shadow: 0 0 14px 5px rgba(255,193,105,.5);
+  animation: candleFlicker .75s infinite alternate;
+}
+
+#birthdayCake .cake-candles.blown .flame {
+  animation: flameOut .45s ease forwards;
+}
+
+@keyframes flameOut {
+  to { opacity: 0; transform: translateY(-13px) scale(.2); }
+}
+
+#birthdayCake .cake-instruction {
+  min-height: 25px;
+  margin: 0 auto 18px;
+  padding: 0 12px;
+  color: #8472a5;
+  font-size: 13px;
+}
+
+#birthdayCake .cake-action {
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 30px;
+  padding: 14px 27px;
+  background: linear-gradient(135deg, #b9a5e8, #8068b5);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 9px 24px rgba(125,99,180,.25);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+#birthdayCake .cake-action:active {
+  transform: scale(.96);
+}
+
+#birthdayCake .cake-action:disabled {
+  opacity: .7;
+  cursor: default;
+}
+
+#birthdayCake.cut-done .cake-piece {
+  transform: rotateY(-13deg) scale(1.06);
+}
+
+#birthdayCake.cut-done .cake-candles {
+  opacity: 0;
+}
+
+#birthdayCake.cut-done .cake-top {
+  animation: cakeCutFlash .7s ease;
+}
+
+@keyframes cakeCutFlash {
+  50% { filter: brightness(1.18); }
+}
+
+#birthdayCake .cake-celebration {
+  position: absolute;
+  z-index: 10;
+  top: 5px;
+  left: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -100px);
+  color: #8068b5;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(25px, 7vw, 36px);
+  font-weight: 700;
+  text-shadow: 0 2px 0 white, 0 5px 15px rgba(120,94,170,.2);
+}
+
+#birthdayCake .cake-celebration strong {
+  color: #a58bd4;
+  font-size: 1.1em;
+}
+
+#birthdayCake .cake-celebration.fall {
+  animation: lavenderBirthday 3.4s cubic-bezier(.2,.75,.25,1) forwards;
+}
+
+@keyframes lavenderBirthday {
+  0% { opacity: 0; transform: translate(-50%,-120px) scale(.7) rotate(-5deg); }
+  20% { opacity: 1; }
+  70% { opacity: 1; transform: translate(-50%,115px) scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: translate(-50%,105px) scale(1) rotate(0); }
+}
+
+#birthdayCake .cake-sparkle {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  font-size: 19px;
+  animation: lavenderSparkle 2.5s ease-out forwards;
+}
+
+@keyframes lavenderSparkle {
+  from { opacity: 1; transform: translateY(0) scale(.6) rotate(0); }
+  to { opacity: 0; transform: translateY(-145px) scale(1.5) rotate(150deg); }
+}
+
+@media (max-width: 380px) {
+  #birthdayCake .cake-stage {
+    transform: scale(.9);
+    transform-origin: top center;
+    margin-bottom: -30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #birthdayCake .cake,
+  #birthdayCake .cake-glow,
+  #birthdayCake .cake-flower,
+  #birthdayCake .cake-piece {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+      }
