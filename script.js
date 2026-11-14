@@ -302,3 +302,23 @@ if (roseGarden) {
   updateVinyl();
 })();
 
+
+/* LOVE LETTER OPEN AND CLOSE */
+(() => {
+  const letter = document.getElementById("loveLetter");
+  const content = document.getElementById("letterContent");
+  const button = document.getElementById("letterOpenBtn");
+
+  if (!letter || !content || !button) return;
+
+  button.addEventListener("click", () => {
+    const opening = !letter.classList.contains("open");
+
+    letter.classList.toggle("open", opening);
+    content.hidden = !opening;
+
+    button.textContent = opening
+      ? "Khat band kijiye ♡"
+      : "Khat kholiye ♡";
+  });
+})();
