@@ -2036,3 +2036,156 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transition-duration: .01ms !important;
   }
 }
+/* ===== CAKE VISIBILITY + CUT + BIRTHDAY DROP ===== */
+
+#birthdayCake {
+  background:
+    radial-gradient(ellipse at 50% 45%, #e4d8ff 0%, transparent 55%),
+    linear-gradient(180deg, #fff 0%, #f1eaff 48%, #fff 100%);
+}
+
+#birthdayCake .cake-stage {
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(139, 108, 197, .17),
+    transparent 68%
+  );
+  border-radius: 24px;
+}
+
+#birthdayCake .cake-aura {
+  opacity: .8;
+  background: #b69ae9;
+}
+
+#birthdayCake .cake-side {
+  background: linear-gradient(
+    90deg,
+    #8e73c2 0%,
+    #c9b7ef 18%,
+    #fff 43%,
+    #f8f3ff 58%,
+    #c3afea 82%,
+    #8064b6 100%
+  );
+  filter:
+    drop-shadow(0 8px 5px rgba(75, 48, 125, .22))
+    drop-shadow(0 0 2px #8064b6);
+}
+
+#birthdayCake .cake-top {
+  background: radial-gradient(
+    ellipse at 48% 25%,
+    #fff 0%,
+    #fff 38%,
+    #e7dcff 78%,
+    #c4b0ed 100%
+  );
+  outline: 2px solid rgba(143, 111, 195, .6);
+}
+
+#birthdayCake .cake-name {
+  color: #5d438d;
+  text-shadow: 0 1px 2px #fff, 0 0 5px #fff;
+  font-size: 14px;
+}
+
+#birthdayCake .cake-heart {
+  color: #8c68c5;
+  text-shadow: 0 1px 4px #fff;
+}
+
+#birthdayCake .cake-bottom-ribbon {
+  height: 12px;
+  background: linear-gradient(
+    90deg, #7859b0, #d7c7fa, #fff, #d7c7fa, #7859b0
+  );
+  box-shadow: 0 2px 5px rgba(76, 49, 128, .3);
+}
+
+/* Animated cut line */
+#birthdayCake .cake-piece {
+  position: absolute;
+}
+
+#birthdayCake .cake-piece::after {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 0;
+  border-radius: 8px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg, #fff, #a98be3, #fff
+  );
+  box-shadow: 0 0 12px 4px rgba(151, 119, 211, .7);
+  opacity: 0;
+}
+
+#birthdayCake.cut-done .cake-piece::after {
+  animation: cakeCutLine 1s ease-in-out forwards;
+}
+
+@keyframes cakeCutLine {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  100% {
+    height: 125px;
+    opacity: 0;
+  }
+}
+
+#birthdayCake.cut-done .cake-piece {
+  animation: cakeSplitEffect 1.2s ease 0.8s forwards;
+}
+
+@keyframes cakeSplitEffect {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-5px) scale(1.04); }
+  100% { transform: translateX(0) scale(1.02); }
+}
+
+/* Birthday text: top se neeche, phir fade */
+#birthdayCake .cake-celebration.fall {
+  animation: birthdayDropFade 3.8s cubic-bezier(.2,.75,.25,1) forwards;
+}
+
+@keyframes birthdayDropFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -150px) scale(.65);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -70px) scale(1.08);
+  }
+  35% {
+    opacity: 1;
+    transform: translate(-50%, 45px) scale(1);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(-50%, 75px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 115px) scale(.85);
+  }
+}
+
+#birthdayCake .cake-action {
+  background: linear-gradient(135deg, #a88bd8, #674a9d);
+  box-shadow: 0 8px 25px rgba(94, 66, 148, .35);
+  border: 1px solid #fff;
+}
+
+#birthdayCake .cake-instruction {
+  color: #655087;
+  font-weight: 600;
+}
