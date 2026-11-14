@@ -1355,3 +1355,219 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
   from { transform: rotate(-25deg); }
   to { transform: rotate(25deg); }
 }
+/* =================================
+   PREMIUM VINYL MUSIC PLAYER
+================================= */
+
+.vinyl-section {
+  width: 100%;
+  padding: 55px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vinyl-card {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 30px 22px;
+  border-radius: 28px;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, #76264c, transparent 65%),
+    linear-gradient(145deg, #260819, #10040c);
+  border: 1px solid rgba(255,255,255,.13);
+  box-shadow: 0 20px 55px rgba(0,0,0,.25);
+  color: #fff;
+}
+
+.vinyl-heading span {
+  color: #f5b7d0;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.vinyl-heading h2 {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  margin: 12px 0 7px;
+  color: #fff0f5;
+}
+
+.vinyl-heading p {
+  color: #e7b9cc;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.vinyl-area {
+  position: relative;
+  width: 235px;
+  height: 235px;
+  margin: 0 auto 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vinyl-disc {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle,
+      #171317 0px,
+      #292329 2px,
+      #111 4px,
+      #292329 6px
+    );
+  border: 5px solid #080608;
+  box-shadow: 0 12px 28px rgba(0,0,0,.5);
+}
+
+.vinyl-grooves {
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 0 9px rgba(255,255,255,.025),
+    0 0 0 19px rgba(255,255,255,.025),
+    0 0 0 29px rgba(255,255,255,.025);
+}
+
+.vinyl-center {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: linear-gradient(145deg,#f5b4ce,#a83d69);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4b102c;
+  border: 4px solid #21131c;
+}
+
+.vinyl-center span {
+  font-family: Georgia,serif;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.vinyl-center small {
+  font-size: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.vinyl-arm {
+  position: absolute;
+  width: 8px;
+  height: 105px;
+  background: linear-gradient(90deg,#aaa,#fff,#888);
+  top: 0;
+  right: 14px;
+  border-radius: 10px;
+  transform: rotate(-28deg);
+  transform-origin: top center;
+  z-index: 3;
+}
+
+.vinyl-arm::after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background: #e9b3c9;
+  border-radius: 50%;
+  bottom: -5px;
+  left: -5px;
+}
+
+.vinyl-info h3 {
+  font-family: Georgia,serif;
+  font-size: 23px;
+  margin: 8px 0 4px;
+}
+
+.vinyl-info p {
+  color: #e5b5c9;
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.vinyl-info span {
+  color: #f3c9d9;
+  font-size: 11px;
+}
+
+.vinyl-play {
+  display: block;
+  margin: 22px auto 15px;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg,#f5b6ce,#d875a0);
+  color: #390d24;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(220,110,155,.25);
+}
+
+.vinyl-play:active {
+  transform: scale(.96);
+}
+
+.vinyl-footer {
+  font-size: 10px;
+  color: #dba9be;
+  margin-top: 15px;
+}
+
+/* RECORD ROTATION */
+#vinylPlayer,
+.vinyl-disc {
+  transform-origin: center;
+}
+
+.vinyl-card.is-playing .vinyl-disc {
+  animation: vinylSpin 3s linear infinite;
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media(max-width:480px) {
+  .vinyl-section {
+    padding: 35px 12px;
+  }
+
+  .vinyl-card {
+    padding: 25px 15px;
+  }
+
+  .vinyl-area {
+    transform: scale(.9);
+    margin-top: -5px;
+    margin-bottom: 12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .vinyl-card.is-playing .vinyl-disc {
+    animation: none;
+  }
+}
