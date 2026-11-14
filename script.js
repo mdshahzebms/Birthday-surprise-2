@@ -9,7 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const openGift = $("openGift");
   const audio = $("birthdayAudio");
   const musicBtn = $("musicBtn");
+// GARDEN FLOWERS: section par pahunchte hi khilein
+const roseGarden = $("roseGarden");
 
+if (roseGarden) {
+  if ("IntersectionObserver" in window) {
+    const gardenObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          roseGarden.classList.add("garden-active");
+          gardenObserver.unobserve(roseGarden);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    gardenObserver.observe(roseGarden);
+  } else {
+    roseGarden.classList.add("garden-active");
+  }
+}
   // GIFT OPENING
   function showLock() {
     if (!intro || !lock) return;
