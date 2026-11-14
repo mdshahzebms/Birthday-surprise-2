@@ -906,3 +906,64 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform-origin: center bottom;
   }
 }
+/* HERO ILLUSTRATION FIX */
+.hero-art {
+  min-width: 0;
+  height: 370px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.dudu-budu {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 290px;
+  height: 290px;
+}
+
+/* GARDEN FLOWER FIX */
+#roseGarden .garden-rose {
+  opacity: 1;
+  visibility: visible;
+}
+
+#roseGarden .garden-bloom {
+  opacity: 0;
+  transform: translateX(-50%) scale(.05);
+  animation: none;
+}
+
+#roseGarden.garden-active .garden-bloom {
+  animation: gardenFlowerOpen 1.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes gardenFlowerOpen {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(.05) rotate(-35deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.15) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(0);
+  }
+}
+
+@media(max-width:700px) {
+  .hero-art {
+    height: 320px;
+  }
+
+  .dudu-budu {
+    transform: scale(.85);
+  }
+       }
