@@ -434,8 +434,7 @@ window.toggleLoveLetter = function () {
     ? "Khat band kijiye ♡"
     : "Khat kholiye ♡";
 };
-
-/* ===== NEW BUSHRA HEART CAKE INTERACTION ===== */
+/* ===== BUSHRA CAKE CUT + BIRTHDAY CELEBRATION ===== */
 
 (() => {
   const section = document.getElementById("birthdayCake");
@@ -446,7 +445,7 @@ window.toggleLoveLetter = function () {
   const stage = document.getElementById("cakeStage");
 
   if (!section || !candles || !button || !instruction || !celebration || !stage) {
-    console.error("Cake section ke elements nahi mile.");
+    console.error("Cake elements nahi mile.");
     return;
   }
 
@@ -459,7 +458,7 @@ window.toggleLoveLetter = function () {
       candles.classList.add("blown");
 
       instruction.textContent =
-        "Aapki har wish poori ho! 💜 Ab cake cut karte hain.";
+        "Aapki wish poori ho! 💜 Ab cake cut karte hain.";
 
       button.textContent = "🎂 Cake Cut Karein";
       return;
@@ -471,7 +470,7 @@ window.toggleLoveLetter = function () {
     section.classList.add("cut-done");
 
     instruction.textContent =
-      "Happy Birthday Bushra! Yeh khaas cake aapke naam 💜";
+      "Happy Birthday Bushra! Yeh pal sirf aapke liye hai 💜";
 
     button.textContent = "Happy Birthday Bushra 💜";
     button.disabled = true;
@@ -482,7 +481,7 @@ window.toggleLoveLetter = function () {
 
     const symbols = ["✨", "💜", "🌸", "🤍", "🎀", "💗"];
 
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 40; i++) {
       const sparkle = document.createElement("span");
 
       sparkle.className = "cake-sparkle";
@@ -491,7 +490,7 @@ window.toggleLoveLetter = function () {
 
       sparkle.style.left = Math.random() * 100 + "%";
       sparkle.style.top = (35 + Math.random() * 45) + "%";
-      sparkle.style.animationDelay = (Math.random() * .8) + "s";
+      sparkle.style.animationDelay = Math.random() * .8 + "s";
 
       stage.appendChild(sparkle);
 
@@ -499,3 +498,4 @@ window.toggleLoveLetter = function () {
     }
   });
 })();
+      
