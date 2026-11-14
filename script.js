@@ -1,87 +1,89 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  const $ = (id) => document.getElementById(id);
+  const $ = id => document.getElementById(id);
 
   const intro = $("intro");
-  const lockScreen = $("lockScreen");
-  const birthdayScreen = $("birthdayScreen");
-  const giftWrap = $("giftWrap");
+  const lock = $("lockScreen");
+  const birthday = $("birthdayScreen");
+  const gift = $("giftWrap");
   const openGift = $("openGift");
+  const audio = $("birthdayAudio");
+  const musicBtn = $("musicBtn");
 
-  // Gift se password screen
+  // GIFT OPENING
   function showLock() {
-    if (!intro || !lockScreen) return;
-    intro.classList.add("hidden");
-    lockScreen.classList.remove("hidden");
+    if (!intro || !lock) return;
+
+    gift?.classList.add("opening");
+
+    setTimeout(() => {
+      intro.classList.add("hidden");
+      lock.classList.remove("hidden");
+    }, 650);
   }
 
-  giftWrap?.addEventListener("click", showLock);
+  gift?.addEventListener("click", showLock);
   openGift?.addEventListener("click", showLock);
 
-  giftWrap?.addEventListener("keydown", (e) => {
+  gift?.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       showLock();
     }
   });
 
-  // Password: 1911
-  let entered = "";
+  // PASSWORD 1911
+  let code = "";
   const dots = $("dots")
     ? [...$("dots").children]
     : [];
 
-  function refreshDots() {
+  function updateDots() {
     dots.forEach((dot, i) => {
-      dot.classList.toggle("filled", i < entered.length);
+      dot.classList.toggle("filled", i < code.length);
     });
   }
 
   function unlock() {
-    if (entered === "1911") {
-      lockScreen?.classList.add("hidden");
-      birthdayScreen?.classList.remove("hidden");
+    if (code === "1911") {
+      lock.classList.add("hidden");
+      birthday.classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
       startPetals();
     } else {
-      if ($("errorMsg")) {
-        $("errorMsg").textContent =
-          "Code sahi nahi hai. Dobara koshish kijiye.";
-      }
-      entered = "";
-      refreshDots();
+      $("errorMsg").textContent =
+        "Code sahi nahi hai. Dobara koshish kijiye.";
+      code = "";
+      updateDots();
     }
   }
 
-  $("keypad")?.addEventListener("click", (e) => {
-    const button = e.target.closest("button");
-    if (!button) return;
+  $("keypad")?.addEventListener("click", e => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
 
-    const key = button.dataset.key;
+    const key = btn.dataset.key;
 
     if (key === "clear") {
-      entered = entered.slice(0, -1);
+      code = code.slice(0, -1);
     } else if (key === "enter") {
       unlock();
       return;
-    } else if (/^\d$/.test(key || "") && entered.length < 4) {
-      entered += key;
+    } else if (/^\d$/.test(key || "") && code.length < 4) {
+      code += key;
 
-      if (entered.length === 4) {
-        refreshDots();
-        setTimeout(unlock, 200);
+      if (code.length === 4) {
+        updateDots();
+        setTimeout(unlock, 250);
         return;
       }
     }
 
-    refreshDots();
-    if ($("errorMsg")) $("errorMsg").textContent = "";
+    $("errorMsg").textContent = "";
+    updateDots();
   });
 
-  // Music player
-  const audio = $("birthdayAudio");
-  const musicBtn = $("musicBtn");
-
+  // MUSIC
   musicBtn?.addEventListener("click", async () => {
     if (!audio) return;
 
@@ -91,22 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         audio.pause();
       }
-    } catch (error) {
-      musicBtn.textContent = "Audio file check karein";
+    } catch {
+      musicBtn.innerHTML = "Gaana file check kijiye";
     }
   });
 
   audio?.addEventListener("play", () => {
-    if (musicBtn) musicBtn.innerHTML =
-      "♫ <span>Gaana chal raha hai</span>";
+    musicBtn.innerHTML = "♫ <span>Gaana chal raha hai</span>";
   });
 
   audio?.addEventListener("pause", () => {
-    if (musicBtn) musicBtn.innerHTML =
-      "♫ <span>Gaana chalao</span>";
+    musicBtn.innerHTML = "♫ <span>Gaana chalao</span>";
   });
 
-  // 20 reasons
+  // REASONS
   const reasons = [
     "Aapki muskurahat din ko roshan kar deti hai.",
     "Aapki baaton mein ek alag hi sukoon hai.",
@@ -135,29 +135,33 @@ document.addEventListener("DOMContentLoaded", () => {
   $("nextReason")?.addEventListener("click", () => {
     reasonIndex = (reasonIndex + 1) % reasons.length;
 
-    if ($("reasonCount")) {
-      $("reasonCount").textContent =
-        String(reasonIndex + 1).padStart(2, "0") +
-        " / " + reasons.length;
-    }
+    const text = $("reasonText");
+    const count = $("reasonCount");
 
-    if ($("reasonText")) {
-      $("reasonText").textContent = reasons[reasonIndex];
-    }
+    text.animate(
+      [
+        { opacity: 0, transform: "translateY(10px)" },
+        { opacity: 1, transform: "translateY(0)" }
+      ],
+      { duration: 450, easing: "ease-out" }
+    );
+
+    text.textContent = reasons[reasonIndex];
+
+    count.textContent =
+      String(reasonIndex + 1).padStart(2, "0") +
+      " / " + reasons.length;
   });
 
-  // Final surprise
+  // FINAL SURPRISE
   $("finalBtn")?.addEventListener("click", () => {
     $("finalMessage")?.classList.remove("hidden");
+    $("finalBtn").textContent = "Surprise mil gaya ♡";
 
-    if ($("finalBtn")) {
-      $("finalBtn").textContent = "Surprise mil gaya ♡";
-    }
-
-    createConfetti(35);
+    createConfetti(45);
   });
 
-  // Falling petals
+  // FALLING FLOWERS
   let petalsStarted = false;
 
   function startPetals() {
@@ -169,30 +173,30 @@ document.addEventListener("DOMContentLoaded", () => {
     ).matches) return;
 
     setInterval(() => {
-      if (!birthdayScreen ||
-          birthdayScreen.classList.contains("hidden")) return;
+      if (birthday.classList.contains("hidden")) return;
 
       const layer = $("petals");
       if (!layer) return;
 
       const petal = document.createElement("span");
       petal.className = "petal";
-      petal.textContent = ["✿", "❀", "♡"][
-        Math.floor(Math.random() * 3)
+      petal.textContent = ["✿", "❀", "♡", "🌸"][
+        Math.floor(Math.random() * 4)
       ];
 
       petal.style.left = Math.random() * 100 + "%";
-      petal.style.fontSize = 10 + Math.random() * 12 + "px";
-      petal.style.animationDuration = 7 + Math.random() * 7 + "s";
+      petal.style.fontSize = 12 + Math.random() * 13 + "px";
+      petal.style.animationDuration = 7 + Math.random() * 6 + "s";
 
       layer.appendChild(petal);
-      setTimeout(() => petal.remove(), 15000);
-    }, 700);
+
+      setTimeout(() => petal.remove(), 14000);
+    }, 650);
   }
 
-  // Confetti effect
-  function createConfetti(amount = 35) {
-    const symbols = ["❤️", "💕", "✨", "🌸", "💗", "🎉"];
+  // CONFETTI
+  function createConfetti(amount) {
+    const symbols = ["❤️", "💕", "✨", "🌸", "💗", "🌹"];
 
     for (let i = 0; i < amount; i++) {
       const piece = document.createElement("span");
@@ -202,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       piece.style.position = "fixed";
       piece.style.left = Math.random() * 100 + "vw";
-      piece.style.top = "-30px";
+      piece.style.top = "-35px";
       piece.style.fontSize = 14 + Math.random() * 18 + "px";
       piece.style.pointerEvents = "none";
       piece.style.zIndex = "9999";
@@ -214,10 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Smooth navigation
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const target = document.querySelector(link.getAttribute("href"));
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const target = document.querySelector(
+        link.getAttribute("href")
+      );
+
       if (target) {
         e.preventDefault();
         target.scrollIntoView({
@@ -228,5 +235,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  console.log("Bushra website ready ❤️");
 });
+                          
