@@ -177,3 +177,156 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   }
                      
+
+/* MAGICAL ROSE GARDEN */
+
+.rose-world {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 35px;
+  padding: 25px 15px 20px;
+  overflow: hidden;
+  border-radius: 25px;
+  background: linear-gradient(180deg,#fff4f8,#f8dce8);
+}
+
+.rose-glow {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  top: 10px;
+  border-radius: 50%;
+  background: #ffffff80;
+  filter: blur(35px);
+  animation: roseGlow 4s infinite alternate;
+}
+
+.rose {
+  position: relative;
+  width: 65px;
+  height: 215px;
+  z-index: 2;
+  transform-origin: bottom center;
+  animation: roseSway 4s ease-in-out infinite;
+}
+
+.rose-two {
+  height: 250px;
+  animation-delay: -.8s;
+}
+
+.rose-three {
+  height: 195px;
+  animation-delay: -1.5s;
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 31px;
+  width: 5px;
+  height: 145px;
+  border-radius: 10px;
+  background: linear-gradient(#8dc58b,#39794c);
+}
+
+.rose-two .stem {
+  height: 180px;
+}
+
+.rose-three .stem {
+  height: 125px;
+}
+
+.leaf {
+  position: absolute;
+  bottom: 65px;
+  width: 35px;
+  height: 17px;
+  background: #67a96e;
+  border-radius: 100% 0 100% 0;
+}
+
+.leaf-left {
+  left: 0;
+  transform: rotate(20deg);
+}
+
+.leaf-right {
+  right: 0;
+  bottom: 95px;
+  transform: scaleX(-1) rotate(20deg);
+}
+
+.bloom {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translateX(-50%) scale(.05);
+  transform-origin: center bottom;
+  animation: roseBloom 2s ease-out forwards;
+}
+
+.bloom i {
+  position: absolute;
+  width: 30px;
+  height: 38px;
+  left: 17px;
+  top: 8px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(145deg,#ffb3cb,#d83e78);
+  transform-origin: bottom center;
+  box-shadow: inset -3px -4px 8px #a92c5a55;
+}
+
+.bloom i:nth-child(1) {transform: rotate(0deg)}
+.bloom i:nth-child(2) {transform: rotate(72deg)}
+.bloom i:nth-child(3) {transform: rotate(144deg)}
+.bloom i:nth-child(4) {transform: rotate(216deg)}
+.bloom i:nth-child(5) {transform: rotate(288deg)}
+
+.bloom:after {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 23px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f7d17c;
+  z-index: 2;
+}
+
+.rose-two .bloom {
+  animation-delay: .6s;
+}
+
+.rose-three .bloom {
+  animation-delay: 1.2s;
+}
+
+@keyframes roseBloom {
+  0% {transform:translateX(-50%) scale(.05) rotate(-35deg)}
+  70% {transform:translateX(-50%) scale(1.15) rotate(8deg)}
+  100% {transform:translateX(-50%) scale(1) rotate(0)}
+}
+
+@keyframes roseSway {
+  0%,100% {transform:rotate(-4deg)}
+  50% {transform:rotate(4deg)}
+}
+
+@keyframes roseGlow {
+  from {opacity:.35;transform:scale(.8)}
+  to {opacity:.9;transform:scale(1.2)}
+}
+
+@media(max-width:450px) {
+  .rose-world {gap:18px;min-height:250px}
+  .rose {transform:scale(.85);transform-origin:bottom center}
+  }
