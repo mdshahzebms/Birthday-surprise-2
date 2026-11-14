@@ -967,3 +967,253 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
     transform: scale(.85);
   }
        }
+/* DUDU BUBU COUPLE */
+.hero-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  overflow: visible;
+}
+
+.dudu-bubu-couple {
+  position: relative;
+  width: 330px;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: coupleFloat 3s ease-in-out infinite;
+}
+
+.cartoon-bear {
+  position: relative;
+  width: 145px;
+  height: 230px;
+  flex-shrink: 0;
+}
+
+.dudu {
+  --fur: #f5e5d5;
+  --inner: #e9cbb6;
+  transform: rotate(-5deg);
+  z-index: 2;
+}
+
+.bubu {
+  --fur: #fff0f0;
+  --inner: #f3caca;
+  transform: rotate(5deg) translateX(-12px);
+  z-index: 1;
+}
+
+/* EARS */
+.cartoon-bear .ear {
+  position: absolute;
+  width: 48px;
+  height: 53px;
+  background: var(--fur);
+  border: 3px solid #73504c;
+  border-radius: 50%;
+  top: 12px;
+  z-index: 0;
+}
+
+.cartoon-bear .ear::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  background: var(--inner);
+  border-radius: 50%;
+}
+
+.ear-left {
+  left: 12px;
+}
+
+.ear-right {
+  right: 12px;
+}
+
+/* HEAD */
+.bear-head {
+  position: absolute;
+  width: 130px;
+  height: 120px;
+  top: 28px;
+  left: 7px;
+  background: var(--fur);
+  border: 3px solid #73504c;
+  border-radius: 48% 48% 45% 45%;
+  z-index: 2;
+}
+
+/* EYES */
+.eye {
+  position: absolute;
+  width: 9px;
+  height: 13px;
+  top: 43px;
+  background: #30201e;
+  border-radius: 50%;
+}
+
+.eye-left {
+  left: 34px;
+}
+
+.eye-right {
+  right: 34px;
+}
+
+/* CHEEKS */
+.cheek {
+  position: absolute;
+  width: 20px;
+  height: 11px;
+  top: 65px;
+  background: #f49ba9;
+  border-radius: 50%;
+  opacity: .8;
+}
+
+.cheek-left {
+  left: 13px;
+}
+
+.cheek-right {
+  right: 13px;
+}
+
+/* MUZZLE AND NOSE */
+.muzzle {
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  background: #fff8ef;
+  border-radius: 50%;
+  left: 44px;
+  top: 64px;
+}
+
+.nose {
+  position: absolute;
+  width: 12px;
+  height: 9px;
+  background: #49302e;
+  border-radius: 50%;
+  top: 69px;
+  left: 59px;
+  z-index: 3;
+}
+
+.mouth {
+  position: absolute;
+  width: 13px;
+  height: 8px;
+  top: 78px;
+  left: 59px;
+  border-bottom: 2px solid #49302e;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* BODY */
+.bear-body {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  top: 135px;
+  left: 20px;
+  background: var(--fur);
+  border: 3px solid #73504c;
+  border-radius: 48% 48% 42% 42%;
+  z-index: 1;
+}
+
+.belly-heart {
+  position: absolute;
+  top: 30px;
+  left: 38px;
+  color: #ed7797;
+  font-size: 25px;
+}
+
+/* ARMS */
+.arm {
+  position: absolute;
+  width: 35px;
+  height: 68px;
+  top: 143px;
+  background: var(--fur);
+  border: 3px solid #73504c;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.arm-left {
+  left: 0;
+  transform: rotate(35deg);
+}
+
+.arm-right {
+  right: 0;
+  transform: rotate(-35deg);
+}
+
+/* LEGS */
+.leg {
+  position: absolute;
+  width: 45px;
+  height: 35px;
+  bottom: -2px;
+  background: var(--fur);
+  border: 3px solid #73504c;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.leg-left {
+  left: 20px;
+}
+
+.leg-right {
+  right: 20px;
+}
+
+/* FLOATING HEART */
+.couple-floating-heart {
+  position: absolute;
+  top: 0;
+  left: 46%;
+  color: #f05b91;
+  font-size: 36px;
+  animation: heartFloat 1.5s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes coupleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes heartFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-13px) scale(1.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .dudu-bubu-couple {
+    transform: scale(.85);
+    transform-origin: bottom center;
+  }
+}
