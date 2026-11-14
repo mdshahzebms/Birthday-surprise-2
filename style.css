@@ -606,3 +606,138 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
   opacity: 1 !important;
   animation: bloomOpen 1.5s ease-out forwards !important;
 }
+
+/* FINAL GARDEN DISPLAY FIX */
+.rose-world {
+  height: 430px;
+  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #fce8f0 0%,
+    #f9dce8 48%,
+    #d9edcf 100%
+  );
+}
+
+.garden-flowers {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.garden-rose {
+  position: absolute;
+  bottom: 48px;
+  width: 55px;
+  height: 210px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(var(--plant-size, 1));
+  transform-origin: bottom center;
+  animation: gardenWind 3s ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.garden-stem {
+  position: absolute;
+  left: 26px;
+  bottom: 0;
+  width: 5px;
+  height: 125px;
+  border-radius: 8px;
+  background: linear-gradient(#83b96d,#347447);
+}
+
+.garden-leaf {
+  position: absolute;
+  width: 29px;
+  height: 14px;
+  bottom: 65px;
+  background: #4e9a60;
+  border-radius: 100% 0 100% 0;
+}
+
+.garden-leaf.left {
+  left: 0;
+  transform: rotate(15deg);
+}
+
+.garden-leaf.right {
+  right: -1px;
+  bottom: 95px;
+  transform: scaleX(-1) rotate(15deg);
+}
+
+.garden-bloom {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  opacity: 1 !important;
+  transform: translateX(-50%);
+  animation: flowerOpen 1.2s ease-out both;
+  animation-delay: var(--delay, 0s);
+}
+
+.garden-bloom i {
+  position: absolute;
+  width: 28px;
+  height: 36px;
+  left: 16px;
+  top: 7px;
+  border-radius: 50% 50% 45% 45%;
+  background: var(--petal-color);
+  transform-origin: bottom center;
+  box-shadow: inset -3px -4px 7px #76244435;
+}
+
+.garden-bloom i:nth-child(1) { transform: rotate(0deg); }
+.garden-bloom i:nth-child(2) { transform: rotate(60deg); }
+.garden-bloom i:nth-child(3) { transform: rotate(120deg); }
+.garden-bloom i:nth-child(4) { transform: rotate(180deg); }
+.garden-bloom i:nth-child(5) { transform: rotate(240deg); }
+.garden-bloom i:nth-child(6) { transform: rotate(300deg); }
+
+.garden-bloom::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 24px;
+  top: 22px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #f9d77d;
+}
+
+@keyframes flowerOpen {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(.05) rotate(-35deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(0);
+  }
+}
+
+@keyframes gardenWind {
+  from { rotate: -3deg; }
+  to { rotate: 3deg; }
+}
+
+@media(max-width:500px) {
+  .rose-world {
+    height: 370px;
+    min-height: 370px;
+  }
+
+  .garden-rose {
+    transform: scale(calc(var(--plant-size, 1) * .8));
+    transform-origin: bottom center;
+  }
+  }
