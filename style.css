@@ -2304,3 +2304,14 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
 #birthdayCake .cake-slice-gap {
   z-index: 10;
 }
+#birthdayCake .cake-instruction {
+  position: relative;
+  z-index: 30;
+}
+
+#birthdayCake .cake-action {
+  position: relative;
+  z-index: 30;
+  display: block;
+  margin: 10px auto 0;
+}
