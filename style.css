@@ -330,3 +330,38 @@ footer{padding:25px 15px 35px;text-align:center;color:#a77b8c;font-size:9px;lett
   .rose-world {gap:18px;min-height:250px}
   .rose {transform:scale(.85);transform-origin:bottom center}
   }
+
+/* ROSES OPEN ONLY WHEN GARDEN IS VISIBLE */
+
+.rose .bloom {
+  transform: translateX(-50%) scale(0.05);
+  opacity: 0;
+  animation: none;
+}
+
+.rose-world.garden-active .bloom {
+  animation: roseBloom 1.8s ease-out forwards;
+}
+
+.rose-world.garden-active .rose-two .bloom {
+  animation-delay: .6s;
+}
+
+.rose-world.garden-active .rose-three .bloom {
+  animation-delay: 1.2s;
+}
+
+@keyframes roseBloom {
+  0% {
+    transform: translateX(-50%) scale(.05) rotate(-35deg);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-50%) scale(1.15) rotate(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1) rotate(0);
+    opacity: 1;
+  }
+}
